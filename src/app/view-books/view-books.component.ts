@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksService } from '../books.service';
 
 @Component({
   selector: 'app-view-books',
@@ -10,16 +9,10 @@ export class ViewBooksComponent implements OnInit {
 
   users: any[] = [];
 
-  constructor(protected service: BooksService ) { }
+  constructor( ) { }
 
   ngOnInit() {
 
-    this.service.getUsers().subscribe(
-      (data) => {
-        //this.users = data['results'] 
-        console.log( data );
-      }
-    );
   }
 
 }
