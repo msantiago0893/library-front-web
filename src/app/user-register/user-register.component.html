@@ -1,6 +1,6 @@
 <h4>REGISTRO DE USUARIOS</h4>
 
-<form>
+<form [formGroup]='miFormulario' novalidate=''>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="exampleFormControlSelect1">Seleccione tipo de usuario</label>
@@ -38,7 +38,7 @@
             <option>Seleccione</option>
             <option>Lic.Arquitectura</option>
             <option>Lic.Gastronomia</option>
-            <option>Lic.Informatica</option>  
+            <option>Lic.Informatica</option>
             <option>Lic.Contabilidad</option>
             <option>Lic. Derecho</option>
           </select>

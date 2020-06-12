@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-loan-registration',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoanRegistrationComponent implements OnInit {
 
-  constructor() { }
+  public miFormulario: FormGroup;
+
+  constructor() {
+
+    this.miFormulario = new FormGroup({
+      'nombre': new FormControl('Jose'),
+      'apellido': new FormControl(),
+      'correo': new FormControl()
+    });
+
+  }
 
   ngOnInit() {
   }
