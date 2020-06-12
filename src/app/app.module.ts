@@ -10,12 +10,11 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { HomeUIComponent } from './home-ui/home-ui.component';
 import { ViewBooksComponent } from './view-books/view-books.component';
 import { RegisterBookComponent } from './register-book/register-book.component';
-import { DashboardViewComponent } from './dashboard-view/dashboard-view.component';
-
-//import { FooterComponent } from './footer.component';
-//import { HeaderComponent } from './header.component';
-//import { NavListComponent } from './nav-list/nav-list.component';
-//import { NavListComponent } from './nav-list.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
+import { LoanRegistrationComponent } from './loan-registration/loan-registration.component';
+import { Vinculo1Component } from './vinculo1/vinculo1.component';
+import { Vinculo2Component } from './vinculo2/vinculo2.component';
+import { Vinculo3Component } from './vinculo3/vinculo3.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,11 @@ import { DashboardViewComponent } from './dashboard-view/dashboard-view.componen
     HomeUIComponent,
     ViewBooksComponent,
     RegisterBookComponent,
-    DashboardViewComponent
+    UserRegisterComponent,
+    LoanRegistrationComponent,
+    Vinculo1Component,
+    Vinculo2Component,
+    Vinculo3Component,
   ],
   imports: [
     BrowserModule,
