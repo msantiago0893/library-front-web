@@ -1,65 +1,20 @@
 
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="exampleFormControlSelect1">Seleccione tipo de usuario</label>
-      <select class="form-control" id="exampleFormControlSelect1">
-        <option>Seleccione</option>
-        <option>Alumno</option>
-        <option>Profesor</option>
-        <option>Ejecutivo</option>
-        <option>Director(a)</option>
-      </select>
-    </div>
-  </div>
-<p> bievenidos, bievenidos bievenidosbievenidos bievenidos bievenidosbievenidosbievenidos</p>
+<form [formGroup]='miFormulario' (ngSubmit)='guardarCambios()' novalidate=''>
 
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputEmail4">Nombre</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        <input class="form-control" type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
       </div>
       <div class="form-group col-md-4">
         <label for="inputPassword4">Apellido paterno</label>
-        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+        <input class="form-control" type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
       </div>
       <div class="form-group col-md-4">
         <label for="inputPassword4">Apellido materno</label>
-        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="inputEmail4">Matricula</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="exampleFormControlSelect1">Seleccione carrera</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>Arquitectura</option>
-          <option>Gastronomia</option>
-          <option>Informatica</option>
-        </select>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputPassword4">E-mail</label>
-        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="inputEmail4">Celular</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="exampleFormControlSelect1">Seleccione Sexo</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>Seleccione</option>
-          <option>Masculino</option>
-          <option>Femenino</option>
-        </select>
+        <input class="form-control" type="text" class="form-control" placeholder="Sexo" formControlName="sexo">
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-primary">Registrar</button>
   </form>
