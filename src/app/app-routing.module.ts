@@ -4,9 +4,14 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { HomeUIComponent } from './home-ui/home-ui.component';
 import { ViewBooksComponent } from './view-books/view-books.component';
 import { RegisterBookComponent } from './register-book/register-book.component';
-import { DashboardViewComponent } from './dashboard-view/dashboard-view.component';
+import { LoanRegistrationComponent } from './loan-registration/loan-registration.component';
+import { registerLocaleData } from '@angular/common';
+import { Vinculo1Component } from './vinculo1/vinculo1.component';
+import { Vinculo2Component } from './vinculo2/vinculo2.component';
+import { Vinculo3Component } from './vinculo3/vinculo3.component';
 
 const routes: Routes = [
+
 
   {
     path: 'login', component: AuthenticationComponent
@@ -14,9 +19,13 @@ const routes: Routes = [
   {
     path: 'home', component: HomeUIComponent,
     children: [
-      { path: 'dashboard', component: DashboardViewComponent},
       { path: 'registerBook', component: RegisterBookComponent},
-      { path: 'viewBooks', component: ViewBooksComponent}
+      { path: 'viewBooks', component: ViewBooksComponent},
+      {path: 'load-regidtration' , component: LoanRegistrationComponent},
+      {path: 'vincule1', component: Vinculo1Component},
+      {path: 'vincule2', component: Vinculo2Component},
+      {path: 'vincule3', component: Vinculo3Component}
+
     ]
   },
   {
