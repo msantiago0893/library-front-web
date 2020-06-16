@@ -1,20 +1,32 @@
 
 <form [formGroup]='miFormulario' (ngSubmit)='guardarCambios()' novalidate=''>
 
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="inputEmail4">Nombre</label>
-        <input class="form-control" type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputPassword4">Apellido paterno</label>
-        <input class="form-control" type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputPassword4">Apellido materno</label>
-        <input class="form-control" type="text" class="form-control" placeholder="Sexo" formControlName="sexo">
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Registrar</button>
+     <div class="form-row form-register-content">
+       <h2 class="title-form">REGISTRO DE LIBROS </h2>
+        <div class="form-group ">
+          <label>Titulo  del Libro</label>
+          <input class="form-control form-register" type="text" placeholder="Titulo del Libro" formControlName="titulo">
+        </div>
+      <div class="form-group ">
+          <label>ID</label>
+          <input class="form-control form-register" type="text" placeholder="Id" formControlName="id">
+        </div>
+       <div class="form-group ">
+          <label>AUTOR</label>
+          <input class="form-control form-register" type="text" placeholder="Autor" formControlName="autor">
+        </div>
+        <div class="form-group ">
+          <label>GENERO</label>
+          <input class="form-control form-register" type="text" placeholder="Genero" formControlName="genero">
+        </div> 
+       <div class="form-group ">
+          <label>EDITORIAL</label>
+          <input class="form-control form-register" type="text" placeholder="Editorial" formControlName="editorial">
+        </div>
+        <div class="form-group ">
+          <label>Numero de Ejemplares</label>
+          <input class="form-control form-register" type="text" placeholder="Numero de Ejemplares" formControlName="numEjemplares">
+        </div> 
+         <button type="submit" class="btn btn-primary form-registerbotton ">Registrar</button>
+      </div> 
   </form>
