@@ -15,23 +15,23 @@ export class RegisterBookComponent implements OnInit {
   constructor() {
 
     this.miFormulario = new FormGroup({
-      'Titulo del Libro': new FormControl('', [
+      'titulo': new FormControl('', [
         Validators.required,
         Validators.minLength(6)
       ]),
-      'Id': new FormControl('', [
+      'id': new FormControl('', [
         Validators.required
       ]),
-      'Autor': new FormControl('', [
+      'autor': new FormControl('', [
         Validators.required
       ]),
-      'Editorial': new FormControl('', [
+      'editorial': new FormControl('', [
         Validators.required
       ]),
-      'Genero':new FormControl('', [
+      'genero':new FormControl('', [
         Validators.required
       ]),
-      'Num.ejemplares': new FormControl('', [
+      'numEjemplares': new FormControl('', [
         Validators.required
       ])
     });
