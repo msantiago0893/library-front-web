@@ -17,6 +17,8 @@ import { LoanRegistrationComponent } from './loan-registration/loan-registration
 import { Vinculo1Component } from './vinculo1/vinculo1.component';
 import { Vinculo2Component } from './vinculo2/vinculo2.component';
 import { Vinculo3Component } from './vinculo3/vinculo3.component';
+import { PageGridComponent } from './page-grid/page-grid.component';
+import { MygridComponent } from './mygrid/mygrid.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { Vinculo3Component } from './vinculo3/vinculo3.component';
     Vinculo1Component,
     Vinculo2Component,
     Vinculo3Component,
+    PageGridComponent,
+    MygridComponent,
   ],
   imports: [
     BrowserModule,

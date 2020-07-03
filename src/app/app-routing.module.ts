@@ -9,8 +9,17 @@ import { registerLocaleData } from '@angular/common';
 import { Vinculo1Component } from './vinculo1/vinculo1.component';
 import { Vinculo2Component } from './vinculo2/vinculo2.component';
 import { Vinculo3Component } from './vinculo3/vinculo3.component';
+import { PageGridComponent } from './page-grid/page-grid.component';
+import { MygridComponent } from './mygrid/mygrid.component';
 
 const routes: Routes = [
+
+  {
+    path: 'grid', component: PageGridComponent
+  },
+  {
+    path: 'mygrid', component: MygridComponent
+  },
 
 
   {
@@ -30,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'mygrid',
     pathMatch: 'full'
   }
 ];

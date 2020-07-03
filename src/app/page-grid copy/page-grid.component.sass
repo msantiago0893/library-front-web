@@ -1,0 +1,71 @@
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+
+.container-okram
+  background: #e9ecfa
+  color: #000000
+  font-family: 'Roboto', sans-serif
+
+.containerP
+  // width: 90%
+  // max-width: 1000px
+  margin: 20px auto
+  display: grid
+  grid-gap: 1rem
+  grid-template-columns: repeat(1, 1fr)
+  grid-template-rows: repeat(4, auto)
+  grid-template-areas: "header header header" "sidebar contenido contenido" "sidebar widget-1 widget-2" "footer footer footer"
+
+
+.containerP > div,
+.containerP .header,
+.containerP .contenido,
+.containerP .sidebar,
+.containerP .footer
+  background: #ffffff
+  padding: 20px
+  border-radius: 4px
+
+.containerP .header
+  background: #12203e
+  color: #ffffff
+  grid-area: header
+
+.containerP .contenido
+  grid-area: contenido
+
+.containerP .sidebar
+  background: #faa43d
+  text-align: center
+  display: flex
+  align-items: center
+  justify-content: center
+  grid-area: sidebar
+
+.containerP .widget-1,
+.containerP .widget-2
+  background: #558a55
+  color: #ffffff
+  text-align: center
+  height: 100px
+  display: flex
+  align-items: center
+  justify-content: center
+
+.containerP .widget-1
+  grid-area: widget-1
+
+.containerP .widget-2
+  grid-area: widget-2
+
+.containerP .footer
+  background: #6e66ad
+  grid-area: footer
+
+
+@media screen and ( max-width: 768px )
+
+  .containerP
+    grid-template-areas: "header header header" "sidebar sidebar sidebar" "contenido contenido contenido" "widget-1 widget-1 widget-2" "footer footer footer"
