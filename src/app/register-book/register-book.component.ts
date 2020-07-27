@@ -19,19 +19,19 @@ export class RegisterBookComponent implements OnInit {
         Validators.required,
         Validators.minLength(6)
       ]),
-      'id': new FormControl('', [
+      'autor': new FormControl('', [
         Validators.required
       ]),
-      'autor': new FormControl('', [
+      'genero': new FormControl('', [
         Validators.required
       ]),
       'editorial': new FormControl('', [
         Validators.required
       ]),
-      'genero':new FormControl('', [
+      'ejemplares':new FormControl('', [
         Validators.required
       ]),
-      'numEjemplares': new FormControl('', [
+      'codigo': new FormControl('', [
         Validators.required
       ])
     });
@@ -41,7 +41,7 @@ export class RegisterBookComponent implements OnInit {
   ngOnInit() {
   }
 
-  guardarCambios() {
+  save() {
     console.log(this.miFormulario.value);
   }
 
