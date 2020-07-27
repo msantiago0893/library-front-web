@@ -1,0 +1,32 @@
+
+<div class='container-primary'>
+<form [formGroup]='miFormulario' (ngSubmit)='guardarCambios()' novalidate=''>
+    <div class="title">
+       <h2 class="title-form">REGISTRO DE LIBROS </h2>
+      </div>
+    <div class="form-row form-register-content">
+      <div class="form-group ">
+        <label>Titulo  del Libro</label>
+         <input class="form-control form-register" type="text" placeholder="Titulo del Libro" formControlName="titulo">
+       </div>
+      <div class="author">
+        <label>Autor</label>
+        <input class="form-control form-register" type="text" placecholder="Autor" formControlName="Autor">
+      </div>
+      <div class="genre">
+        <label>Genero</label>
+        <input class="form-control form-register" type="text" placecholder="Genero" formControlName="genre">
+      </div>
+      <div class="editorial">
+          <label>Editorial</label>
+          <input class="form-control form-register" type="text" placeholder="Editorial" formControlName="editorial">
+        </div>
+      <div class="exemplary">
+          <label>Ejemplares</label>
+          <input class="form-control form-register" type="text" placeholder="Ejemplares" formControlName="ejemplares">
+        </div>
+      <div class="register"> 
+        <button type="submit" class="btn btn-primary form-registerbotton ">Registrar</button>
+      </div>  
+     
+   </div>
