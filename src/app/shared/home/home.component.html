@@ -19,44 +19,10 @@
 
         <h1> {{ datoHijo }}  </h1>
 
-        <h1>Heading Goes Here</h1>
         <mat-divider></mat-divider>
       </section>
 
-      <div class="productCards">
-
-
-        <form fxLayout="column" [formGroup]="contactForm">
-          <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10rem" fxLayoutGap.lt-md="0px">
-            <mat-form-field fxFlex>
-              <input matInput type="text" placeholder="Nombre" formControlName="firstName">
-            </mat-form-field>
-            <mat-form-field fxFlex>
-              <input matInput type="text" placeholder="AP. MATERNO" formControlName="lastName">
-            </mat-form-field>
-            <mat-form-field fxFlex>
-              <input matInput type="text" placeholder="AP. PATERNO" formControlName="lastName">
-            </mat-form-field>
-          </div>
-
-          <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10rem" fxLayoutGap.lt-md="0px">
-            <mat-form-field fxFlex>
-              <input matInput  type="text"  placeholder="SEXO" formControlName="email">
-            </mat-form-field>
-            <mat-form-field fxFlex>
-              <input matInput  type="text"  placeholder="CEL" formControlName="email">
-            </mat-form-field>
-            <mat-form-field fxFlex>
-              <input matInput  type="text"  placeholder="EMAIL" formControlName="email">
-            </mat-form-field>
-          </div>
-          <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="8rem" fxLayoutGap.lt-md="0px">
-            <mat-form-field fxFlex>
-              <input matInput  type="text"  placeholder="EMAIL" formControlName="email">
-            </mat-form-field>
-          </div>
-        </form>
-      </div>
+      <router-outlet></router-outlet>
 
     </mat-sidenav-content>
   </mat-sidenav-container>

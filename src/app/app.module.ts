@@ -16,6 +16,13 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './shared/home/home.component';
+import { BooksComponent } from './pages/books/books.component';
+import { StudentsComponent } from './pages/students/students.component';
+import { AllBooksComponent } from './pages/all-books/all-books.component';
+
+import { HttpClientModule } from '@angular/common/http'
+
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -25,17 +32,21 @@ import { HomeComponent } from './shared/home/home.component';
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    BooksComponent,
+    StudentsComponent,
+    AllBooksComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    
+
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
