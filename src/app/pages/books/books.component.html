@@ -1,0 +1,39 @@
+<div class="productCards">
+
+
+  <form class="form" [formGroup]="bookForm" novalidate (ngSubmit)="submit()">
+
+      <div class="form__row">
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Nombre" formControlName="name">
+          <mat-error *ngIf="bookForm.controls.name.touched && bookForm.controls.name.invalid">
+            <span *ngIf="bookForm.controls.name.errors.required">Campo obligatorio.</span>
+            <span *ngIf="bookForm.get('name').errors.minlength">Minino 5 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Editorial" formControlName="editorial">
+          <mat-error *ngIf="bookForm.controls.editorial.touched && bookForm.controls.editorial.invalid">
+            <span *ngIf="bookForm.controls.editorial.errors.required">Campo obligatorio.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Autor" formControlName="autor">
+        </mat-form-field>
+      </div>
+      <div class="form__row">
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Género" formControlName="genero">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Número de páginas" formControlName="n_pag">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Año de edición" formControlName="año">
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit">Registrar</button>
+  </form>
+  <!-- <button mat-button color="primary" (click)='testRouter()' >Navegar a ver libros</button> -->
+</div>
