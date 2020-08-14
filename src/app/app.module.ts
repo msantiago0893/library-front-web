@@ -1,39 +1,44 @@
+/* Angular material */
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { HomeUIComponent } from './home-ui/home-ui.component';
-import { ViewBooksComponent } from './view-books/view-books.component';
-import { RegisterBookComponent } from './register-book/register-book.component';
-import { UserRegisterComponent } from './user-register/user-register.component';
-import { LoanRegistrationComponent } from './loan-registration/loan-registration.component';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { HomeComponent } from './shared/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MenuComponent,
     HeaderComponent,
     FooterComponent,
-    AuthenticationComponent,
-    HomeUIComponent,
-    ViewBooksComponent,
-    RegisterBookComponent,
-    UserRegisterComponent,
-    LoanRegistrationComponent
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    
+    FlexLayoutModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
