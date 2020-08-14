@@ -1,20 +1,21 @@
 <!-- Toolbar -->
 <mat-toolbar class="header">
-  <div class="title-header">
-    <h1>LibraryUI</h1>
+  <div class="title">
+    <h1 class="title--small">LibraryUI</h1>
   </div>
 
-  <div class="icons-header">
-    <img  class="icon-option-perfil" src="assets/option-perfil.svg" (click)="showMenuResponsive()" >
-    <div class="container-icon" *ngIf="iconMenus">
+  <div class="wrap-icons">
+    <img class="wrap-icons__group-menu" src="assets/downarrow_120663.svg" (click)="navBar.toggle()"
+    mat-icon-button alt="main">  
+
+    <div class="wrap-icons__group-icons mm" *ngIf="iconMenus">
       <img src="assets/notifications.svg"  mat-icon-button alt="notification">
       <img src="assets/perfil.svg" mat-icon-button [matMenuTriggerFor]="menu" alt="flag">
       <img src="assets/flag-mex.svg" mat-icon-button [matMenuTriggerFor]="menuFlag" alt="mx">
       <img class="icon-menu" src="assets/menu.svg" (click)="navBar.toggle()"
         mat-icon-button alt="notification">
-
-
     </div>
+
   </div>
 
   <mat-menu #menu="matMenu">

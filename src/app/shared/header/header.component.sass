@@ -3,56 +3,66 @@
   cursor: pointer
   background: #a0baf7
 
-  .title-header
-    display: flex
+.title
+  display: flex
 
-  .icons-header
-    position: absolute
-    right: 0.5rem
-
-    .icon-option-perfil
-      margin-left: 1.2rem
-
-    .container-icon
-      margin-top: 0rem
-
-      img
-        width: 2.5rem
-        padding-top: .5rem
-
-        padding-left: 2rem
-        padding-right: 2rem
-
-      .icon-menu
-        display: none
-
-.icon-option-perfil
-  width: 2.5rem
-  margin-right: 2rem
-  margin-left: 2rem
-  display: none
+  &--medium
+    font-size: 10rem
+  &--small
+    font-size: 2rem
 
 
+
+.wrap-icons
+  position: absolute
+  right: 0.5rem
+  display: flex
+
+  &__perfil
+    width: 2.5rem
+    margin-left: 1.2rem
+    display: none
+    //* ocultar elementos
+    //display: block mostrar elementos
+
+  &__group-icons
+    margin-top: 0rem
+    & > img
+          width: 2.5rem
+          padding-top: .5rem
+          padding-left: 2rem
+          padding-right: 2rem
+ 
+  &__group-menu  
+    display: none
+    width: 2.5rem
+    padding-top: .5rem
+    padding-left: 2rem
+    padding-right: 2rem       
+
+
+
+         
 
 @media all and (max-width: 410px)
-  .icons-header
-    display: inline-grid
-    top: .5rem
 
-  .icon-option-perfil
-    display: inline-block
-    margin-bottom: 0.5rem
+    .wrap-icons
+      display: flex
+      flex-direction: column
+      top: 0
+  
 
-  .container-icon
-    display: inline-grid
-    background: rgba(0, 0, 0, 0.16)
 
-    img
-      margin-top: 2rem
+      &__group-icons
+        display: none
+      
+    
+      &__group-menu  
+        display: block
+        width: 1.5rem
 
-    img:hover
-      background-color: cornsilk
-
-    .icon-menu
-      display: flex !important
+        &:hover ~ .mm
+          display: block
+          display: flex
+          flex-direction: column
 
