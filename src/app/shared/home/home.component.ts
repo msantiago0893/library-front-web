@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +9,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   panelOpenState = false;
-  contactForm : FormGroup;
 
-  constructor(private fb: FormBuilder){
-    this.contactForm = fb.group({
-      firstName : '',
-      lastName : '',
-      email : ''
-    });
+  constructor(){
+
   }
 
   opened = true;
