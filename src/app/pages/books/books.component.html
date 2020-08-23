@@ -5,10 +5,10 @@
 
       <div class="form__row">
         <mat-form-field fxFlex>
-          <input matInput  type="text"  placeholder="Nombre" formControlName="name">
+          <input matInput  type="text" placeholder="Nombre" formControlName="name">
           <mat-error *ngIf="bookForm.controls.name.touched && bookForm.controls.name.invalid">
             <span *ngIf="bookForm.controls.name.errors.required">Campo obligatorio.</span>
-            <span *ngIf="bookForm.get('name').errors.minlength">Minino 5 caracteres.</span>
+            <span *ngIf="bookForm.get('name').errors.pattern">Cmpo de tipo texto.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex>
@@ -19,11 +19,6 @@
         </mat-form-field>
         <mat-form-field fxFlex>
           <input matInput  type="text"  placeholder="Autor" formControlName="autor">
-          <mat-error *ngIf="bookForm.controls.autor.touched && bookForm.controls.autor.invalid">
-            <span *ngIf="bookForm.get('autor').errors.required">Campo obligatorio.</span>
-            <span *ngIf="bookForm.get('autor').errors.minlength">Minino 8 caracteres.</span>
-            <span *ngIf="bookForm.get('autor').errors.maxlength">Maximo 15 caracteres </span>
-          </mat-error>
         </mat-form-field>
       </div>
       <div class="form__row">
@@ -40,6 +35,5 @@
 
       <button mat-raised-button color="primary" type="submit">Registrar</button>
   </form>
-  
   <button mat-button color="primary" (click)='testRouter()' >Navegar a ver libros</button>
 </div>

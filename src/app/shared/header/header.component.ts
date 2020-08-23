@@ -9,6 +9,8 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class HeaderComponent implements OnInit {
 
+  isActive = false;
+
   constructor(
     //@Host() private _app: AppComponent
     private renderer: Renderer2,
@@ -16,11 +18,6 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  }
-
-  iconMenus = true;
-  showMenuResponsive() {
-    this.iconMenus = !this.iconMenus;
   }
 
   @Output() cambio = new EventEmitter();
@@ -31,4 +28,8 @@ export class HeaderComponent implements OnInit {
     console.log('Menu => ', this.navBar);
   }
 
+  activar() {
+    console.log('Ocultar menu');
+     this.isActive = !this.isActive;
+  }
 }
