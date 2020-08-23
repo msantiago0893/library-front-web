@@ -9,18 +9,18 @@ import { Router } from '@angular/router';
 })
 export class BooksComponent implements OnInit {
 
-  bookForm : FormGroup;
+  private bookForm : FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    public router: Router
+    private router: Router
     ){ }
 
   ngOnInit() {
     this.bookForm = this.fb.group({
       name : [null, [Validators.required, Validators.minLength(5)] ],
       editorial : [null, [Validators.required] ],
-      autor : '',
+      autor : ['', [Validators.required, Validators.minLength(8), Validators.maxLength] ],
       genero: '',
       n_pag: '',
       año: ''
@@ -36,6 +36,6 @@ export class BooksComponent implements OnInit {
   }
 
   testRouter() {
-    this.router.navigate(['/home/all-book'])
+    this.router.navigate(['/home/all-book']);
   }
 }

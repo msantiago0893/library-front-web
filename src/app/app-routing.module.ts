@@ -4,7 +4,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './shared/home/home.component';
 import { BooksComponent } from './pages/books/books.component';
 import { AllBooksComponent } from './pages/all-books/all-books.component';
-
+import { StudentsComponent} from './pages/students/students.component';
+import { StudentsConsultComponent } from './pages/students-consult/students-consult.component';
 
 const routes: Routes = [
 
@@ -14,7 +15,9 @@ const routes: Routes = [
     path: 'home', component: HomeComponent,
     children: [
       { path: 'add-book', component: BooksComponent},
-      { path: 'all-book', component: AllBooksComponent}
+      { path: 'all-book', component: AllBooksComponent},
+      { path: 'students', component: StudentsComponent},
+      { path: 'students-consult', component: StudentsConsultComponent}
     ]
   }
 ];
