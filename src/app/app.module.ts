@@ -21,8 +21,7 @@ import { StudentsComponent } from './pages/students/students.component';
 import { AllBooksComponent } from './pages/all-books/all-books.component';
 
 import { HttpClientModule } from '@angular/common/http'
-
-import { from } from 'rxjs';
+import { StudentsConsultComponent } from './pages/students-consult/students-consult.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,8 @@ import { from } from 'rxjs';
     HomeComponent,
     BooksComponent,
     StudentsComponent,
-    AllBooksComponent
+    AllBooksComponent,
+    StudentsConsultComponent
   ],
   imports: [
     BrowserModule,

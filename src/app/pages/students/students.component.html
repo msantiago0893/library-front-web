@@ -1,1 +1,62 @@
-<p>students works!</p>
+<p>REgistro de Alumnos</p>
+
+<form class="form" [formGroup]="studentsForm" novalidate (ngSubmit)="submit()">
+
+    <div class="form__row">
+      <mat-form-field fxFlex>
+        <input matInput  type="text"  placeholder="Nombre" formControlName="name">
+        <mat-error *ngIf="studentsForm.controls.name.touched && studentsForm.controls.name.invalid">
+          <span *ngIf="studentsForm.controls.name.errors.required">Campo obligatorio.</span>
+          <span *ngIf="studentsForm.get('name').errors.minlength || studentsForm.get('name').errors.pattern">Campo tipo texto min 3 caracteres.</span>
+        </mat-error>
+      </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Apellido Paterno" formControlName="apellido">
+          <mat-error *ngIf="studentsForm.controls.apellido.touched && studentsForm.controls.apellido.invalid">
+            <span *ngIf="studentsForm.get('apellido').errors.required">Campo obligatorio.</span>
+            <span *ngIf="studentsForm.get('apellido').errors.minlength || studentsForm.get('apellido').errors.pattern">Campo tipo texto min 4 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Apellido Materno" formControlName="apellido2">
+          <mat-error *ngIf="studentsForm.controls.apellido2.touched && studentsForm.controls.apellido2.invalid">
+            <span *ngIf="studentsForm.controls.apellido2.errors.required">Campo obligatorio.</span>
+            <span *ngIf="studentsForm.get('apellido2').errors.minlength || studentsForm.get('apellido2').errors.pattern">Campo tipo texto min 4 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form__row">
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Edad" formControlName="age">
+          <mat-error *ngIf="studentsForm.controls.age.touched && studentsForm.controls.age.invalid">
+            <span *ngIf="studentsForm.controls.age.errors.required">Campo obligatorio.</span>
+            <span *ngIf="studentsForm.get('age').errors.minlength || studentsForm.get('age').errors.pattern">Campo tipo numerico min 4 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Telefono" formControlName="phone">
+          <mat-error *ngIf="studentsForm.controls.phone.touched && studentsForm.controls.phone.invalid">
+            <span *ngIf="studentsForm.controls.phone.errors.required">Campo obligatorio.</span>
+            <span *ngIf="studentsForm.get('phone').errors.minlength || studentsForm.get('phone').errors.maxlength || studentsForm.get('phone').errors.pattern">Campo tipo numerico max 10 digitos.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Correo electronico" formControlName="email">
+          <mat-error *ngIf="studentsForm.controls.email.touched && studentsForm.controls.email.invalid">
+            <span *ngIf="studentsForm.controls.email.errors.required">Campo obligatorio.</span>
+            <span *ngIf="studentsForm.controls.email.errors.pattern">E-mail inccorecto.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form__row">
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Codigo Postal" formControlName="postalCode">
+          <mat-error *ngIf="studentsForm.controls.postalCode.touched && studentsForm.controls.postalCode.invalid">
+            <span *ngIf="studentsForm.controls.postalCode.errors.required">Campo obligatorio.</span>
+            <span *ngIf="studentsForm.get('postalCode').errors.minlength || studentsForm.get('postalCode').errors.pattern">Campo tipo numerico min 4 digitos.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" type="submit">Registrar</button>
+</form>
+     
