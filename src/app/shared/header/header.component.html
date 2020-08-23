@@ -5,15 +5,16 @@
   </div>
 
   <div class="wrap-icons">
-    <img class="wrap-icons__group-menu" src="assets/downarrow_120663.svg" (click)="navBar.toggle()"
-    mat-icon-button alt="main">  
+    <!-- <img class="wrap-icons__group-menu" src="assets/downarrow_120663.svg"
+    (click)="activar()" mat-icon-button alt="main"> -->
 
-    <div class="wrap-icons__group-icons mm" *ngIf="iconMenus">
+    <div class="wrap-icons__group-icons" [class.mark]="isActive">
+      <img class="wrap-icons__group-menu" src="assets/downarrow_120663.svg"
+           (click)="activar()" mat-icon-button alt="main">
       <img src="assets/notifications.svg"  mat-icon-button alt="notification">
       <img src="assets/perfil.svg" mat-icon-button [matMenuTriggerFor]="menu" alt="flag">
       <img src="assets/flag-mex.svg" mat-icon-button [matMenuTriggerFor]="menuFlag" alt="mx">
-      <img class="icon-menu" src="assets/menu.svg" (click)="navBar.toggle()"
-        mat-icon-button alt="notification">
+      <img class="icon-menu" src="assets/menu.svg" (click)="navBar.toggle()" mat-icon-button alt="notification">
     </div>
 
   </div>
