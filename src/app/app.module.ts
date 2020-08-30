@@ -22,6 +22,8 @@ import { AllBooksComponent } from './pages/all-books/all-books.component';
 
 import { HttpClientModule } from '@angular/common/http'
 import { StudentsConsultComponent } from './pages/students-consult/students-consult.component';
+import { EducationalStaffComponent } from './pages/educational-staff/educational-staff.component';
+import { EducationalStaffConsultComponent } from './pages/educational-staff-consult/educational-staff-consult.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { StudentsConsultComponent } from './pages/students-consult/students-cons
     BooksComponent,
     StudentsComponent,
     AllBooksComponent,
-    StudentsConsultComponent
+    StudentsConsultComponent,
+    EducationalStaffComponent,
+    EducationalStaffConsultComponent
   ],
   imports: [
     BrowserModule,

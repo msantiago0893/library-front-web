@@ -15,7 +15,9 @@ export class BooksService {
     private httpClient: HttpClient
     ) { }
 
-  private uri: string = 'http://localhost:8080/api/';
+  private uri: string = 'http://192.168.0.17:8080/api/';
+
+
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
 
@@ -37,7 +39,7 @@ export class BooksService {
   }
   updateBook(book: Book): Observable<Book> {
     console.log('Guardar', book);
-    return this.httpClient.post<Book>(`${this.uri}books/${book.id}`, book, {headers: this.httpHeaders});
+    return this.httpClient.put<Book>(`${this.uri}books/${book.id}`, book, {headers: this.httpHeaders});
   }
   delete(id:number): Observable<Book> {
     return this.httpClient.delete<Book>(`${this.uri}books/${id}`,{headers: this.httpHeaders});
