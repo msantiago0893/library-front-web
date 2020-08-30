@@ -1,26 +1,37 @@
 import { Injectable } from '@angular/core';
-import { AlumnoResponse } from '../Interfaces/alumno';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { StudentsResponse } from '../Interfaces/students';
+import { Student } from '../Interfaces/student';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentsServiceService {
 
-  data = [
-        {nombre:"Alexa", apellidoPaterno:"Gonzales", apellidoMaterno:"Rosario", edad:24, estatura:156.23},
-        {nombre:"alejandro", apellidoPaterno:"Rojas", apellidoMaterno:"Perez", edad:26, estatura:175.12},
-        {nombre:"Oscar", apellidoPaterno:"Cruz", apellidoMaterno:"Vega", edad:19, estatura:162.12},
-        {nombre:"Ximena", apellidoPaterno:"Torres", apellidoMaterno:"Salazar", edad:22, estatura:165.62},
-        {nombre:"Luis", apellidoPaterno:"Rodriguez", apellidoMaterno:"Sanchez", edad:29, estatura:172.12},
-        {nombre:"Ricardo", apellidoPaterno:"Ramos", apellidoMaterno:"Gomez", edad:20, estatura:164.52},
-      ];
-  constructor() { }
 
-  getStudents() {
-    return this.data; 
+  constructor(
+    private http: HttpClient
+  ) { }
+
+    private uri:string ='http://192.168.0.17:8080/api/personas';
+
+    private httpHeaders = new HttpHeaders({'Content-Type':'aplication/json'});
+
+  consultStudents():Observable<StudentsResponse[]> {
+    return this.http.get<StudentsResponse[]>(this.uri);
   }
+
+  createStudents(student: Student): Observable<Student> {
+    return this.http.post<Student>(this.uri,student, {headers: this.httpHeaders});
+  }
+
+  updateStudents(student: Student): Observable<Student> { 
+    return this.http.put<Student>(`${this.uri}/${student.id}`,student, {headers: this.httpHeaders});
+  }
+
+  delete(id:number): Observable<Student> {
+    return this.http.delete<Student>(`${this.uri}/${id}`,{headers: this.httpHeaders});
+  }
+
 }
-
-
-
-
