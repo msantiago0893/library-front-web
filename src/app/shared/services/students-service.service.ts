@@ -16,7 +16,7 @@ export class StudentsServiceService {
 
     private uri:string ='http://192.168.0.17:8080/api/personas';
 
-    private httpHeaders = new HttpHeaders({'Content-Type':'aplication/json'});
+    private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
   consultStudents():Observable<StudentsResponse[]> {
     return this.http.get<StudentsResponse[]>(this.uri);

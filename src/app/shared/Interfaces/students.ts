@@ -1,10 +1,15 @@
 export interface StudentsResponse {
     id:number,
-    nombre: string,
-    apPaterno: string,
-    apMaterno: string,
-    edad: string,
-    phone: any,
-    email:string,
-    codPostal:string
+    name: string,
+    surname: string,
+    mothersurname: string,
+    clave: any,
+    cel: any,
+    email:any,
+    postalCode:any,
+    sex: string,
+    delegation: string,
+    colony: string,
+    street: string
+
   }
