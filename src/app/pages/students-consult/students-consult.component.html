@@ -1,43 +1,41 @@
 <table mat-table [dataSource]="dataSource">
-
-    <!-- Position Column -->
+  <!-- Clave Column -->
+    <ng-container matColumnDef="clave1">
+      <th mat-header-cell *matHeaderCellDef> Matricula </th>
+      <td mat-cell *matCellDef="let element"> {{element.clave}} </td>
+    </ng-container>
+      
+    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.name}} {{element.surname}} {{element.mothersurname}} </td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="surname">
-      <th mat-header-cell *matHeaderCellDef> Apellido Paterno </th>
-      <td mat-cell *matCellDef="let element"> {{element.apPaterno}} </td>
+    <!-- Sex Column -->
+    <ng-container matColumnDef="sex1">
+      <th mat-header-cell *matHeaderCellDef> Sexo </th>
+      <td mat-cell *matCellDef="let element"> {{element.sex}} </td>
     </ng-container>
 
-    <!-- Apellido materno Column -->
-    <ng-container matColumnDef="momSurname">
-      <th mat-header-cell *matHeaderCellDef> Apellido Materno </th>
-      <td mat-cell *matCellDef="let element"> {{element.apellidoMaterno}} </td>
+    <!-- CEL Column -->
+    <ng-container matColumnDef="cel1">
+      <th mat-header-cell *matHeaderCellDef> Celular </th>
+      <td mat-cell *matCellDef="let element"> {{element.cel}} </td>
     </ng-container>
-
-    <!-- Edad Column -->
-    <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef> Edad </th>
-      <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
-    </ng-container>
-     <!-- Estatura Column -->
-    <ng-container matColumnDef="height">
-        <th mat-header-cell *matHeaderCellDef> Estatura </th>
-        <td mat-cell *matCellDef="let element"> {{element.estatura}} </td>
-    </ng-container>
+      
+      
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef>  </th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon color="primary" (click)="update(element)">edit</mat-icon>
+        <mat-icon color="primary" class="pointer" (click)="update(element)">edit</mat-icon>
       </td>
     </ng-container>
+
+
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef> </th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon color="warn" (click)="delete(element)">delete</mat-icon>
+        <mat-icon color="warn" class="pointer" (click)="delete(element)">delete</mat-icon>
       </td>
     </ng-container>
 
