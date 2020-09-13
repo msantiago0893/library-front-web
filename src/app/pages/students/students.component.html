@@ -1,6 +1,6 @@
 <p>REGISTRO DE ALUMNOS</p>
 
-<form class="form" [formGroup]="studentsForm" novalidate (ngSubmit)="submit()">
+<form class="form form-group" [formGroup]="studentsForm" novalidate (ngSubmit)="save()">
 
     <div class="form__row">
       <mat-form-field fxFlex>
@@ -26,25 +26,31 @@
         </mat-form-field>
       </div>
       <div class="form__row">
-        <mat-form-field fxFlex>
-          <input matInput  type="text"  placeholder="Sexo" formControlName="sex">
-          <mat-error *ngIf="studentsForm.controls.sex.touched && studentsForm.controls.sex.invalid">
-            <span *ngIf="studentsForm.controls.sex.errors.required">Campo obligatorio2.</span>
-            <span *ngIf="studentsForm.get('sex').errors.minlength || studentsForm.get('sex').errors.pattern">Campo tipo numerico min 4 caracteres.</span>
-          </mat-error>
+        <mat-form-field appearance="sex">
+          <mat-label>Sexo</mat-label>
+          <select matNativeControl id="sex">
+            <mat-error *ngIf="studentsForm.controls.sex.touched && studentsForm.controls.sex.invalid">
+              <span *ngIf="studentsForm.controls.sex.errors.required">Campo obligatorio.</span>
+                <span *ngIf="studentsForm.get('sex').errors.minlength || studentsForm.get('sex').errors.pattern">Selecione el sexo.</span>
+              </mat-error>
+            <option value="" disabled selected></option>
+            <option value="m">Masculino</option>
+            <option value="f">Femenino</option>
+          </select>
         </mat-form-field>
+
         <mat-form-field fxFlex>
           <input matInput  type="text"  placeholder="Telefono" formControlName="cel">
           <mat-error *ngIf="studentsForm.controls.cel.touched && studentsForm.controls.cel.invalid">
-            <span *ngIf="studentsForm.controls.cel.errors.required">Campo obligatorio.</span>
-            <span *ngIf="studentsForm.get('cel').errors.minlength || studentsForm.get('cel').errors.maxlength || studentsForm.get('phone').errors.pattern">Campo tipo numerico max 10 digitos.</span>
+            <span *ngIf="studentsForm.get('cel').errors.required">Campo obligatorio.</span>
+            <span *ngIf="studentsForm.get('cel').errors.minlength || studentsForm.get('cel').errors.maxlength || studentsForm.get('cel').errors.pattern">Campo tipo numerico max 10 digitos.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex>
           <input matInput  type="text"  placeholder="Correo electronico" formControlName="email">
           <mat-error *ngIf="studentsForm.controls.email.touched && studentsForm.controls.email.invalid">
             <span *ngIf="studentsForm.controls.email.errors.required">Campo obligatorio.</span>
-            <span *ngIf="studentsForm.controls.email.errors.pattern">E-mail inccorecto.</span>
+            <span *ngIf="studentsForm.controls.email.errors.pattern">E-mail incorecto.</span>
           </mat-error>
         </mat-form-field>
       </div>
@@ -79,14 +85,7 @@
             <span *ngIf="studentsForm.get('street').errors.minlength || studentsForm.get('street').errors.pattern">Campo tipo numerico min 4 digitos.</span>
           </mat-error>
         </mat-form-field>
-        <mat-form-field fxFlex>
-          <input matInput  type="text"  placeholder="Tipo de Persona" formControlName="tipePersons">
-          <mat-error *ngIf="studentsForm.controls.tipePersons.touched && studentsForm.controls.street.invalid">
-            <span *ngIf="studentsForm.controls.tipePersons.errors.required">Campo obligatorio.</span>
-            <span *ngIf="studentsForm.get('tipePersons').errors.minlength || studentsForm.get('tipePersons').errors.pattern">Campo tipo numerico min 4 digitos.</span>
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="degree">
+            <mat-form-field appearance="degree">
             <mat-label>Carrera</mat-label>
             <select matNativeControl id="degree">
               <mat-error *ngIf="studentsForm.controls.degree.touched && studentsForm.controls.degree.invalid">
@@ -99,19 +98,18 @@
               <option value="Lic. Adminitracio">Lic. Adminitracio</option>
               <option value="Lic. Gastronomia">Lic. Gastronomia</option>
             </select>
-            
+          </mat-form-field>
+          <mat-form-field fxFlex>
+            <input matInput  type="text"  placeholder="Matricula" formControlName="clave">
+            <mat-error *ngIf="studentsForm.controls.clave.touched && studentsForm.controls.clave.invalid">
+              <span *ngIf="studentsForm.controls.clave.errors.required">Campo obligatorio.</span>
+              <span *ngIf="studentsForm.get('clave').errors.minlength || studentsForm.get('clave').errors.pattern">Campo tipo numerico min 4 digitos.</span>
+            </mat-error>
           </mat-form-field>
       </div>
-      <div class="form__row">
-        <mat-form-field fxFlex>
-          <input matInput  type="text"  placeholder="Matricula" formControlName="tuition">
-          <mat-error *ngIf="studentsForm.controls.tuition.touched && studentsForm.controls.tuition.invalid">
-            <span *ngIf="studentsForm.controls.tuition.errors.required">Campo obligatorio.</span>
-            <span *ngIf="studentsForm.get('tuition').errors.minlength || studentsForm.get('tuition').errors.pattern">Campo tipo numerico min 4 digitos.</span>
-          </mat-error>
-        </mat-form-field>
-        
-      </div>
-      <button mat-raised-button color="primary" type="submit">Registrar</button>
+      <div class=button>
+      <button mat-raised-button color ="primary" type="submit">Registrar</button>
+    </div>
 </form>
-     
+
+<button mat-raised-button color ="primary" type="button" (click)='alerta()'>alerta</button>
