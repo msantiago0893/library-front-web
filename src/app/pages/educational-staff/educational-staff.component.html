@@ -1,4 +1,46 @@
 <p>REGISTRO DEL PERSONAL EDUCATIVO</p>
 
+<form class="form form-group" [formGroup]="educationalForm" novalidate (ngSubmit)="save()">
 
-    
+    <div class="form__row">
+      <mat-form-field fxFlex>
+        <input matInput  type="text"  placeholder="Nombre" formControlName="name">
+        <mat-error *ngIf="educationalForm.controls.name.touched && educationalForm.controls.name.invalid">
+          <span *ngIf="educationalForm.controls.name.errors.required">Campo obligatorio.</span>
+          <span *ngIf="educationalForm.get('name').errors.minlength || educationalForm.get('name').errors.pattern">Campo tipo texto min 3 caracteres.</span>
+        </mat-error>
+      </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Apellido Paterno" formControlName="surname">
+          <mat-error *ngIf="educationalForm.controls.surname.touched && educationalForm.controls.surname.invalid">
+            <span *ngIf="educationalForm.get('surname').errors.required">Campo obligatorio.</span>
+            <span *ngIf="educationalForm.get('surname').errors.minlength || educationalForm.get('surname').errors.pattern">Campo tipo texto min 4 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Apellido Materno" formControlName="mothersuname">
+          <mat-error *ngIf="educationalForm.controls.mothersuname.touched && educationalForm.controls.mothersuname.invalid">
+            <span *ngIf="educationalForm.controls.mothersuname.errors.required">Campo obligatorio.</span>
+            <span *ngIf="educationalForm.get('mothersuname').errors.minlength || educationalForm.get('mothersuname').errors.pattern">Campo tipo texto min 4 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+      </div> 
+      <div class="form__row">
+        <mat-form-field fxFlex>
+          <input matInput type="text" placeholder="Telefono" formControlName="cel">
+          <mat-error *ngIf="educationalForm.controls.cel.touched && educationalForm.controls.cel.invalid">
+            <span *ngIf="educationalForm.get('cel').errors.required">Campo obligatorio</span>
+            <span *ngIf="educationalForm.get('cel').errors.minlength || educationalForm.get('cel').errors.maxlength || educationalForm.get('cel').errors.pattern">Tipo Numerico min,max 10 numeros</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlex>
+          <input matInput  type="text"  placeholder="Telefono" formControlName="cel">
+          <mat-error *ngIf="educationalForm.controls.cel.touched && educationalForm.controls.cel.invalid">
+            <span *ngIf="educationalForm.get('cel').errors.required">Campo obligatorio.</span>
+            <span *ngIf="educationalForm.get('cel').errors.minlength || educationalForm.get('cel').errors.maxlength || educationalForm.get('cel').errors.pattern">Campo tipo numerico max 10 digitos.</span>
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+    </form>
