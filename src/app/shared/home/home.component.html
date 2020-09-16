@@ -1,28 +1,27 @@
-
-  <!-- Cabecera-->
   <app-header [navBar]="sidenav" (cambio)="funCambiar($event)" ></app-header>
 
-
   <mat-sidenav-container>
-
     <!-- MENU -->
     <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
       [fixedTopGap]>
         <app-menu></app-menu>
     </mat-sidenav>
-
     <!-- Contenedor -->
-    <mat-sidenav-content>
 
-      <!-- Applying the mat-tyography class adds styles for native elements. -->
-      <section class="mat-typography title-group">
+      <mat-sidenav-content>
 
-        <h1> {{ datoHijo }}  </h1>
+        <section class="mat-typography title-group">
 
-        <mat-divider></mat-divider>
-      </section>
+          <h1> {{ datoHijo }}  </h1>
+          <mat-divider></mat-divider>
 
-      <router-outlet></router-outlet>
+        </section>
 
-    </mat-sidenav-content>
+          <router-outlet></router-outlet>
+
+      </mat-sidenav-content>
+
+
+
+
   </mat-sidenav-container>
