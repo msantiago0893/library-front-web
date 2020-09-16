@@ -8,6 +8,7 @@ import { StudentsComponent} from './pages/students/students.component';
 import { StudentsConsultComponent } from './pages/students-consult/students-consult.component';
 import { EducationalStaffComponent } from './pages/educational-staff/educational-staff.component';
 import { EducationalStaffConsultComponent } from './pages/educational-staff-consult/educational-staff-consult.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: 'home', component: HomeComponent,
     children: [
+      { path: 'dashboard', component: DashboardComponent},
       { path: 'add-book', component: BooksComponent},
       { path: 'all-book', component: AllBooksComponent},
       { path: 'students', component: StudentsComponent},

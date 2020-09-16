@@ -1,0 +1,85 @@
+
+.wrapper
+
+  &::-webkit-scrollbar
+    width: 0.3125rem
+    background: white
+    border-radius: 0.625rem
+
+    &-thumb
+      background-color: blue
+      border-radius: 0.625rem
+
+.container
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr
+  grid-gap: 5rem
+  grid-template-areas:"card-1 card-2 card-3"
+
+.card
+  border: 1px solid #2986da8c
+  display: flex
+  text-align: center
+  border-radius: .5rem
+
+  &__fondo
+    background: #2986da8c
+    display: flex
+    align-items: center
+    padding: 0 1rem
+    > img
+      width: 2rem
+
+  &__info
+    width: 100%
+    background: peachpuff
+
+  &__title
+    color: #544e4e
+
+.card1
+  grid-area: card-1
+.card2
+  grid-area: card-2
+.card3
+  grid-area: card-3
+
+
+.graficas
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-gap: 12px
+  grid-template-areas:"line doughnut" "bar bar"
+  border: 1px solid blue
+  grid-auto-columns
+  grid-auto-rows
+
+.graph
+  border: 1px solid
+.line
+  grid-area: line
+.doughnut
+  grid-area: doughnut
+.bar
+  grid-area: bar
+  height: 25rem
+
+.chart
+  width: 100% !important
+  height: 100% !important
+
+@media screen and ( max-width: 1000px)
+
+  .graficas
+    display: grid
+    grid-template-columns: none
+    grid-template-rows: 1fr 1fr
+    grid-gap: 12px
+    grid-template-areas:"line" "doughnut" "bar"
+
+  .container
+    display: grid
+    grid-template-columns: none
+    grid-template-rows: auto 1fr auto
+    grid-gap: 12px
+    grid-template-areas:"card-1" "card-2" "card-3"
