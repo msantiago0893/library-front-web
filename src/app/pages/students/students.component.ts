@@ -48,7 +48,7 @@ export class StudentsComponent implements OnInit {
       name:['', [Validators.required, Validators.minLength(3), Validators.maxLength(40), Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/) ] ],
       surname:['', [Validators.required, Validators.minLength(4), Validators.maxLength(40), Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)] ],
       mothersuname:[null, [Validators.required, Validators.minLength(4), Validators.maxLength(40),  Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)] ],
-      sex:['M', [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)] ],
+      sex:['', [Validators.required] ],
       cel:[null, [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]*$/)] ],
       email:[null, [Validators.required, Validators.pattern(/(^[\w\d-!#$%&'*+/=?^`{|}]+(\.[\w\d-!#$%&'*+/=?^`{|}]+)*@[\w\d {\/\-\}]+(\.[\w\d-]+)*(\.[a-z]{2,3})$)/)	]],
       postalCode:[null, [Validators.required, Validators.minLength(4), Validators.maxLength(5), Validators.pattern(/^[0-9]*$/)] ], 
@@ -56,7 +56,7 @@ export class StudentsComponent implements OnInit {
       colony:[null, [Validators.required, Validators.minLength(4), Validators.maxLength(50), Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)]],
       street:[null, [Validators.required, Validators.minLength(4), Validators.maxLength(40), Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)]],
       typePerson:['', [Validators.required, Validators.minLength(4), Validators.maxLength(40), Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)]],
-      degree:['ISC', [Validators.required]],
+      degree:['', [Validators.required]],
       clave:[null, [Validators.required, Validators.minLength(4), Validators.pattern(/^[0-9]*$/) ]]
 
     });

@@ -3,13 +3,6 @@
 <form class="form form-group" [formGroup]="educationalForm" novalidate (ngSubmit)="save()">
      <div class="form__row">
       <mat-form-field fxFlex>
-        <input matInput type="text" placeholder="Matricula" formControlName="clave">
-        <mat-error *ngIf="educationalForm.controls.clave.touched && educationalForm.controls.clave.invalid">
-          <span *ngIf="educationalForm.controls.clave.errors.required">Campo Obligatorio</span>
-          <span *ngIf="educationalForm.get('clave').errors.minlength || educationalForm.get('clave').errors.pattern">Campo Obligatorio</span>  
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="typePerson">
         <mat-label>Tipo de Persona</mat-label>
         <select matNativeControl id="typePerson" formControlName="typePerson">
           <mat-error *ngIf="educationalForm.controls.typePerson.touched && educationalForm.controls.typePerson.invalid">
@@ -21,7 +14,14 @@
           <option value="3">Director</option>
         </select>
       </mat-form-field>
-      <mat-form-field appearance="sex">
+      <mat-form-field fxFlex>
+        <input matInput type="text" placeholder="Matricula" formControlName="clave">
+        <mat-error *ngIf="educationalForm.controls.clave.touched && educationalForm.controls.clave.invalid">
+          <span *ngIf="educationalForm.controls.clave.errors.required">Campo Obligatorio</span>
+          <span *ngIf="educationalForm.get('clave').errors.minlength || educationalForm.get('clave').errors.pattern">Campo Obligatorio</span>  
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex>
         <mat-label>Sexo</mat-label>
         <select matNativeControl id="sex" formControlName="sex">
           <mat-error *ngIf="educationalForm.controls.sex.touched && educationalForm.controls.sex.invalid">
