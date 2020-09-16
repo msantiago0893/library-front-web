@@ -28,10 +28,10 @@ export class BooksComponent implements OnInit {
   ngOnInit() {
 
     this.bookForm = this.fb.group({
-      name : [null, [Validators.required, Validators.pattern(/^[A-Za-z]*$/), Validators.minLength(5)] ],
-      editorial : [null, [Validators.required, Validators.pattern(/^[A-Za-z]*$/), Validators.minLength(5)] ],
-      autor : [null, [Validators.required, Validators.pattern(/^[A-Za-z]*$/), Validators.minLength(5)] ],
-      genero: [null, [Validators.required, Validators.pattern(/^[A-Za-z]*$/), Validators.minLength(5)] ],
+      name : [null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/) , Validators.minLength(5)] ],
+      editorial : [null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/), Validators.minLength(5)] ],
+      autor : [null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/), Validators.minLength(5)] ],
+      genero: [null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/), Validators.minLength(5)] ],
       n_pag: [null, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.minLength(2)] ],
       año: [null, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.minLength(4), Validators.maxLength(4)] ]
     });

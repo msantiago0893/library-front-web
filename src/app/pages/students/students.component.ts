@@ -4,6 +4,9 @@ import { StudentsServiceService } from 'src/app/shared/services/students-service
 import { Router } from '@angular/router';
 import { Alert } from 'src/app/utils/alerts';
 
+const  QUESTIONS = 'Esta seguro eliminar este elemento?';
+
+
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
@@ -14,7 +17,6 @@ export class StudentsComponent implements OnInit {
   private studentsForm : FormGroup;
   private alert: Alert = new Alert();
   
-
   constructor(
     private students: FormBuilder,
     private service: StudentsServiceService,
@@ -23,6 +25,22 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit() {
     this.validateForm();
+
+    this.studentsForm.setValue({
+      name: 'ADMIN',
+      surname: 'ADMIN',
+      mothersuname: null,
+      sex: 'F',
+      cel: 'ADMIN',
+      email: null,
+      postalCode: null,
+      delegation: 'ADMIN',
+      colony: 'ADMIN',
+      street: 'ADMIN',
+      typePerson: 'ADMIN',
+      degree: 'ADMIN',
+      clave: 'ADMIN'
+    });
   }
 
   validateForm() {
@@ -46,51 +64,34 @@ export class StudentsComponent implements OnInit {
  save() {
 
   this.alerta();
-   
+
+  this.studentsForm.patchValue({
+    typePerson: 'ADMIN'
+  });
     console.log('form ',this.studentsForm.value );
 
-    //if (!this.studentsForm.valid) {
-   //    return;
-    //}
+    if (!this.studentsForm.valid) {
+       return;
+    }
 
 
-    this.service.createStudents(this.studentsForm.value).subscribe();
+    this.service.createStudents(this.studentsForm.value)
+                .subscribe(
+                  (Response) => {
+                    console.log('Se ha creado el elemento correctamente');
+                  }
+                );
     //this.studentsForm.reset();
-
-
   }
 
   alerta() {
     //this.alert.msgTimer('success','title','hola mundo');
     //this.alert.msg('error','prueba');
-    this.alert.questions('Esta seguro eliminar este elemento?').then((result) => {
+    this.alert.questions(QUESTIONS).then((result) => {
       if (result.value) {
         
         this.alert.msgTimer('success','El elemento ha sico eliminado');
       }
-    });
-  }
-
-  clear() {
-    this.studentsForm.reset();
-    this.inicializarFormGroup();
-  }
-
-  inicializarFormGroup() {
-    this.studentsForm.setValue({
-      name : '',
-      surname : '',
-      mothersuname : '',
-      sex: '',
-      cel: '',
-      email: '',
-      postalCode: '',
-      delegation:'',
-      colony:'',
-      street:'',
-      tipePersons:'',
-      degree:'',
-      tuition:''
     });
   }
 
