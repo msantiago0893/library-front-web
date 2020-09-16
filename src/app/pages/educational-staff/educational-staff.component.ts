@@ -30,12 +30,12 @@ validateForm(){
     mothersuname: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(40), Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/) ]],
     cel:['', [Validators.required, Validators.minLength(10), Validators.maxLength(10),Validators.pattern(/^[0-9]*$/) ]],
     email:[null,[Validators.required, Validators.pattern(/(^[\w\d-!#$%&'*+/=?^`{|}]+(\.[\w\d-!#$%&'*+/=?^`{|}]+)*@[\w\d {\/\-\}]+(\.[\w\d-]+)*(\.[a-z]{2,3})$)/)]],
-    sex:[null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)]],
+    sex:[null, Validators.required],
     postalCode:['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern(/^[0-9]*$/) ]],
     delegation:['', [Validators.required, Validators.minLength(5), Validators.maxLength(40), Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)]],
     colony:['', [Validators.required, Validators.minLength(5), Validators.maxLength(40), Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/) ]],
     street:['', [Validators.required, Validators.minLength(5), Validators.maxLength(40), Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)]],
-    typePerson:['', [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)]],
+    typePerson:['', Validators.required],
     degree:['', [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)]],
     clave:['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern(/^[0-9]*$/)]],
 
@@ -43,20 +43,15 @@ validateForm(){
  }
 save() {
 
-  //if (0) {
-  //  return ;
-  //}
-
-  
   this.service.create(this.educationalForm.value)
               .subscribe(
                 (Response)=> {
-              console.log('El elemento fue creado correctamente');
-                }
-                );
+                  console.log('El elemento fue creado correctamente');
+              });
 };
 
 testRouter() {
+
   this.router.navigate(['/educational-staff/educational-staff-consult']);
 }
 

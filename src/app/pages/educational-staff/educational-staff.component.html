@@ -14,7 +14,6 @@
         <select matNativeControl id="typePerson" formControlName="typePerson">
           <mat-error *ngIf="educationalForm.controls.typePerson.touched && educationalForm.controls.typePerson.invalid">
             <span *ngIf="educationalForm.controls.typePerson.errors.required">Campo obligatorio</span>
-              <span *ngIf="educationalForm.get('typePerson').errors.minlength || educationalForm.get('typePerson').errors.pattern">Sel. a tipo persona</span>
             </mat-error>
           <option value="" disabled selected></option>
           <option value="1">Profesor</option>
@@ -22,23 +21,19 @@
           <option value="3">Director</option>
         </select>
       </mat-form-field>
-
-
-
-
-     
       <mat-form-field appearance="sex">
         <mat-label>Sexo</mat-label>
         <select matNativeControl id="sex" formControlName="sex">
           <mat-error *ngIf="educationalForm.controls.sex.touched && educationalForm.controls.sex.invalid">
             <span *ngIf="educationalForm.controls.sex.errors.required">Campo Obligatorio</span>
-            <span *ngIf="educationalForm.get('sex').errors.minlength || educationalForm.get('sex').errors.pattern">Seleccione el Sexo</span>
           </mat-error>
           <option value="" disabled selected></option>
         <option value="f">Femenino</option>
         <option value="m">Masculino</option>
         </select>
-      </mat-form-field>
+      </mat-form-field> 
+    </div> 
+    <div class="form__row">
       <mat-form-field fxFlex>
         <input matInput  type="text"  placeholder="Nombre" formControlName="name">
         <mat-error *ngIf="educationalForm.controls.name.touched && educationalForm.controls.name.invalid">
@@ -116,4 +111,3 @@
       </div>
     </form>
 
-    <pre> {{ educationalForm.value | json }}</pre>
