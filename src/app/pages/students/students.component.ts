@@ -95,29 +95,6 @@ export class StudentsComponent implements OnInit {
     });
   }
 
-  clear() {
-    this.studentsForm.reset();
-    this.inicializarFormGroup();
-  }
-
-  inicializarFormGroup() {
-    this.studentsForm.setValue({
-      name : '',
-      surname : '',
-      mothersuname : '',
-      sex: '',
-      cel: '',
-      email: '',
-      postalCode: '',
-      delegation:'',
-      colony:'',
-      street:'',
-      tipePersons:'',
-      degree:'',
-      tuition:''
-    });
-  }
-
   testRouter() {
     this.router.navigate(['/students/students-consult'])
   }

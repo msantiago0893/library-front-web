@@ -28,7 +28,7 @@
       <div class="form__row">
         <mat-form-field appearance="sex">
           <mat-label>Sexo</mat-label>
-          <select matNativeControl id="sex">
+          <select matNativeControl id="sex" formControlName="sex">
             <mat-error *ngIf="studentsForm.controls.sex.touched && studentsForm.controls.sex.invalid">
               <span *ngIf="studentsForm.controls.sex.errors.required">Campo obligatorio.</span>
                 <span *ngIf="studentsForm.get('sex').errors.minlength || studentsForm.get('sex').errors.pattern">Selecione el sexo.</span>
@@ -87,16 +87,16 @@
         </mat-form-field>
             <mat-form-field appearance="degree">
             <mat-label>Carrera</mat-label>
-            <select matNativeControl id="degree">
+            <select matNativeControl id="degree" formControlName="degree">
               <mat-error *ngIf="studentsForm.controls.degree.touched && studentsForm.controls.degree.invalid">
                 <span *ngIf="studentsForm.controls.degree.errors.required">Campo obligatorio.</span>
                   <span *ngIf="studentsForm.get('degree').errors.minlength || studentsForm.get('degree').errors.pattern">Campo tipo numerico min 4 digitos.</span>
                 </mat-error>
               <option value="" disabled selected></option>
-              <option value="Lic. Contaduria">Lic. Contaduria</option>
-              <option value="Lic. Administracion Tecnologias Informacio">Lic. Administracion Tecnologias Informacio</option>
-              <option value="Lic. Adminitracio">Lic. Adminitracio</option>
-              <option value="Lic. Gastronomia">Lic. Gastronomia</option>
+              <option value="1">Lic. Contaduria</option>
+              <option value="2">Lic. Administracion Tecnologias Informacio</option>
+              <option value="3">Lic. Adminitracio</option>
+              <option value="4">Lic. Gastronomia</option>
             </select>
           </mat-form-field>
           <mat-form-field fxFlex>
@@ -108,8 +108,8 @@
           </mat-form-field>
       </div>
       <div class=button>
-      <button mat-raised-button color ="primary" type="submit">Registrar</button>
+          <button mat-raised-button color ="primary" type="submit">Registrar</button>
     </div>
 </form>
 
-<button mat-raised-button color ="primary" type="button" (click)='alerta()'>alerta</button>
+<pre> {{ studentsForm.value | json }}</pre>
