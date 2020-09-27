@@ -33,7 +33,7 @@ export class BooksComponent implements OnInit {
       autor : [null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/), Validators.minLength(5)] ],
       genero: [null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/), Validators.minLength(5)] ],
       n_pag: [null, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.minLength(2)] ],
-      año: [null, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.minLength(4), Validators.maxLength(4)] ]
+      year: [null, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.minLength(4), Validators.maxLength(4)] ]
     });
 
   }
@@ -56,18 +56,18 @@ export class BooksComponent implements OnInit {
   }
 
   clear() {
-    this.bookForm.reset();
+    //this.bookForm.reset();
     this.inicializarFormGroup();
   }
 
   inicializarFormGroup() {
     this.bookForm.setValue({
-      name : '',
-      editorial : '',
-      autor : '',
-      genero: '',
-      n_pag: '',
-      año: ''
+      name : null,
+      editorial : null,
+      autor : null,
+      genero: null,
+      n_pag: null,
+      year: null
     });
   }
 
