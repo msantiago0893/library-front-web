@@ -17,6 +17,8 @@ export class StudentsComponent implements OnInit {
   private studentsForm : FormGroup;
   private alert: Alert = new Alert();
   
+  private hola;
+  
   constructor(
     private students: FormBuilder,
     private service: StudentsServiceService,
