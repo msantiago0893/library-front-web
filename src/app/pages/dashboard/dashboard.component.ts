@@ -33,8 +33,8 @@ export class DashboardComponent implements OnInit {
         ]
       },
       options: {
+        maintainAspectRatio: false,
         responsive: true,
-        maintainAspectRatio: true,
         title: {
           display: true,
           text: 'Carreras qué solicitan libros!'
@@ -60,8 +60,8 @@ export class DashboardComponent implements OnInit {
         ]
       },
       options: {
+        maintainAspectRatio: false,
         responsive: true,
-        maintainAspectRatio: true,
         title: {
           display: true,
           text: 'Historial de préstamos semanal'
@@ -97,8 +97,8 @@ export class DashboardComponent implements OnInit {
       }]
       },
       options: {
+        maintainAspectRatio: false,
         responsive: true,
-        maintainAspectRatio: true,
         title: {
           display: true,
           text: 'Libros más solicitados!'
