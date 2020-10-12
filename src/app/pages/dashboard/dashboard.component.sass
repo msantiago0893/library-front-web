@@ -1,87 +1,61 @@
-
 @import '_globals'
 
-.wrapper
-
-  &::-webkit-scrollbar
-    width: 0.3125rem
-    background: white
-    border-radius: 0.625rem
-
-    &-thumb
-      background-color: blue
-      border-radius: 0.625rem
-
-.container
-  display: grid
-  grid-template-columns: 1fr 1fr 1fr
-  grid-gap: 5rem
-  grid-template-areas:"card-1 card-2 card-3"
+.cards
+  display: flex
+  flex-wrap: wrap
+  margin-bottom: 2rem
+  justify-content: space-between
 
 .card
-  border: 1px solid #2986da8c
-  display: flex
-  text-align: center
+  width: 30%
   border-radius: .5rem
-
-  &__fondo
-    background: #2986da8c
-    display: flex
-    align-items: center
-    padding: 0 1rem
-    > img
-      width: 2rem
-
-  &__info
+  text-align: center
+  @include tablet
+    margin-bottom: .5rem
     width: 100%
-    background: peachpuff
 
   &__title
-    color: #544e4e
+    font-size: 2rem
+    font-style: italic
+    font-variant: small-caps
+    font-family: monospace
+    letter-spacing: 4px
+    color: white
 
-.card1
-  grid-area: card-1
-.card2
-  grid-area: card-2
-.card3
-  grid-area: card-3
+  &__text
+    font-size: 1.5rem
+    color: white
 
+.card-1
+  background: -webkit-linear-gradient(to bottom,  $color-blue,$color-blue-1)
+  background: linear-gradient(to bottom, $color-blue,$color-blue-1)
+.card-2
+  background: -webkit-linear-gradient(to top,$color-orange, $color-brown)
+  background: linear-gradient(to bottom, $color-orange, $color-brown)
+.card-3
+  background: -webkit-linear-gradient(to top, $color-blue-2, rgba(33, 150, 243, 0.48))
+  background: linear-gradient(to bottom, $color-blue-2, rgba(33, 150, 243, 0.48))
 
-.graficas
-  display: grid
-  grid-template-columns: 1fr 1fr
-  grid-gap: 12px
-  grid-template-areas:"line doughnut" "bar bar"
-  border: 1px solid blue
-  // grid-auto-columns
-  // grid-auto-rows
+.graphics
+  display: flex
+  flex-direction: column
 
-.graph
-  border: 1px solid
-.line
-  grid-area: line
-.doughnut
-  grid-area: doughnut
-.bar
-  grid-area: bar
+.wrap
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+
+  > div
+    border: $border-gray
+    border-radius: 0.5rem
+    height: 18rem
+    width: 48%
+    @include tablet
+      width: 100%
+      min-width: 15rem
+
+.barra
+  border: $border-gray
   height: 25rem
-
-.chart
-  width: 100% !important
-  height: 100% !important
-
-@media screen and ( max-width: 1000px)
-
-  .graficas
-    display: grid
-    grid-template-columns: none
-    grid-template-rows: 1fr 1fr
-    grid-gap: 12px
-    grid-template-areas:"line" "doughnut" "bar"
-
-  .container
-    display: grid
-    grid-template-columns: none
-    grid-template-rows: auto 1fr auto
-    grid-gap: 12px
-    grid-template-areas:"card-1" "card-2" "card-3"
+  margin-top: 1rem
+  border-radius: 0.5rem
