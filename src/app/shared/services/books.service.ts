@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BookResponse } from 'src/app/shared/Interfaces/book';
-import { Book } from 'src/app/pages/books/domain/book';
+import { Book } from '@modules/books/domain/book';
 
 @Injectable({
   providedIn: 'root'

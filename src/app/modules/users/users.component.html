@@ -1,0 +1,131 @@
+<p>REGISTRO DE ALUMNOS</p>
+<form class="form" [formGroup]="studentsForm" novalidate (ngSubmit)="save()">
+  <div class="form__row">
+    <mat-form-field fxFlex>
+      <mat-label>{{'users.info.type-user' | translate}}</mat-label>
+      <mat-select matNativeControl formControlName="typeUser">
+        <mat-option value="0" disabled selected>{{'common.select' | translate}}</mat-option>
+        <mat-option value="1">Alumno</mat-option>
+        <mat-option value="2">Profesor</mat-option>
+        <mat-option value="3">Ejecutivos</mat-option>
+      </mat-select>
+      <mat-error *ngIf="studentsForm.controls.typeUser.touched && studentsForm.controls.typeUser.invalid">
+        <span *ngIf="studentsForm.controls.typeUser.errors.required">{{'common.required' | translate}}</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <input matInput  type="text" placeholder="{{'users.info.key' | translate}}" formControlName="clave">
+      <mat-error *ngIf="studentsForm.controls.clave.touched && studentsForm.controls.clave.invalid">
+        <span *ngIf="studentsForm.controls.clave.errors.required">{{'common.required' | translate}}</span>
+        <span *ngIf="studentsForm.get('clave').errors.minlength || studentsForm.get('clave').errors.pattern">{{'users.error.numeric-min-four-digits' | translate}}</span>
+      </mat-error>
+    </mat-form-field>
+    
+  </div>
+  <div class="form__row">
+    <mat-form-field fxFlex>
+      <input matInput  type="text" placeholder="{{'users.info.name' | translate}}" formControlName="name">
+      <mat-error *ngIf="studentsForm.controls.name.touched && studentsForm.controls.name.invalid">
+        <span *ngIf="studentsForm.controls.name.errors.required">{{'common.required' | translate}}</span>
+        <span *ngIf="studentsForm.get('name').errors.minlength || studentsForm.get('name').errors.pattern">{{'users.error.text-min-three-characters' | translate}}</span>
+      </mat-error>
+    </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput  type="text" placeholder="{{'users.info.surname' | translate}}" formControlName="surname">
+        <mat-error *ngIf="studentsForm.controls.surname.touched && studentsForm.controls.surname.invalid">
+          <span *ngIf="studentsForm.get('surname').errors.required">{{'common.required' | translate}}</span>
+          <span *ngIf="studentsForm.get('surname').errors.minlength || studentsForm.get('surname').errors.pattern">{{'users.error.text-min-four-characters' | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput  type="text" placeholder="{{'users.info.mother-surname' | translate}}" formControlName="mothersuname">
+        <mat-error *ngIf="studentsForm.controls.mothersuname.touched && studentsForm.controls.mothersuname.invalid">
+          <span *ngIf="studentsForm.controls.mothersuname.errors.required">{{'common.required' | translate}}</span>
+          <span *ngIf="studentsForm.get('mothersuname').errors.minlength || studentsForm.get('mothersuname').errors.pattern">{{'users.error.text-min-four-characters' | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form__row">
+      <mat-form-field fxFlex>
+        <mat-label>{{'users.info.sex' | translate}}</mat-label>
+        <mat-select matNativeControl formControlName="sex">
+          <mat-option value="0" disabled selected>{{'common.select' | translate}}</mat-option>
+          <mat-option value="H">Hombre</mat-option>
+          <mat-option value="M">Mujer</mat-option>
+        </mat-select>
+        <mat-error *ngIf="studentsForm.controls.sex.touched && studentsForm.controls.sex.invalid">
+          <span *ngIf="studentsForm.controls.sex.errors.required">{{'common.required' | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput  type="text" placeholder="{{'users.info.tel' | translate}}" formControlName="cel">
+        <mat-error *ngIf="studentsForm.controls.cel.touched && studentsForm.controls.cel.invalid">
+          <span *ngIf="studentsForm.controls.cel.errors.required">{{'common.required' | translate}}</span>
+          <span *ngIf="studentsForm.get('cel').errors.minlength || studentsForm.get('cel').errors.maxlength || studentsForm.get('cel').errors.pattern">{{'users.error.numeric-max-ten-digits' | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput  type="text" placeholder="{{'users.info.e-mail' | translate}}" formControlName="email">
+        <mat-error *ngIf="studentsForm.controls.email.touched && studentsForm.controls.email.invalid">
+          <span *ngIf="studentsForm.controls.email.errors.required">{{'common.required' | translate}}</span>
+          <span *ngIf="studentsForm.controls.email.errors.pattern">{{'users.error.email-invalid' | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form__row">
+      <mat-form-field fxFlex>
+        <input matInput  type="text"  placeholder="{{'users.info.postal-code' | translate}}" formControlName="postalCode">
+        <mat-error *ngIf="studentsForm.controls.postalCode.touched && studentsForm.controls.postalCode.invalid">
+          <span *ngIf="studentsForm.controls.postalCode.errors.required">{{'common.required' | translate}}</span>
+          <span *ngIf="studentsForm.get('postalCode').errors.minlength || studentsForm.get('postalCode').errors.pattern">
+            {{'users.error.numeric-min-four-digits' | translate}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput  type="text"  placeholder="{{'users.info.delegation' | translate}}" formControlName="delegation">
+        <mat-error *ngIf="studentsForm.controls.delegation.touched && studentsForm.controls.delegation.invalid">
+          <span *ngIf="studentsForm.controls.delegation.errors.required">{{'common.required' | translate}}</span>
+          <span *ngIf="studentsForm.get('delegation').errors.minlength || studentsForm.get('delegation').errors.pattern">
+            {{'users.error.numeric-min-four-digits' | translate}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput  type="text"  placeholder="{{'users.info.colony' | translate}}" formControlName="colony">
+        <mat-error *ngIf="studentsForm.controls.colony.touched && studentsForm.controls.colony.invalid">
+          <span *ngIf="studentsForm.controls.colony.errors.required">{{'common.required' | translate}}</span>
+          <span *ngIf="studentsForm.get('colony').errors.minlength || studentsForm.get('colony').errors.pattern">
+            {{'users.error.numeric-min-four-digits' | translate}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form__row">
+      <mat-form-field fxFlex>
+        <input matInput  type="text"  placeholder="{{'users.info.street' | translate}}" formControlName="street">
+        <mat-error *ngIf="studentsForm.controls.street.touched && studentsForm.controls.street.invalid">
+          <span *ngIf="studentsForm.controls.street.errors.required">{{'common.required' | translate}}</span>
+          <span *ngIf="studentsForm.get('street').errors.minlength || studentsForm.get('street').errors.pattern">
+            {{'users.error.numeric-min-four-digits' | translate}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <mat-label>{{'users.info.degree' | translate}}</mat-label>
+        <mat-select matNativeControl formControlName="degree">
+          <mat-option value="0" disabled selected>{{'common.select' | translate}}</mat-option>
+          <mat-option value="1">Lic. Contaduria</mat-option>
+          <mat-option value="2">Lic. Administracion Tecnologias Informacio</mat-option>
+          <mat-option value="3">Lic. Adminitracio</mat-option>
+          <mat-option value="4">Lic. Gastronomia</mat-option>
+        </mat-select>
+        <mat-error *ngIf="studentsForm.controls.degree.touched && studentsForm.controls.degree.invalid">
+          <span *ngIf="studentsForm.controls.degree.errors.required">{{'common.required' | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit">{{'users.info.register' | translate}}</button>
+</form>
+
+<pre> {{ studentsForm.value | json }}</pre>

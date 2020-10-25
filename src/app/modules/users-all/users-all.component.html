@@ -1,0 +1,49 @@
+
+<app-prv-user data='Mensaje de prueba'> </app-prv-user>
+
+<div *ngIf='!dataSource.data.length; else users'>
+  <h1> Esta vacio</h1>
+</div>
+
+<ng-template #users>
+  <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="clave">
+        <th mat-header-cell *matHeaderCellDef> Matricula </th>
+        <td mat-cell *matCellDef="let element"> {{element.clave}} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} {{element.surname}} {{element.mothersurname}} </td>
+      </ng-container>
+      <ng-container matColumnDef="sex">
+        <th mat-header-cell *matHeaderCellDef> Sexo </th>
+        <td mat-cell *matCellDef="let element"> {{element.sex}} </td>
+      </ng-container>
+      <ng-container matColumnDef="cel">
+        <th mat-header-cell *matHeaderCellDef> Celular </th>
+        <td mat-cell *matCellDef="let element"> {{element.cel}} </td>
+      </ng-container>
+      <ng-container matColumnDef="typeUser">
+        <th mat-header-cell *matHeaderCellDef> Tipo Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.typeUser.type}} </td>
+      </ng-container>
+      <ng-container matColumnDef="postalCode">
+        <th mat-header-cell *matHeaderCellDef> Dirección </th>
+        <td mat-cell *matCellDef="let element"> 
+          {{element.address.delegation}},{{element.address.colony}} {{element.address.street}} {{element.address.postalCode}}
+        </td>
+      </ng-container>
+          
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Operación </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon color="primary" class="pointer" (click)="update(element)">edit</mat-icon>
+          <mat-icon color="warn" class="pointer" (click)="questionDelete(element)">delete</mat-icon>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</ng-template>

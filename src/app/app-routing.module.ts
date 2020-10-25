@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-import { HomeComponent } from './shared/home/home.component';
-import { BooksComponent } from './pages/books/books.component';
-import { AllBooksComponent } from './pages/all-books/all-books.component';
-import { StudentsComponent} from './pages/students/students.component';
-import { StudentsConsultComponent } from './pages/students-consult/students-consult.component';
-import { EducationalStaffComponent } from './pages/educational-staff/educational-staff.component';
-import { EducationalStaffConsultComponent } from './pages/educational-staff-consult/educational-staff-consult.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { HomeComponent } from '@layout/home/home.component';
+import { BooksComponent } from '@modules/books/books.component';
+import { AllBooksComponent } from '@modules/books-all/books-all.component';
+import { StudentsComponent} from '@modules/users/users.component';
+import { StudentsConsultComponent } from '@modules/users-all/users-all.component';
+import { DashboardComponent } from '@modules/dashboard/dashboard.component';
+import { StudentTestComponent } from '@modules/student-test/student-test.component';
+import { CatalogsComponent } from '@modules/catalogs/catalogs.component';
 
 const routes: Routes = [
 
@@ -17,13 +17,13 @@ const routes: Routes = [
   {
     path: 'home', component: HomeComponent,
     children: [
+      { path: 'test', component: StudentTestComponent},
       { path: 'dashboard', component: DashboardComponent},
       { path: 'add-book', component: BooksComponent},
       { path: 'all-book', component: AllBooksComponent},
       { path: 'students', component: StudentsComponent},
       { path: 'students-consult', component: StudentsConsultComponent},
-      { path: 'educational-staff', component:EducationalStaffComponent},
-      { path: 'educational-staff-consult', component:EducationalStaffConsultComponent}
+      { path: 'catalog', component: CatalogsComponent},
     ]
   }
 ];
