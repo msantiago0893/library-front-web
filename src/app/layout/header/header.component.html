@@ -1,24 +1,24 @@
 <!-- Toolbar -->
 <mat-toolbar class="header">
   <div class="wrap">
-    <img class="wrap__icon" src="assets/icon-main.svg" alt="mx">
+    <img class="wrap__icon" src="assets/images/icon-main.svg" alt="mx">
     <p class="wrap__title">{{'title' | translate}}</p>
   </div>
 
   <div class="wrap-icons">
-    <img class="dropdown" src="assets/downarrow_120663.svg" (click)="activar()" mat-icon-button alt="main">
+    <img class="dropdown" src="assets/images/downarrow_120663.svg" (click)="activar()" mat-icon-button alt="main">
     <div class="icons" [class.visible]="isActive">
       <div class="img-wraper">
-        <img src="assets/notifications.svg"  mat-icon-button alt="notification">
+        <img src="assets/images/notifications.svg"  mat-icon-button alt="notification">
       </div>
       <div class="img-wraper">
-        <img src="assets/flag-mex.svg" mat-icon-button [matMenuTriggerFor]="menuFlag" alt="mx">
+        <img src="assets/images/flag-mex.svg" mat-icon-button [matMenuTriggerFor]="menuFlag" alt="mx">
       </div>
       <div class="img-wraper">
-        <img src="assets/perfil.svg" mat-icon-button [matMenuTriggerFor]="menu" alt="flag">
+        <img src="assets/images/perfil.svg" mat-icon-button [matMenuTriggerFor]="menu" alt="flag">
       </div>
       <div class="img-wraper">
-        <img class="icon-menu" src="assets/menu.svg" (click)="navBar.toggle()" mat-icon-button alt="notification">
+        <img class="icon-menu" src="assets/images/menu.svg" (click)="navBar.toggle()" mat-icon-button alt="notification">
       </div>
     </div>
 
