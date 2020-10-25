@@ -1,0 +1,63 @@
+@import '_globals'
+
+.header
+  cursor: pointer
+  background: #a0baf7
+
+.wrap
+  display: flex
+  align-items: center
+
+  &__icon
+    width: 5rem
+
+  &__title
+    color: #2750b0e8
+    letter-spacing: .1rem
+    font-size: 1.6rem
+
+.wrap-icons
+  display: flex
+  @include tablet
+    display: flex
+    flex-direction: column
+    align-items: center
+    position: absolute
+    top: 1rem
+    right: 0
+
+.dropdown
+  width: 1.8rem
+  visibility: hidden
+  @include tablet
+    visibility: visible
+.icons
+  display: flex
+  justify-content: space-between
+  width: 17rem
+  height: 2rem
+  @include tablet
+    visibility: hidden
+    flex-direction: column
+    width: 6rem
+    height: 20rem
+    align-items: center
+    background: #9e9e9e57
+    right: 0
+    top: 1rem
+
+.hidden
+  visibility: hidden
+.visible
+  visibility: visible
+
+.img-wraper
+  width: 100%
+  text-align: center
+  @include tablet
+    padding: 1rem 0
+    &:hover
+        background: #5879e478
+        border-radius: .5rem
+  > img
+    width: 2rem

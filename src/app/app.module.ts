@@ -10,21 +10,35 @@ import { AppComponent } from './app.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MenuComponent } from './menu/menu.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
+
+import { MenuComponent } from '@layout/menu/menu.component';
+import { HeaderComponent } from '@layout/header/header.component';
+import { FooterComponent } from '@layout/footer/footer.component';
+import { HomeComponent } from '@layout/home/home.component';
+
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { HomeComponent } from './shared/home/home.component';
-import { BooksComponent } from './pages/books/books.component';
-import { StudentsComponent } from './pages/students/students.component';
-import { AllBooksComponent } from './pages/all-books/all-books.component';
 
-import { HttpClientModule } from '@angular/common/http'
-import { StudentsConsultComponent } from './pages/students-consult/students-consult.component';
-import { EducationalStaffComponent } from './pages/educational-staff/educational-staff.component';
-import { EducationalStaffConsultComponent } from './pages/educational-staff-consult/educational-staff-consult.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { BooksComponent } from '@modules/books/books.component';
+import { StudentsComponent } from '@modules/users/users.component';
+import { AllBooksComponent } from '@modules/books-all/books-all.component';
+import { StudentsConsultComponent } from '@modules/users-all/users-all.component';
+import { DashboardComponent } from '@modules/dashboard/dashboard.component';
+import { StudentTestComponent } from '@modules/student-test/student-test.component';
+import { CatalogsComponent } from '@modules/catalogs/catalogs.component';
+
+import { HttpClient, HttpClientModule } from '@angular/common/http'
+
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import * as fromComponents from './shared/components'
+
+
+export function httpTranslateLoader(http: HttpClient) {
+   //return new TranslateHttpLoader(http, 'local/i18n/', '.json');
+  return new TranslateHttpLoader(http); 
+}
 
 @NgModule({
   declarations: [
@@ -39,20 +53,27 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     StudentsComponent,
     AllBooksComponent,
     StudentsConsultComponent,
-    EducationalStaffComponent,
-    EducationalStaffConsultComponent,
-    DashboardComponent
+    DashboardComponent,
+    StudentTestComponent,
+    CatalogsComponent,
+    ...fromComponents.components
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
