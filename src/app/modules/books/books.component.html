@@ -35,10 +35,10 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex>
-          <input matInput  type="text"  placeholder="Número de páginas" formControlName="n_pag">
-          <mat-error *ngIf="bookForm.controls.n_pag.touched && bookForm.controls.n_pag.invalid">
-            <span *ngIf="bookForm.get('n_pag').errors.required">Campo obligatorio.</span>
-            <span *ngIf="bookForm.get('n_pag').errors.pattern">Campo de tipo numerico.</span>
+          <input matInput  type="text"  placeholder="Número de páginas" formControlName="nPagina">
+          <mat-error *ngIf="bookForm.controls.nPagina.touched && bookForm.controls.nPagina.invalid">
+            <span *ngIf="bookForm.get('nPagina').errors.required">Campo obligatorio.</span>
+            <span *ngIf="bookForm.get('nPagina').errors.pattern">Campo de tipo numerico.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex>
