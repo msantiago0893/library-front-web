@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { StudentsResponse } from '../Interfaces/students';
 import { Student } from '../Interfaces/student';
 
-import { map } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -32,12 +30,7 @@ export class StudentsServiceService {
   //   return this.http.get<Persona[]>(this.uri);
   // }
   
-
-
-  
-  
-  
-    consultStudents():Observable<StudentsResponse[]> {
+  consultStudents():Observable<StudentsResponse[]> {
     return this.http.get<StudentsResponse[]>(this.uri);
   }
 
