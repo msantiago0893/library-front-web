@@ -5,6 +5,7 @@ import { BooksService } from 'src/app/shared/services/books.service';
 import { Router } from '@angular/router';
 import { Book } from '../books/domain/book';
 import { Alert } from '@utils/alerts';
+
 @Component({
   selector: 'app-books-all',
   templateUrl: './books-all.component.html',
@@ -13,7 +14,6 @@ import { Alert } from '@utils/alerts';
 export class AllBooksComponent implements OnInit {
 
   public data = [];
-  public book: Book = new Book();
   private alert: Alert = new Alert();
 
   constructor(
@@ -31,33 +31,22 @@ export class AllBooksComponent implements OnInit {
 
   ngOnInit() {
 
+    this.allBooks();    
     this.dataSource.paginator = this.paginator;
-
-    this.allBooks();
   }
 
   allBooks() {
-    this._service.allBooks().subscribe(item => {
-      this.dataSource.data = item
-    });
+    this._service.consultBooks()
+                 .subscribe(item => {
+                    this.dataSource.data = item.map(item => new Book(item))
+                  });
   }
 
-  update(book: any) {
-    console.log('Objeto a editar ', book);
-    this.book = book;
-    this.router.navigate(['/home/add-book']);
+  delete(id:any) { 
+    this._service.delete(id)
+                 .subscribe(()=>{
+                   this.allBooks();
+                 });
   }
-  delete(book: any) {
 
-    this.alert.questions('¿Está seguro de eliminar el elemento?')
-              .then((result) => {
-                if (result.value) {
-                  this._service.delete(book.id).subscribe(
-                                  (data) => {
-                                    //this.ngOnInit();
-                                    this.allBooks();
-                                });
-                }
-              });
-  }
 }
