@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BooksService } from 'src/app/shared/services/books.service';
-
-import { Book } from "./domain/book";
+import * as Regex from '@utils/regex';
 
 import { Alert } from "@utils/alerts"
+import { bookAdapter } from '@modules/books-all/domain/bookAdapter';
 
 @Component({
   selector: 'app-books',
@@ -15,7 +15,7 @@ import { Alert } from "@utils/alerts"
 export class BooksComponent implements OnInit {
 
   bookForm : FormGroup;
-  public book: Book = new Book();
+  //public book: Book = new Book(data: any);
 
   private alert: Alert = new Alert();
 
@@ -26,16 +26,7 @@ export class BooksComponent implements OnInit {
     ){ }
 
   ngOnInit() {
-
-    this.bookForm = this.fb.group({
-      name : [null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/) , Validators.minLength(5)] ],
-      editorial : [null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/), Validators.minLength(5)] ],
-      autor : [null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/), Validators.minLength(5)] ],
-      genero: [null, [Validators.required, Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/), Validators.minLength(5)] ],
-      n_pag: [null, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.minLength(2)] ],
-      year: [null, [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.minLength(4), Validators.maxLength(4)] ]
-    });
-
+    this.validators();
   }
 
   alerta() {
@@ -48,30 +39,61 @@ export class BooksComponent implements OnInit {
   }
 
   submit() {
-    if (!this.bookForm.valid) {
-       return;
+
+    console.log('crear libro');
+    
+    this._service.createBook(new bookAdapter(this.bookForm.value)).subscribe();
+    
+  }
+
+
+  update() {
+    this._service.updateBook(new bookAdapter(this.bookForm.value));
+    
     }
-    this._service.createBook(this.bookForm.value).subscribe();
-    this.bookForm.reset();
-  }
-
-  clear() {
-    //this.bookForm.reset();
-    this.inicializarFormGroup();
-  }
-
-  inicializarFormGroup() {
-    this.bookForm.setValue({
-      name : null,
-      editorial : null,
-      autor : null,
-      genero: null,
-      n_pag: null,
-      year: null
-    });
-  }
-
+ 
   testRouter() {
     this.router.navigate(['/home/all-book'])
+  }
+  validators() {
+    this.bookForm = this.fb.group({
+      name:['', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(40),
+        Validators.pattern(Regex.name)
+      ]],
+      editorial:['', [
+        Validators.required, 
+        Validators.minLength(3), 
+        Validators.maxLength(30), 
+        Validators.pattern(Regex.name)
+      ]],
+      autor:['', [
+        Validators.required,
+        Validators.minLength(3), 
+        Validators.maxLength(30), 
+        Validators.pattern(Regex.name)
+      ]], 
+      genero:['', [
+        Validators.required,
+        Validators.minLength(3), 
+        Validators.maxLength(30), 
+        Validators.pattern(Regex.name)
+      ]],
+      nPagina:['', [
+        Validators.required,
+        Validators.minLength(2), 
+        Validators.maxLength(10), 
+        Validators.pattern(Regex.numeric)
+      ]],
+      year:['', [
+        Validators.required,
+        Validators.minLength(4), 
+        Validators.maxLength(30), 
+        Validators.pattern(Regex.numeric)
+      ]]
+    })
+  
   }
 }

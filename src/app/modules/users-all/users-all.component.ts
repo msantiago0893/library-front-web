@@ -24,12 +24,12 @@ export class StudentsConsultComponent implements OnInit {
     this.allStudents();
     this.dataSource.paginator = this.paginator;
   }
-
+  
   allStudents() {
-         
+  
     this._service.consultStudents()
-                 .subscribe( (item: any) => {
-                  this.dataSource.data = item.map(item => new Persona(item));
+                  .subscribe(item => {
+                    this.dataSource.data = item.map(item => new Persona(item));
                   });
   }
 
@@ -47,9 +47,9 @@ export class StudentsConsultComponent implements OnInit {
   delete(id:any) {
     
     this._service.delete(id)
-                 .subscribe(
-                    (response) => { this.allStudents(); }
-                 );
+                 .subscribe(() => {
+                    this.allStudents(); 
+                  });
   }
 
 }

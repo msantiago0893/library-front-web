@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BookResponse } from 'src/app/shared/Interfaces/book';
-import { Book } from '@modules/books/domain/book';
+import { Book } from '@modules/books-all/domain/book';
 
 @Injectable({
   providedIn: 'root'
@@ -17,31 +17,19 @@ export class BooksService {
 
   private uri: string = 'http://192.168.0.17:8080/api/';
 
-
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-
-  // allBooks() {
-  //   return this.httpClient.get<any>(this.uri);
-  // }
-
-  // allBooks(): Observable<any> {
-  //   return this.httpClient.get<any>(this.uri);
-  // }
-
-  allBooks(): Observable<BookResponse[]> {
+  consultBooks(): Observable<BookResponse[]> {
     return this.httpClient.get<BookResponse[]>(this.uri+'books');
   }
 
-  createBook(book: Book): Observable<Book> {
-    console.log('Guardar', book);
-    return this.httpClient.post<Book>(this.uri+'books', book, {headers: this.httpHeaders});
+  createBook(book: any) {
+    return this.httpClient.post(this.uri+'books', book, {headers: this.httpHeaders});
   }
-  updateBook(book: Book): Observable<Book> {
-    console.log('Guardar', book);
+  updateBook(book: Book){
     return this.httpClient.put<Book>(`${this.uri}books/${book.id}`, book, {headers: this.httpHeaders});
   }
-  delete(id:number): Observable<Book> {
+  delete(id:number) {
     return this.httpClient.delete<Book>(`${this.uri}books/${id}`,{headers: this.httpHeaders});
   }
 

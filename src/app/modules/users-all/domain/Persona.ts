@@ -15,6 +15,8 @@ export class Persona {
 
   constructor(data:any) {
 
+    console.log('Resdponse ', data);
+
     this.id = data.id;
     this.clave= data.clave;
     this.name = data.name;
