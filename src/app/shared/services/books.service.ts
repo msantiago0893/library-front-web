@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BookResponse } from 'src/app/shared/Interfaces/book';
-import { Book } from '@modules/books/domain/book';
+import { Book } from '@modules/books-all/domain/book';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +23,8 @@ export class BooksService {
     return this.httpClient.get<BookResponse[]>(this.uri+'books');
   }
 
-  createBook(book: Book) {
-    return this.httpClient.post<Book>(this.uri+'books', book, {headers: this.httpHeaders});
+  createBook(book: any) {
+    return this.httpClient.post(this.uri+'books', book, {headers: this.httpHeaders});
   }
   updateBook(book: Book){
     return this.httpClient.put<Book>(`${this.uri}books/${book.id}`, book, {headers: this.httpHeaders});

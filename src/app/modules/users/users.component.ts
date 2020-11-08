@@ -31,7 +31,7 @@ export class StudentsComponent implements OnInit {
 
   save() {
 
-    this.service
+    this.service 
         .createStudent(new PersonaAdapter(this.studentsForm.value))
         .subscribe(() => {
           this.alert.msgTimer('success', Catalog.MESSAGE.ADD);
