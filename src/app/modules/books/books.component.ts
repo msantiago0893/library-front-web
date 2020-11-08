@@ -3,9 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BooksService } from 'src/app/shared/services/books.service';
 import * as Regex from '@utils/regex';
-import { Book } from "./domain/book";
 
 import { Alert } from "@utils/alerts"
+import { bookAdapter } from '@modules/books-all/domain/bookAdapter';
 
 @Component({
   selector: 'app-books',
@@ -39,28 +39,19 @@ export class BooksComponent implements OnInit {
   }
 
   submit() {
-    if (!this.bookForm.valid) {
-       return;
+
+    console.log('crear libro');
+    
+    this._service.createBook(new bookAdapter(this.bookForm.value)).subscribe();
+    
+  }
+
+
+  update() {
+    this._service.updateBook(new bookAdapter(this.bookForm.value));
+    
     }
-    this._service.createBook(this.bookForm.value).subscribe();
-    this.bookForm.reset();
-  }
-
-  clear() {
-    this.inicializarFormGroup();
-  }
-
-  inicializarFormGroup() {
-    this.bookForm.setValue({
-      name : null,
-      editorial : null,
-      autor : null,
-      genero: null,
-      n_pag: null,
-      year: null
-    });
-  }
-
+ 
   testRouter() {
     this.router.navigate(['/home/all-book'])
   }

@@ -15,7 +15,7 @@ export class Book {
     this.nombre = data.nombre || '';
  
     this.editorial = data.editorial || '';
-    this.autor = data.autor  ? 'hay autor' : 'no se hayo autor';  
+    this.autor = data.autor  ? data.autor : 'no se hayo autor';  
     this.genero = data.genero || '';
     this.nPagina = data.nPagina;
     this.yearEdicion = data.yearEdicion;

@@ -3,7 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { BooksService } from 'src/app/shared/services/books.service';
 import { Router } from '@angular/router';
-import { Book } from '../books/domain/book';
+import { Book } from './domain/book';
 import { Alert } from '@utils/alerts';
 
 @Component({
