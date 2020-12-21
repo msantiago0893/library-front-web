@@ -1,0 +1,65 @@
+@import '_globals'
+
+.cards
+  display: flex
+  flex-wrap: wrap
+  margin-bottom: 2rem
+  justify-content: space-between
+
+.card
+  width: 23%
+  border-radius: .5rem
+  text-align: center
+  display: block
+  line-height: 0.5
+  cursor: pointer
+  @include tablet
+    flex-wrap: wrap
+    margin-bottom: .5rem
+    // width: 100%
+
+  &__title
+    font-size: 2rem
+    font-style: italic
+    font-variant: small-caps
+    font-family: monospace
+    letter-spacing: 4px
+    color: white
+
+  &__text
+    font-size: 1.5rem
+    color: white
+
+.card-1
+  background: -webkit-linear-gradient(to bottom,  $color-blue,$color-blue-1)
+  background: linear-gradient(to bottom, $color-blue,$color-blue-1)
+.card-2
+  background: -webkit-linear-gradient(to top,$color-orange, $color-brown)
+  background: linear-gradient(to bottom, $color-orange, $color-brown)
+.card-3
+  background: -webkit-linear-gradient(to top, $color-blue-2, rgba(33, 150, 243, 0.48))
+  background: linear-gradient(to bottom, $color-blue-2, rgba(33, 150, 243, 0.48))
+
+.graphics
+  display: flex
+  flex-direction: column
+
+.wrap
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+
+  > div
+    border: $border-gray
+    border-radius: 0.5rem
+    height: 18rem
+    width: 48%
+    @include tablet
+      width: 100%
+      min-width: 15rem
+
+.barra
+  border: $border-gray
+  height: 25rem
+  margin-top: 1rem
+  border-radius: 0.5rem
