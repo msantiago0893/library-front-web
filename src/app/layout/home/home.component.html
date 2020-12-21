@@ -2,10 +2,13 @@
 
   <mat-sidenav-container>
     <!-- MENU -->
+    
     <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
       [fixedTopGap]>
-        <app-menu></app-menu>
-    </mat-sidenav>
+      <div class="container-menu">
+        <app-menu></app-menu>        
+      </div>
+    </mat-sidenav> 
     <!-- Contenedor -->
 
       <mat-sidenav-content>
