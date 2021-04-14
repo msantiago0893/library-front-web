@@ -9,6 +9,8 @@ import { StudentsConsultComponent } from '@modules/users-all/users-all.component
 import { DashboardComponent } from '@modules/dashboard/dashboard.component';
 import { StudentTestComponent } from '@modules/student-test/student-test.component';
 import { CatalogsComponent } from '@modules/catalogs/catalogs.component';
+import { CustomerComponent } from './views/customer/customer.component';
+import { GalleryComponent } from './views/gallery/gallery.component';
 
 const routes: Routes = [
 
@@ -24,6 +26,12 @@ const routes: Routes = [
       { path: 'students', component: StudentsComponent},
       { path: 'students-consult', component: StudentsConsultComponent},
       { path: 'catalog', component: CatalogsComponent},
+    ]
+  },
+  {
+    path: 'customer', component: CustomerComponent,
+    children: [
+      { path: 'gallery', component: GalleryComponent},
     ]
   }
 ];
