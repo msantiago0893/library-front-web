@@ -12,6 +12,18 @@ export class MenuComponent implements OnInit {
   
   navItems: NavItem[] = [
     {
+      name: 'createanimales',
+      icon: 'dashboard',
+      route: 'createanimales'
+
+    },
+    {
+      name: 'Animales',
+      icon: 'dashboard',
+      route: 'animales'
+
+    },
+    {
       name: 'Dashboard',
       icon: 'dashboard',
       route: 'dashboard'

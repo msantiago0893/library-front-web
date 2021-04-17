@@ -36,6 +36,8 @@ import * as fromComponents from './shared/components';
 import { CustomerComponent } from './views/customer/customer.component';
 import { ManagerComponent } from './views/manager/manager.component';
 import { GalleryComponent } from './views/gallery/gallery.component'
+import { AnimalesComponent } from './modules/animales/animales.component';
+import { CreateanimalesComponent } from './modules/createanimales/createanimales.component'
 
 
 export function httpTranslateLoader(http: HttpClient) {
@@ -62,7 +64,9 @@ export function httpTranslateLoader(http: HttpClient) {
     ...fromComponents.components,
     CustomerComponent,
     ManagerComponent,
-    GalleryComponent
+    GalleryComponent,
+    AnimalesComponent,
+    CreateanimalesComponent,
   ],
   imports: [
     BrowserModule,
