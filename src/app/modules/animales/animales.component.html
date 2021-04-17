@@ -1,0 +1,21 @@
+<p>animales works!</p>
+
+<h1>CONSULTA DE ANIMALES!</h1>
+    <table>
+        <tr>
+            <th >ID</th>
+            <th >Tipo de Animal</th>
+            <th >Raza</th>
+        </tr>
+        <tr *ngFor="let elemento of animals">
+            <td>{{elemento.id}}</td>
+            <td>{{elemento.typeAnimal}}</td>
+            <td>{{elemento.raza}}</td>
+            <td>
+              <button (click)="update(elemento)" >Modificar</button>
+              <button (click)="delete(elemento)" >Eliminar</button>
+            </td>    
+        </tr>
+             
+    </table>
+    
