@@ -1,6 +1,6 @@
 /* Angular material */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialModule } from './angular-material.module';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,7 +32,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import * as fromComponents from './shared/components'
+import * as fromComponents from './shared/components';
+import { CustomerComponent } from './views/customer/customer.component';
+import { ManagerComponent } from './views/manager/manager.component';
+import { GalleryComponent } from './views/gallery/gallery.component'
 
 
 export function httpTranslateLoader(http: HttpClient) {
@@ -56,7 +59,10 @@ export function httpTranslateLoader(http: HttpClient) {
     DashboardComponent,
     StudentTestComponent,
     CatalogsComponent,
-    ...fromComponents.components
+    ...fromComponents.components,
+    CustomerComponent,
+    ManagerComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
