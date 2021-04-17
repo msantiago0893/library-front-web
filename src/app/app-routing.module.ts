@@ -11,6 +11,8 @@ import { StudentTestComponent } from '@modules/student-test/student-test.compone
 import { CatalogsComponent } from '@modules/catalogs/catalogs.component';
 import { CustomerComponent } from './views/customer/customer.component';
 import { GalleryComponent } from './views/gallery/gallery.component';
+import { AnimalesComponent } from '@modules/animales/animales.component';
+import { CreateanimalesComponent } from '@modules/createanimales/createanimales.component';
 
 const routes: Routes = [
 
@@ -26,6 +28,9 @@ const routes: Routes = [
       { path: 'students', component: StudentsComponent},
       { path: 'students-consult', component: StudentsConsultComponent},
       { path: 'catalog', component: CatalogsComponent},
+      { path: 'animales', component: AnimalesComponent},
+      { path: 'edit-animales/:id', component: CreateanimalesComponent},
+      { path: 'createanimales', component:CreateanimalesComponent},
     ]
   },
   {
