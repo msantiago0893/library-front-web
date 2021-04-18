@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {  StudentsServiceService } from 'src/app/shared/services/students-service.service';
+import { UserService } from '@services/user.service';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Alert } from '@utils/alerts';
 import { Persona } from './domain/Persona';
@@ -17,7 +17,7 @@ export class StudentsConsultComponent implements OnInit {
 
   private alert: Alert = new Alert();
 
-  constructor( private _service: StudentsServiceService) { }
+  constructor( private _service: UserService) { }
 
   ngOnInit() {
     
