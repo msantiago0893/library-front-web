@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { StudentsServiceService } from '@services/students-service.service';
+import { UserService } from '@services/user.service';
 import { Alert } from '@utils/alerts';
 import * as Regex from '@utils/regex';
 import * as Catalog from '@utils/catalog';
@@ -18,7 +18,7 @@ export class StudentsComponent implements OnInit {
   
   constructor(
     private students: FormBuilder,
-    private service: StudentsServiceService
+    private service: UserService
   ) { }
 
   ngOnInit() {

@@ -13,11 +13,13 @@ import { CustomerComponent } from './views/customer/customer.component';
 import { GalleryComponent } from './views/gallery/gallery.component';
 import { AnimalesComponent } from '@modules/animales/animales.component';
 import { CreateanimalesComponent } from '@modules/createanimales/createanimales.component';
+import { RegistryComponent } from './auth/registry/registry.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent,  pathMatch: 'full'},
+  { path: '', redirectTo: '/signin', pathMatch: 'full' },
+  { path: 'signin', component: LoginComponent,  pathMatch: 'full'},
+  { path: 'signup', component: RegistryComponent},
   {
     path: 'home', component: HomeComponent,
     children: [

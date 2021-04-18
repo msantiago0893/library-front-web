@@ -1,0 +1,26 @@
+@import '_globals'
+
+.registry
+  margin: 2rem 10%
+  @include tablet
+    margin: 2rem .5rem
+
+  &__num-street
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    > *
+      width: 40%
+
+.group-radio
+  display: flex
+  &__title
+    padding-right: 1rem
+  &__options
+    width: 50%
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+.go-signin
+  align-self: center
+  display: block
