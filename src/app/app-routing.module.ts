@@ -25,6 +25,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent},
       { path: 'add-book', component: BooksComponent},
       { path: 'all-book', component: AllBooksComponent},
+      { path: 'edit-book/:id', component:BooksComponent},
       { path: 'students', component: StudentsComponent},
       { path: 'students-consult', component: StudentsConsultComponent},
       { path: 'catalog', component: CatalogsComponent},
