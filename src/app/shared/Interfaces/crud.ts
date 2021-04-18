@@ -3,5 +3,5 @@ export interface Crud {
     delete(id:any)
     create(object:any)
     consultById(id:any)
-    modify(id:number, object:any)
+    update(id:number, object:any)
 }

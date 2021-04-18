@@ -32,34 +32,37 @@ export class BooksComponent implements OnInit {
 
   ngOnInit() {
     this.validators();
-    
+    this.loadItemById();  
+  }
+
+  loadItemById() {
     if (this.id > 0) {
       this._service.consultById(this.id).subscribe( item => {
         this.bookForm.patchValue(item);
-      })
+      });
     }
   }
 
-  create(){
+  create() {
     if (this.id > 0) {
-      this._service.modify(this.id, this.bookForm.value).subscribe();
+      this._service.update(this.id, this.bookForm.value).subscribe();
     } else {
       this._service.create(this.bookForm.value).subscribe(); 
     }
   }
+
   alerta() {
     this.alert.questions('Esta seguro de eliminar el elemento?')
     .then((result) => {
       if (result.value) {
-        console.log('He resionado el boton aceptar');
       }
     });
   }
-
  
   testRouter() {
     this.router.navigate(['/home/all-book'])
   }
+
   validators() {
     this.bookForm = this.fb.group({
       name:['', [
@@ -98,7 +101,7 @@ export class BooksComponent implements OnInit {
         Validators.maxLength(30), 
         Validators.pattern(Regex.numeric)
       ]]
-    })
-  
+    });
   }
-1}
+
+}
