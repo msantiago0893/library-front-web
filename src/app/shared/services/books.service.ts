@@ -2,38 +2,42 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Crud } from '../Interfaces/crud';
+import { map } from 'rxjs/operators';
+import { Book } from '@modules/books/book';
+import { throwToolbarMixedModesError } from '@angular/material';
 
-import { BookResponse } from 'src/app/shared/Interfaces/book';
-import { Book } from '@modules/books-all/domain/book';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BooksService {
+export class BooksService  implements Crud {
 
   constructor(
     private httpClient: HttpClient
     ) { }
-
-  private uri: string = 'http://192.168.0.17:8080/api/';
+  private uri: string = 'http://localhost:8080/api/';
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-  consultBooks(): Observable<BookResponse[]> {
-    return this.httpClient.get<BookResponse[]>(this.uri+'books');
+  consultAll():any {
+    return this.httpClient.get(`${this.uri}books`)
+                            .pipe(
+                               map( (books: Book[]) => 
+                                 books.map(elemento => new Book(elemento))
+                            ));
+  }
+  delete(id: any) {
+    return this.httpClient.delete(`${this.uri}books/${id}`,{headers: this.httpHeaders});
+  }
+  create(book: any) {
+    return this.httpClient.post(`${this.uri}books`,book,{headers: this.httpHeaders});
+  }
+  consultById(id: any) {
+    return this.httpClient.get(`${this.uri}books/${id}`,{headers: this.httpHeaders});
+  }
+  modify(id: number, book:any) {
+    return this.httpClient.put(`${this.uri}books/${id}`,book, {headers: this.httpHeaders});
   }
 
-  createBook(book: any) {
-    return this.httpClient.post(this.uri+'books', book, {headers: this.httpHeaders});
-  }
-  updateBook(book: Book){
-    return this.httpClient.put<Book>(`${this.uri}books/${book.id}`, book, {headers: this.httpHeaders});
-  }
-  delete(id:number) {
-    return this.httpClient.delete<Book>(`${this.uri}books/${id}`,{headers: this.httpHeaders});
-  }
-
-  // allBooks() {
-  //   return this.httpClient.get<BookResponse[]>(this.uri);
-  // }
 }
