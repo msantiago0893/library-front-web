@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentsServiceService } from 'src/app/shared/services/students-service.service';
+import { UserService } from '@services/user.service';
 import { Persona } from '@modules/users-all/domain/Persona';
 
 @Component({
@@ -12,7 +12,7 @@ export class StudentTestComponent implements OnInit {
   section = []
 
   constructor(
-    private service: StudentsServiceService
+    private service: UserService
   ) { }
 
   ngOnInit() {

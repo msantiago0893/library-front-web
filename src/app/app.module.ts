@@ -17,7 +17,6 @@ import { FooterComponent } from '@layout/footer/footer.component';
 import { HomeComponent } from '@layout/home/home.component';
 
 import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 
 import { BooksComponent } from '@modules/books/books.component';
 import { StudentsComponent } from '@modules/users/users.component';
@@ -37,7 +36,8 @@ import { CustomerComponent } from './views/customer/customer.component';
 import { ManagerComponent } from './views/manager/manager.component';
 import { GalleryComponent } from './views/gallery/gallery.component'
 import { AnimalesComponent } from './modules/animales/animales.component';
-import { CreateanimalesComponent } from './modules/createanimales/createanimales.component'
+import { CreateanimalesComponent } from './modules/createanimales/createanimales.component';
+import { RegistryComponent } from './auth/registry/registry.component'
 
 
 export function httpTranslateLoader(http: HttpClient) {
@@ -52,7 +52,6 @@ export function httpTranslateLoader(http: HttpClient) {
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent,
     HomeComponent,
     BooksComponent,
     StudentsComponent,
@@ -67,6 +66,7 @@ export function httpTranslateLoader(http: HttpClient) {
     GalleryComponent,
     AnimalesComponent,
     CreateanimalesComponent,
+    RegistryComponent,
   ],
   imports: [
     BrowserModule,

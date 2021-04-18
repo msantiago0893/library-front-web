@@ -7,7 +7,7 @@ import { Student } from '../Interfaces/student';
 @Injectable({
   providedIn: 'root'
 })
-export class StudentsServiceService {
+export class UserService {
 
 
   constructor(
