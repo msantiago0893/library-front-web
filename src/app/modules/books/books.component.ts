@@ -32,10 +32,10 @@ export class BooksComponent implements OnInit {
 
   ngOnInit() {
     this.validators();
-    this.validation();  
+    this.loadItemById();  
   }
 
-  validation() {
+  loadItemById() {
     if (this.id > 0) {
       this._service.consultById(this.id).subscribe( item => {
         this.bookForm.patchValue(item);
