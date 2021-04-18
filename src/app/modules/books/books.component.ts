@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BooksService } from 'src/app/shared/services/books.service';
 import * as Regex from '@utils/regex';
+import { Alert } from "@utils/alerts";
 
-import { Alert } from "@utils/alerts"
-import { bookAdapter } from '@modules/books-all/domain/bookAdapter';
 
 @Component({
   selector: 'app-books',
@@ -18,17 +17,36 @@ export class BooksComponent implements OnInit {
   //public book: Book = new Book(data: any);
 
   private alert: Alert = new Alert();
+  id: number
 
   constructor(
     private fb: FormBuilder,
     public router: Router,
-    private _service: BooksService
-    ){ }
+    private _service: BooksService,
+    private route: ActivatedRoute
+    ){ 
+      this.route.paramMap.subscribe((params:ParamMap)=> [
+        this.id = +params.get('id')
+      ]);
+    }
 
   ngOnInit() {
     this.validators();
+    
+    if (this.id > 0) {
+      this._service.consultById(this.id).subscribe( item => {
+        this.bookForm.patchValue(item);
+      })
+    }
   }
 
+  create(){
+    if (this.id > 0) {
+      this._service.modify(this.id, this.bookForm.value).subscribe();
+    } else {
+      this._service.create(this.bookForm.value).subscribe(); 
+    }
+  }
   alerta() {
     this.alert.questions('Esta seguro de eliminar el elemento?')
     .then((result) => {
@@ -38,19 +56,6 @@ export class BooksComponent implements OnInit {
     });
   }
 
-  submit() {
-
-    console.log('crear libro');
-    
-    this._service.createBook(new bookAdapter(this.bookForm.value)).subscribe();
-    
-  }
-
-
-  update() {
-    this._service.updateBook(new bookAdapter(this.bookForm.value));
-    
-    }
  
   testRouter() {
     this.router.navigate(['/home/all-book'])
@@ -69,25 +74,25 @@ export class BooksComponent implements OnInit {
         Validators.maxLength(30), 
         Validators.pattern(Regex.name)
       ]],
-      autor:['', [
+      author:['', [
         Validators.required,
         Validators.minLength(3), 
         Validators.maxLength(30), 
         Validators.pattern(Regex.name)
       ]], 
-      genero:['', [
+      gender:['', [
         Validators.required,
         Validators.minLength(3), 
         Validators.maxLength(30), 
         Validators.pattern(Regex.name)
       ]],
-      nPagina:['', [
+      nPage:['', [
         Validators.required,
         Validators.minLength(2), 
         Validators.maxLength(10), 
         Validators.pattern(Regex.numeric)
       ]],
-      year:['', [
+      yearEdicion:['', [
         Validators.required,
         Validators.minLength(4), 
         Validators.maxLength(30), 
@@ -96,4 +101,4 @@ export class BooksComponent implements OnInit {
     })
   
   }
-}
+1}

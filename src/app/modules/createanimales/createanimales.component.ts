@@ -39,10 +39,9 @@ export class CreateanimalesComponent implements OnInit {
     }
   }
   createAnimal(){
-      
     
     if (this.id > 0) {
-      this._service.modify(this.id,this.animalForm.value).subscribe();
+      this._service.modify(this.id, this.animalForm.value).subscribe();
       
     } else {    
       this._service.create(this.animalForm.value).subscribe();

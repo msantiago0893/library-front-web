@@ -3,7 +3,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { BooksService } from 'src/app/shared/services/books.service';
 import { Router } from '@angular/router';
-import { Book } from './domain/book';
 import { Alert } from '@utils/alerts';
 
 @Component({
@@ -23,30 +22,40 @@ export class AllBooksComponent implements OnInit {
 
   info: any[] = [];
 
-  displayedColumns: string[] = ['id', 'name', 'editorial', 'author', 'genero', 'edicion','edit','delete'];
+  displayedColumns: string[] = ['id', 'name', 'editorial', 'author', 'gender', 'nPage','edit','delete'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 
-  ngOnInit() {
+  ngOnInit() {                                                                          
 
     this.allBooks();    
     this.dataSource.paginator = this.paginator;
+    this.update("MODIFICAR IMPRESIONNNNN")
   }
 
+
   allBooks() {
-    this._service.consultBooks()
+    this._service.consultAll()
                  .subscribe(item => {
-                    this.dataSource.data = item.map(item => new Book(item))
+                    this.dataSource.data = item
                   });
   }
 
-  delete(id:any) { 
-    this._service.delete(id)
+  delete(elemento:any) { 
+    console.log(elemento);
+    this._service.delete(elemento.id)
                  .subscribe(()=>{
                    this.allBooks();
                  });
   }
+  update(elemento: any) {
+    console.log("MODIFICAR LIBRO",elemento)
+    this.router.navigate(['home/edit-book/',elemento.id]);
+
+  }
+
+
 
 }

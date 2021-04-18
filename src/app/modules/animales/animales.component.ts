@@ -35,7 +35,6 @@ export class AnimalesComponent implements OnInit {
                     this.allAnimales();
                   });
   }
-
   
   allAnimales() {
     this._service.consultAll() // solo se hace llamada del metodo consultarAll

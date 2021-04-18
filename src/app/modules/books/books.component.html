@@ -1,6 +1,7 @@
+<p>{{id ? 'MODIFICAR LIBRO' : 'AGREGAR LIBRO'}}</p>
+<h1>{{id}}</h1>
+
 <div class="productCards">
-
-
   <form #regForm="ngForm" class="form" [formGroup]="bookForm" novalidate>
 
       <div class="form__row">
@@ -19,39 +20,39 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex>
-          <input matInput  type="text"  placeholder="Autor" formControlName="autor">
-          <mat-error *ngIf="bookForm.controls.autor.touched && bookForm.controls.autor.invalid">
-            <span *ngIf="bookForm.get('autor').errors.required">Campo obligatorio.</span>
-            <span *ngIf="bookForm.get('autor').errors.pattern">Campo de tipo texto.</span>
+          <input matInput  type="text"  placeholder="author" formControlName="author">
+          <mat-error *ngIf="bookForm.controls.author.touched && bookForm.controls.author.invalid">
+            <span *ngIf="bookForm.get('author').errors.required">Campo obligatorio.</span>
+            <span *ngIf="bookForm.get('author').errors.pattern">Campo de tipo texto.</span>
           </mat-error>
         </mat-form-field>
       </div>
       <div class="form__row">
         <mat-form-field fxFlex>
-          <input matInput  type="text"  placeholder="Género" formControlName="genero">
-          <mat-error *ngIf="bookForm.controls.genero.touched && bookForm.controls.genero.invalid">
-            <span *ngIf="bookForm.get('genero').errors.required">Campo obligatorio.</span>
-            <span *ngIf="bookForm.get('genero').errors.pattern">Campo de tipo texto.</span>
+          <input matInput  type="text"  placeholder="Género" formControlName="gender">
+          <mat-error *ngIf="bookForm.controls.gender.touched && bookForm.controls.gender.invalid">
+            <span *ngIf="bookForm.get('gender').errors.required">Campo obligatorio.</span>
+            <span *ngIf="bookForm.get('gender').errors.pattern">Campo de tipo texto.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex>
-          <input matInput  type="text"  placeholder="Número de páginas" formControlName="nPagina">
-          <mat-error *ngIf="bookForm.controls.nPagina.touched && bookForm.controls.nPagina.invalid">
-            <span *ngIf="bookForm.get('nPagina').errors.required">Campo obligatorio.</span>
-            <span *ngIf="bookForm.get('nPagina').errors.pattern">Campo de tipo numerico.</span>
+          <input matInput  type="text"  placeholder="Número de páginas" formControlName="nPage">
+          <mat-error *ngIf="bookForm.controls.nPage.touched && bookForm.controls.nPage.invalid">
+            <span *ngIf="bookForm.get('nPage').errors.required">Campo obligatorio.</span>
+            <span *ngIf="bookForm.get('nPage').errors.pattern">Campo de tipo numerico.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex>
-          <input matInput  type="text"  placeholder="Año de edición" formControlName="year">
-          <mat-error *ngIf="bookForm.controls.year.touched && bookForm.controls.year.invalid">
-            <span *ngIf="bookForm.get('year').errors.required">Campo obligatorio.</span>
-            <span *ngIf="bookForm.get('year').errors.pattern">Campo de tipo numerico.</span>
+          <input matInput  type="text"  placeholder="Año de edición" formControlName="yearEdicion">
+          <mat-error *ngIf="bookForm.controls.yearEdicion.touched && bookForm.controls.yearEdicion.invalid">
+            <span *ngIf="bookForm.get('yearEdicion').errors.required">Campo obligatorio.</span>
+            <span *ngIf="bookForm.get('yearEdicion').errors.pattern">Campo de tipo numerico.</span>
           </mat-error>
         </mat-form-field>
       </div>
 
       <button mat-raised-button color="primary" 
-              type="button" (click)="submit()">Registrar</button>
+              type="button" (click)="create()" [disabled] = "bookForm.invalid">{{id > 0 ?  'MODIFICAR' : 'AGREGAR'}}</button>        
 
       <button mat-raised-button color="primary" (click)="clear()">Limpiar</button>
   </form>
