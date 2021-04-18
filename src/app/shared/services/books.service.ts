@@ -16,6 +16,9 @@ export class BooksService  implements Crud {
   constructor(
     private httpClient: HttpClient
     ) { }
+  modify(id: number, object: any) {
+    throw new Error('Method not implemented.');
+  }
   private uri: string = 'http://localhost:8080/api/';
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
@@ -36,7 +39,7 @@ export class BooksService  implements Crud {
   consultById(id: any) {
     return this.httpClient.get(`${this.uri}books/${id}`,{headers: this.httpHeaders});
   }
-  modify(id: number, book:any) {
+  update(id: number, book:any) {
     return this.httpClient.put(`${this.uri}books/${id}`,book, {headers: this.httpHeaders});
   }
 
