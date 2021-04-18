@@ -21,21 +21,16 @@ export class AllBooksComponent implements OnInit {
     ) {}
 
   info: any[] = [];
-
   displayedColumns: string[] = ['id', 'name', 'editorial', 'author', 'gender', 'nPage','edit','delete'];
   dataSource = new MatTableDataSource();
-
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-
 
   ngOnInit() {                                                                          
 
     this.allBooks();    
     this.dataSource.paginator = this.paginator;
-    this.update("MODIFICAR IMPRESIONNNNN")
   }
-
-
+  
   allBooks() {
     this._service.consultAll()
                  .subscribe(item => {
@@ -50,12 +45,8 @@ export class AllBooksComponent implements OnInit {
                    this.allBooks();
                  });
   }
+
   update(elemento: any) {
-    console.log("MODIFICAR LIBRO",elemento)
     this.router.navigate(['home/edit-book/',elemento.id]);
-
   }
-
-
-
 }
