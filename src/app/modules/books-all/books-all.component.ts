@@ -4,6 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { BooksService } from 'src/app/shared/services/books.service';
 import { Router } from '@angular/router';
 import { Alert } from '@utils/alerts';
+import { MESSAGE, TYPE_ALERT  } from '@utils/catalog';
 
 @Component({
   selector: 'app-books-all',
@@ -39,11 +40,20 @@ export class AllBooksComponent implements OnInit {
   }
 
   delete(elemento:any) { 
-    console.log(elemento);
-    this._service.delete(elemento.id)
-                 .subscribe(()=>{
-                   this.allBooks();
-                 });
+
+    this.alert.questions(MESSAGE.QUESTION)
+    .then((resdponse) => {
+
+      if (resdponse.value) {
+        this._service.delete(elemento.id)
+                        .subscribe(()=>{
+                          this.allBooks();
+                          this.alert.msgTimer(TYPE_ALERT.SUCCESS)
+                      });
+      }     
+
+    });
+     
   }
 
   update(elemento: any) {
