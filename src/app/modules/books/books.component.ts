@@ -36,15 +36,15 @@ export class BooksComponent implements OnInit {
   }
 
   loadItemById() {
-    if (this.id > 0) {
+    if (this.id) {
       this._service.consultById(this.id).subscribe( item => {
         this.bookForm.patchValue(item);
       });
     }
   }
 
-  create() {
-    if (this.id > 0) {
+  save() {
+    if (this.id) {
       this._service.update(this.id, this.bookForm.value).subscribe();
     } else {
       this._service.create(this.bookForm.value).subscribe(); 
@@ -59,10 +59,6 @@ export class BooksComponent implements OnInit {
     });
   }
  
-  testRouter() {
-    this.router.navigate(['/home/all-book'])
-  }
-
   validators() {
     this.bookForm = this.fb.group({
       name:['', [

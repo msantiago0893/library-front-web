@@ -1,5 +1,6 @@
 <p>{{id ? 'MODIFICAR LIBRO' : 'AGREGAR LIBRO'}}</p>
 
+
 <div class="productCards">
   <form #regForm="ngForm" class="form" [formGroup]="bookForm" novalidate>
 
@@ -51,7 +52,7 @@
       </div>
 
       <button mat-raised-button color="primary" 
-              type="button" (click)="create()" [disabled] = "bookForm.invalid">{{id > 0 ?  'MODIFICAR' : 'AGREGAR'}}</button>        
+              type="button" (click)="save()" [disabled] = "bookForm.invalid">{{id  ?  'MODIFICAR' : 'AGREGAR'}}</button>        
 
       <button mat-raised-button color="primary" (click)="clear()">Limpiar</button>
   </form>
