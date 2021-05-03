@@ -14,8 +14,6 @@ import { Alert } from "@utils/alerts";
 export class BooksComponent implements OnInit {
 
   bookForm : FormGroup;
-  //public book: Book = new Book(data: any);
-
   private alert: Alert = new Alert();
   id: number
 
@@ -32,7 +30,7 @@ export class BooksComponent implements OnInit {
 
   ngOnInit() {
     this.validators();
-    this.loadItemById();  
+    this.loadItemById();
   }
 
   loadItemById() {
@@ -47,7 +45,7 @@ export class BooksComponent implements OnInit {
     if (this.id) {
       this._service.update(this.id, this.bookForm.value).subscribe();
     } else {
-      this._service.create(this.bookForm.value).subscribe(); 
+      this._service.create(this.bookForm.value).subscribe();
     }
   }
 
@@ -58,7 +56,7 @@ export class BooksComponent implements OnInit {
       }
     });
   }
- 
+
   validators() {
     this.bookForm = this.fb.group({
       name:['', [
