@@ -1,9 +1,9 @@
 import Swal from "sweetalert2";
 
-export class Alert {
+export class Alert{
 
   //warning, success, error
-  msgTimer(type: any, title?: string, msg?: string): any {
+  static msgTimer(type: any, title?: string, msg?: string): any {
     return Swal.fire({
       icon: type,
       title: title,
@@ -11,9 +11,9 @@ export class Alert {
       showConfirmButton: false,
       timer: 2000,
     });
-
   }
-  msg(type: any, msg?: string, title?: string): any {
+
+  static msg(type: any, msg?: string, title?: string): any {
     return Swal.fire({
       icon: type,
       title: title,
@@ -21,7 +21,7 @@ export class Alert {
     });
   }
 
-  questions(question:any): any {
+  static questions(question:any): any {
     return Swal.fire({
       title: question,
       icon: 'warning',

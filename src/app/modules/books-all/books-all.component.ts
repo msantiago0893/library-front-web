@@ -14,7 +14,6 @@ import { MESSAGE, TYPE_ALERT  } from '@utils/catalog';
 export class AllBooksComponent implements OnInit {
 
   public data = [];
-  private alert: Alert = new Alert();
 
   constructor(
     private _service: BooksService,
@@ -26,12 +25,12 @@ export class AllBooksComponent implements OnInit {
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  ngOnInit() {                                                                          
+  ngOnInit() {
 
-    this.allBooks();    
+    this.allBooks();
     this.dataSource.paginator = this.paginator;
   }
-  
+
   allBooks() {
     this._service.consultAll()
                  .subscribe(item => {
@@ -39,21 +38,20 @@ export class AllBooksComponent implements OnInit {
                   });
   }
 
-  delete(elemento:any) { 
+  delete(elemento:any) {
 
-    this.alert.questions(MESSAGE.QUESTION)
+    Alert.questions(MESSAGE.QUESTION)
     .then((resdponse) => {
 
       if (resdponse.value) {
         this._service.delete(elemento.id)
                         .subscribe(()=>{
                           this.allBooks();
-                          this.alert.msgTimer(TYPE_ALERT.SUCCESS)
+                          Alert.msgTimer(TYPE_ALERT.SUCCESS)
                       });
-      }     
+      }
 
     });
-     
   }
 
   update(elemento: any) {

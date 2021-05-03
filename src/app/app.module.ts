@@ -37,7 +37,8 @@ import { ManagerComponent } from './views/manager/manager.component';
 import { GalleryComponent } from './views/gallery/gallery.component'
 import { AnimalesComponent } from './modules/animales/animales.component';
 import { CreateanimalesComponent } from './modules/createanimales/createanimales.component';
-import { RegistryComponent } from './auth/registry/registry.component'
+import { RegistryComponent } from './auth/registry/registry.component';
+import { CalculadoraComponent } from './auth/calculadora/calculadora.component'
 
 
 export function httpTranslateLoader(http: HttpClient) {
@@ -67,6 +68,7 @@ export function httpTranslateLoader(http: HttpClient) {
     AnimalesComponent,
     CreateanimalesComponent,
     RegistryComponent,
+    CalculadoraComponent,
   ],
   imports: [
     BrowserModule,

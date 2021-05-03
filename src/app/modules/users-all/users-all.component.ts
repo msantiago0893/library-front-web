@@ -35,7 +35,7 @@ export class StudentsConsultComponent implements OnInit {
 
   questionDelete(student:any) { 
     
-    this.alert.questions("¿Está seguro de eliminar?")
+    Alert.questions("¿Está seguro de eliminar?")
               .then( option => {
                 /* condicion ternario */
                 (option.value) ? this.delete(student.id) : null;
