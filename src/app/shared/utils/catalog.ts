@@ -1,11 +1,5 @@
 export const API_ENDPOINT: string = "http://127.0.0.1:6666/api/";
 
-export let TYPE_ALERT = {
-  WARNING: "warning",
-  SUCCESS: "success",
-  ERROR: "error"
-}
-
 export let MESSAGE = {
   ADD: "¡Se ha agregado con éxito!",
   MODIFY: "¡Se ha actualizado con éxito!",
