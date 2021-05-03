@@ -52,7 +52,7 @@ export class BooksComponent implements OnInit {
   }
 
   alerta() {
-    this.alert.questions('Esta seguro de eliminar el elemento?')
+    Alert.questions('Esta seguro de eliminar el elemento?')
     .then((result) => {
       if (result.value) {
       }
