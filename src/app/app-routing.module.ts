@@ -14,12 +14,14 @@ import { GalleryComponent } from './views/gallery/gallery.component';
 import { AnimalesComponent } from '@modules/animales/animales.component';
 import { CreateanimalesComponent } from '@modules/createanimales/createanimales.component';
 import { RegistryComponent } from './auth/registry/registry.component';
+import { CalculadoraComponent } from './auth/calculadora/calculadora.component';
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signin', component: LoginComponent,  pathMatch: 'full'},
   { path: 'signup', component: RegistryComponent},
+  { path: 'calculadora', component: CalculadoraComponent},
   {
     path: 'home', component: HomeComponent,
     children: [

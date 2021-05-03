@@ -1,4 +1,28 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+### Git ###
+*.orig
+
+### NG CLI ###
+dist/
+dist-server/
+tmp/
+e2e/*.js
+e2e/*.map
+out-tsc/
+
+### Node ###
+node_modules/
+bower_components/
+package-lock.json
+
+### VIM ###
+*~
+*.swp
+*.swo
+
+### General ###
+*.log
+*.lock*
+*.DS_Store
 
 # compiled output
 /dist
@@ -21,6 +45,7 @@ speed-measure-plugin*.json
 *.sublime-workspace
 
 # IDE - VSCode
+.vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json

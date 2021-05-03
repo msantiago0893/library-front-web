@@ -1,72 +1,69 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '@services/user.service';
-import { Alert } from '@utils/alerts';
 import * as Regex from '@utils/regex';
-import * as Catalog from '@utils/catalog';
-import { PersonaAdapter } from './domain/persona-adapter';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.sass']
+  selector: 'app-registry',
+  templateUrl: './registry.component.html',
+  styleUrls: ['./registry.component.sass']
 })
-export class StudentsComponent implements OnInit {
+export class RegistryComponent implements OnInit {
 
-  private studentsForm : FormGroup;
+  private registryForm : FormGroup;
 
   constructor(
-    private students: FormBuilder,
-    private service: UserService
+    private registryGroup: FormBuilder,
+    private _service : UserService
   ) { }
 
   ngOnInit() {
     this.validations();
   }
 
-  onSelectionChanged() {
-    this.studentsForm.get('clave').enable();
-  }
-
   save() {
 
-    this.service
-        .createStudent(new PersonaAdapter(this.studentsForm.value))
-        .subscribe(() => {
-          Alert.msgTimer('success', Catalog.MESSAGE.ADD);
-        });
+    this._service.createStudent(this.registryForm.value).subscribe();
+
+    this.reset();
+  }
+
+  reset() {
+
+    this.registryForm.reset('');
+
+    Object.keys(this.registryForm.controls).forEach(key => {
+      this.registryForm.controls[key].setErrors(null);
+    });
+
+    this.registryForm.setErrors({"required":true});
   }
 
   validations() {
 
-    this.studentsForm = this.students.group({
-      typeUser: ['', [
-        Validators.required
-      ]],
-      clave: ['', [
+    this.registryForm = this.registryGroup.group({
+      dni: ['', [
         Validators.required,
         Validators.minLength(4),
-        Validators.pattern(Regex.numeric)
-      ]],
-      degree: ['', [
-        Validators.required
+        Validators.maxLength(10),
+        Validators.pattern(Regex.alfanumerico)
       ]],
       name: ['', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(40),
+        Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
       surname: ['', [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(40),
+        Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
       mothersuname: ['', [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(40),
+        Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
       sex: ['', [
@@ -84,28 +81,44 @@ export class StudentsComponent implements OnInit {
       ]],
       postalCode: ['', [
         Validators.required,
-        Validators.minLength(4), 
+        Validators.minLength(5),
         Validators.maxLength(5),
         Validators.pattern(Regex.numeric)
       ]],
+      city: ['', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(30),
+        Validators.pattern(Regex.name)
+      ]],
       delegation: ['', [
         Validators.required,
-        Validators.minLength(4), 
-        Validators.maxLength(40),
+        Validators.minLength(4),
+        Validators.maxLength(30),
         Validators.pattern(Regex.name)
       ]],
       colony: ['', [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(50),
+        Validators.maxLength(30),
         Validators.pattern(Regex.name)
       ]],
       street: ['', [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(40),
+        Validators.maxLength(30),
         Validators.pattern(Regex.name)
-      ]]
+      ]],
+      numInt: ['', [
+        Validators.minLength(1),
+        Validators.maxLength(2),
+        Validators.pattern(Regex.numeric)
+      ]],
+      numExt: ['', [
+        Validators.minLength(1),
+        Validators.maxLength(2),
+        Validators.pattern(Regex.numeric)
+      ]],
     });
   }
 }
