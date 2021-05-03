@@ -4,7 +4,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import { BooksService } from 'src/app/shared/services/books.service';
 import { Router } from '@angular/router';
 import { Alert } from '@utils/alerts';
-import { MESSAGE, TYPE_ALERT  } from '@utils/catalog';
+import { MESSAGE } from '@utils/catalog';
+import { TYPEALERT } from '@enums/type-alert.enum'
 
 @Component({
   selector: 'app-books-all',
@@ -47,7 +48,7 @@ export class AllBooksComponent implements OnInit {
         this._service.delete(elemento.id)
                         .subscribe(()=>{
                           this.allBooks();
-                          Alert.msgTimer(TYPE_ALERT.SUCCESS)
+                          Alert.msgTimer(TYPEALERT.SUCCESS)
                       });
       }
 
