@@ -28,7 +28,7 @@ export class Alert{
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí',
+      confirmButtonText: 'Confirmar',
       cancelButtonText: 'Cancelar'
     })
   }

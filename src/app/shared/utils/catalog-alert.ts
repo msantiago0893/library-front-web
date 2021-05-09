@@ -9,8 +9,8 @@ export let MESSAGE = {
   MODIFY: "¡Se ha actualizado con éxito!",
   DONE: "¡El elemento se ha eliminado con éxito!",
   QUESTION: "¿Está seguro de eliminar el elemento?",
-  UPDATE_FAILED: "¡¡No se pudo actualizar correctamente!!", 
-  DELETE_FAILED:'¡¡No se pudo eliminar correctamente!!'
+  FAILED: "¡¡La operacion no se realizo correctamente!!",
+  DELETE_FAILED:'¡¡No se pudo eliminar correctamente!!',
 
 };
 

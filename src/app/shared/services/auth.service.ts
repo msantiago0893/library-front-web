@@ -43,8 +43,8 @@ export class AuthService {
             Storage.setItem('user', {
               name: 'admin',
               role: {
-                      code: 'CLIENT',
-                      description: 'Cliente'
+                      code: 'MANAGER',
+                      description: 'manager'
                     }
             });
           }
