@@ -3,8 +3,9 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { UserService } from '@services/user.service';
 import { Alert } from '@utils/alerts';
 import * as Regex from '@utils/regex';
-import * as Catalog from '@utils/catalog';
 import { PersonaAdapter } from './domain/persona-adapter';
+import { MESSAGE } from '@utils/catalog-alert';
+import { TYPEALERT } from '@enums/type-alert.enum';
 
 @Component({
   selector: 'app-users',
@@ -33,7 +34,7 @@ export class StudentsComponent implements OnInit {
     this.service
         .createStudent(new PersonaAdapter(this.studentsForm.value))
         .subscribe(() => {
-          Alert.msgTimer('success', Catalog.MESSAGE.ADD);
+          Alert.msgTimer('success', MESSAGE.ADD);
         });
   }
 
