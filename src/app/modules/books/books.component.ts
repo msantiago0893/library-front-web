@@ -49,7 +49,7 @@ export class BooksComponent implements OnInit {
         response => {
           Alert.msgTimer(TYPE_ALERT.SUCCESS,MESSAGE.MODIFY)
           this.reset();
-      },
+        },
       error => {
         Alert.msgTimer(TYPE_ALERT.WARNING, MESSAGE.FAILED);
       });
@@ -65,7 +65,6 @@ export class BooksComponent implements OnInit {
         error => {
           Alert.msgTimer(TYPE_ALERT.WARNING, MESSAGE.FAILED);
         });
-
     }
   }
 
