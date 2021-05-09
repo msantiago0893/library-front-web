@@ -1,29 +1,33 @@
 
-<mat-toolbar color="primary" class="header">
+<mat-toolbar color='primary' class='header'>
     <div>LibraryUI</div>
   </mat-toolbar>
 
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div class='login-wrapper' >
 
-    <mat-card  class="login">
-        <img  class="logo-security" src="assets/images/securirty-2-logo.svg"  alt="login">
+    <div class='login'>
+      <img class='login__icon' src='assets/images/securirty-2-logo.svg'  alt='icon'>
 
-      <form fxLayout="column" >
-        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10rem" fxLayoutGap.lt-md="0px">
-          <mat-form-field fxFlex>
-            <input matInput  type="text"  placeholder="Usuario" name="email">
+      <form class='form-login' [formGroup]='authForm' novalidate (ngSubmit)='onLogin()'>
+        <div class='form-login__control'>
+          <mat-form-field>
+            <input matInput type='text' placeholder='Usuario' formControlName='email'>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type='password' placeholder='Contraseña' formControlName='password'>
           </mat-form-field>
         </div>
-        <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="8rem" fxLayoutGap.lt-md="0px">
-          <mat-form-field fxFlex>
-            <input matInput  type="text"  placeholder="Contraseña" name="email">
-          </mat-form-field>
+        <p class="form-login__msg-error">
+          {{ areWrongCredentials ? 'Credenciales incorrectas': ''}}
+        </p>
+        <div class="form-login__actions">
+          <button class='form-login__save' mat-raised-button color='primary' type='submit' [disabled]='authForm.invalid'>
+            Registrar
+          </button>
+          <br>
+          <a routerLink='/signup'>Crear cuenta nueva</a>
         </div>
-
-        <button mat-raised-button color="primary" routerLink="/home/dashboard">Acceder</button>
-        <br>
-        <a routerLink="/signup">Crear cuenta nueva</a>
       </form>
-    </mat-card>
+    </div>
 
   </div>

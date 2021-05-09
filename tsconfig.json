@@ -8,7 +8,8 @@
       "@modules/*": ["src/app/modules/*"],
       "@services/*": ["src/app/shared/services/*"],
       "@utils/*": ["src/app/shared/utils/*"],
-      "@enums/*": ["src/app/shared/enum/*"]
+      "@enums/*": ["src/app/shared/enum/*"],
+      "@guards/*": ["src/app/shared/guards/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
