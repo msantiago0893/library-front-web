@@ -16,6 +16,8 @@ import { CreateanimalesComponent } from '@modules/createanimales/createanimales.
 import { RegistryComponent } from './auth/registry/registry.component';
 import { CalculadoraComponent } from './auth/calculadora/calculadora.component';
 
+import { AuthGuard } from '@guards/auth.guard'
+
 const routes: Routes = [
 
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
@@ -24,6 +26,7 @@ const routes: Routes = [
   { path: 'calculadora', component: CalculadoraComponent},
   {
     path: 'home', component: HomeComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'test', component: StudentTestComponent},
       { path: 'dashboard', component: DashboardComponent},
@@ -40,6 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'customer', component: CustomerComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'gallery', component: GalleryComponent},
     ]
