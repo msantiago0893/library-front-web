@@ -51,9 +51,8 @@
         </mat-form-field>
       </div>
 
-      <button mat-raised-button color="primary" 
-              type="button" (click)="save()" [disabled] = "bookForm.invalid">{{id  ?  'MODIFICAR' : 'AGREGAR'}}</button>        
-
+      <button mat-raised-button color="primary"
+              type="button" (click)="save()" >{{id  ?  'MODIFICAR' : 'AGREGAR'}}</button>
       <button mat-raised-button color="primary" (click)="clear()">Limpiar</button>
   </form>
   <button mat-button color="primary" (click)='testRouter()' >Navegar a ver libros</button>
