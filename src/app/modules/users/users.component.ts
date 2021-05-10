@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { UserService } from '@services/user.service';
+import { UserAccount } from '@services/account.service';
 import { Alert } from '@utils/alerts';
 import * as Regex from '@utils/regex';
 import { PersonaAdapter } from './domain/persona-adapter';
@@ -18,7 +18,7 @@ export class StudentsComponent implements OnInit {
 
   constructor(
     private students: FormBuilder,
-    private service: UserService
+    private service: UserAccount
   ) { }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class StudentsComponent implements OnInit {
   save() {
 
     this.service
-        .createStudent(new PersonaAdapter(this.studentsForm.value))
+        .create(new PersonaAdapter(this.studentsForm.value))
         .subscribe(() => {
           Alert.msgTimer('success', MESSAGE.ADD);
         });

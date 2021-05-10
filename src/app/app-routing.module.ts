@@ -7,7 +7,6 @@ import { AllBooksComponent } from '@modules/books-all/books-all.component';
 import { StudentsComponent} from '@modules/users/users.component';
 import { StudentsConsultComponent } from '@modules/users-all/users-all.component';
 import { DashboardComponent } from '@modules/dashboard/dashboard.component';
-import { StudentTestComponent } from '@modules/student-test/student-test.component';
 import { CatalogsComponent } from '@modules/catalogs/catalogs.component';
 import { CustomerComponent } from './views/customer/customer.component';
 import { GalleryComponent } from './views/gallery/gallery.component';
@@ -28,7 +27,6 @@ const routes: Routes = [
     path: 'home', component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'test', component: StudentTestComponent},
       { path: 'dashboard', component: DashboardComponent},
       { path: 'add-book', component: BooksComponent},
       { path: 'all-book', component: AllBooksComponent},

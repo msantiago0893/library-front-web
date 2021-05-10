@@ -23,7 +23,6 @@ import { StudentsComponent } from '@modules/users/users.component';
 import { AllBooksComponent } from '@modules/books-all/books-all.component';
 import { StudentsConsultComponent } from '@modules/users-all/users-all.component';
 import { DashboardComponent } from '@modules/dashboard/dashboard.component';
-import { StudentTestComponent } from '@modules/student-test/student-test.component';
 import { CatalogsComponent } from '@modules/catalogs/catalogs.component';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http'
@@ -59,7 +58,6 @@ export function httpTranslateLoader(http: HttpClient) {
     AllBooksComponent,
     StudentsConsultComponent,
     DashboardComponent,
-    StudentTestComponent,
     CatalogsComponent,
     ...fromComponents.components,
     CustomerComponent,
