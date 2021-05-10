@@ -73,6 +73,15 @@
             </span>
           </mat-error>
         </mat-form-field>
+        <mat-form-field>
+          <input matInput  type="text" placeholder="*Contraseña" formControlName="password">
+          <mat-error *ngIf="registryForm.controls.password.touched && registryForm.controls.password.invalid">
+            <span *ngIf="registryForm.controls.password.errors.required">Campo requerido</span>
+            <span *ngIf="registryForm.get('password').errors.pattern">
+              Email inválido
+            </span>
+          </mat-error>
+        </mat-form-field>
       </div>
       <h4>Direccion</h4>
       <div class="form__control">
@@ -135,6 +144,11 @@
           </mat-form-field>
         </div>
       </div>
+
+      <p class="msg_confirmation" *ngIf='isSuccess'>
+        Se le ha enviado una liga de confirmación a su correo eléctronico
+      </p>
+
       <div class="form__actions">
         <button mat-raised-button color="primary" type="submit" [disabled]="registryForm.invalid">Registrar</button>
         <button mat-raised-button (click)="reset()">Cancelar</button>

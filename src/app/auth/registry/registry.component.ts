@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '@services/user.service';
+import { UserAdapter } from './domain/user-adapter';
+import { UserAccount } from '@services/account.service';
 import * as Regex from '@utils/regex';
 
 @Component({
@@ -12,9 +13,11 @@ export class RegistryComponent implements OnInit {
 
   private registryForm : FormGroup;
 
+  isSuccess: Boolean = false;
+
   constructor(
     private registryGroup: FormBuilder,
-    private _service : UserService
+    private _service : UserAccount
   ) { }
 
   ngOnInit() {
@@ -23,9 +26,20 @@ export class RegistryComponent implements OnInit {
 
   save() {
 
-    this._service.createStudent(this.registryForm.value).subscribe();
+    console.log('Valores recogidos ', this.registryForm.value);
 
-    this.reset();
+    this._service.create(new UserAdapter(this.registryForm.value))
+                  .subscribe(
+                    response => {
+                      console.log(response);
+
+                      this.isSuccess = !this.isSuccess;
+
+                      setTimeout(() => {
+                        this.isSuccess = !this.isSuccess;
+                        this.reset();
+                      },3000);
+                  });
   }
 
   reset() {
@@ -78,6 +92,10 @@ export class RegistryComponent implements OnInit {
       email: ['', [
         Validators.required,
         Validators.pattern(Regex.email)
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.pattern(Regex.name)
       ]],
       postalCode: ['', [
         Validators.required,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '@services/user.service';
+import { UserAccount } from '@services/account.service';
 import * as Regex from '@utils/regex';
 
 @Component({
@@ -14,7 +14,7 @@ export class RegistryComponent implements OnInit {
 
   constructor(
     private registryGroup: FormBuilder,
-    private _service : UserService
+    private _service : UserAccount
   ) { }
 
   ngOnInit() {
@@ -23,7 +23,7 @@ export class RegistryComponent implements OnInit {
 
   save() {
 
-    this._service.createStudent(this.registryForm.value).subscribe();
+    this._service.create(this.registryForm.value).subscribe();
 
     this.reset();
   }
