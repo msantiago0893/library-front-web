@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserAccount } from '@services/account.service';
 import { Alert } from '@utils/alerts';
 import * as Regex from '@utils/regex';
 import { PersonaAdapter } from './domain/persona-adapter';
 import { MESSAGE } from '@utils/catalog-alert';
-import { TYPEALERT } from '@enums/type-alert.enum';
+import { UserAdapter } from '../../shared/domain/user-adapter';
 
 @Component({
   selector: 'app-users',
@@ -14,60 +14,49 @@ import { TYPEALERT } from '@enums/type-alert.enum';
 })
 export class StudentsComponent implements OnInit {
 
-  private studentsForm : FormGroup;
+  private userForm : FormGroup;
 
   constructor(
-    private students: FormBuilder,
-    private service: UserAccount
+    private userGorup: FormBuilder,
+    private _service: UserAccount
   ) { }
 
   ngOnInit() {
     this.validations();
   }
 
-  onSelectionChanged() {
-    this.studentsForm.get('clave').enable();
-  }
-
   save() {
 
-    this.service
-        .create(new PersonaAdapter(this.studentsForm.value))
-        .subscribe(() => {
-          Alert.msgTimer('success', MESSAGE.ADD);
-        });
+    this._service.create(new UserAdapter(this.userForm.value))
+                  .subscribe(
+                    response => {
+                      Alert.msgTimer('success', MESSAGE.ADD);
+                  });
+  }
+
+  reset() {
+
   }
 
   validations() {
 
-    this.studentsForm = this.students.group({
-      typeUser: ['', [
-        Validators.required
-      ]],
-      clave: ['', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.pattern(Regex.numeric)
-      ]],
-      degree: ['', [
-        Validators.required
-      ]],
+    this.userForm = this.userGorup.group({
       name: ['', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(40),
+        Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
       surname: ['', [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(40),
+        Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
       mothersuname: ['', [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(40),
+        Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
       sex: ['', [
@@ -83,29 +72,13 @@ export class StudentsComponent implements OnInit {
         Validators.required,
         Validators.pattern(Regex.email)
       ]],
-      postalCode: ['', [
+      password: ['', [
         Validators.required,
-        Validators.minLength(4), 
-        Validators.maxLength(5),
-        Validators.pattern(Regex.numeric)
+        // Validators.pattern(Regex.name)
       ]],
-      delegation: ['', [
+      role: ['MANAGER', [
         Validators.required,
-        Validators.minLength(4), 
-        Validators.maxLength(40),
-        Validators.pattern(Regex.name)
-      ]],
-      colony: ['', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(50),
-        Validators.pattern(Regex.name)
-      ]],
-      street: ['', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(40),
-        Validators.pattern(Regex.name)
+        // Validators.pattern(Regex.name)
       ]]
     });
   }

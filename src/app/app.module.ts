@@ -37,7 +37,9 @@ import { GalleryComponent } from './views/gallery/gallery.component'
 import { AnimalesComponent } from './modules/animales/animales.component';
 import { CreateanimalesComponent } from './modules/createanimales/createanimales.component';
 import { RegistryComponent } from './auth/registry/registry.component';
-import { CalculadoraComponent } from './auth/calculadora/calculadora.component'
+import { CalculadoraComponent } from './auth/calculadora/calculadora.component';
+import { ForgoutPasswordComponent } from './auth/forgout-password/forgout-password.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component'
 
 
 export function httpTranslateLoader(http: HttpClient) {
@@ -67,6 +69,8 @@ export function httpTranslateLoader(http: HttpClient) {
     CreateanimalesComponent,
     RegistryComponent,
     CalculadoraComponent,
+    ForgoutPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserAdapter } from './domain/user-adapter';
+import { UserAdapter } from '../../shared/domain/user-adapter';
 import { UserAccount } from '@services/account.service';
 import * as Regex from '@utils/regex';
 
@@ -21,17 +21,34 @@ export class RegistryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.validations();
+    this.registryForm.patchValue(
+      {
+        dni: "SAFM931208",
+        name: "Marco Antonio",
+        surname: "Santiago",
+        mothersuname: "Feria",
+        sex: "M",
+        cel: "5544332211",
+        email: "msantiago@linko.mx",
+        password: "12345",
+        postalCode: "01857",
+        city: "CDMX",
+        delegation: "Alvaro Obregón",
+        colony: "Lomas de Chamontoya",
+        street: "CD Jesús María",
+        numInt: "21",
+        numExt: "12"
+      }
+    );
   }
 
   save() {
 
-    console.log('Valores recogidos ', this.registryForm.value);
-
     this._service.create(new UserAdapter(this.registryForm.value))
                   .subscribe(
                     response => {
-                      console.log(response);
 
                       this.isSuccess = !this.isSuccess;
 
@@ -95,7 +112,7 @@ export class RegistryComponent implements OnInit {
       ]],
       password: ['', [
         Validators.required,
-        Validators.pattern(Regex.name)
+        // Validators.pattern(Regex.name)
       ]],
       postalCode: ['', [
         Validators.required,
