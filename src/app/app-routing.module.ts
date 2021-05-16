@@ -16,12 +16,16 @@ import { RegistryComponent } from './auth/registry/registry.component';
 import { CalculadoraComponent } from './auth/calculadora/calculadora.component';
 
 import { AuthGuard } from '@guards/auth.guard'
+import { ForgoutPasswordComponent } from './auth/forgout-password/forgout-password.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signin', component: LoginComponent,  pathMatch: 'full'},
   { path: 'signup', component: RegistryComponent},
+  { path: 'forgot-password', component: ForgoutPasswordComponent},
+  { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'calculadora', component: CalculadoraComponent},
   {
     path: 'home', component: HomeComponent,

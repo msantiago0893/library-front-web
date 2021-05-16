@@ -36,17 +36,11 @@ export class AuthService {
 
     return this.httpClient.post<any>(`${this.uri}oauth/token`, params.toString(), {headers: header})
       .pipe(
-        tap(resp => {
+        tap(response => {
 
-          if(resp.access_token){
-            Storage.setItem('accessToken',resp.access_token);
-            Storage.setItem('user', {
-              name: 'admin',
-              role: {
-                      code: 'MANAGER',
-                      description: 'manager'
-                    }
-            });
+          if(response.access_token){
+            Storage.setItem('accessToken',response.access_token);
+            Storage.setItem('user', response.user);
           }
         }),
         map(resp => {

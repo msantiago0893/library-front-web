@@ -13,7 +13,7 @@ import { ACL } from '../../shared/security/acl'
 export class LoginComponent implements OnInit {
 
   private authForm : FormGroup;
-  private areWrongCredentials = false;
+  areWrongCredentials = false;
 
   constructor(
     private authGroup: FormBuilder,
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       password: ['', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(25),
+        Validators.maxLength(2000),
         // Validators.pattern(Regex.alfanumerico)
       ]]
     });
