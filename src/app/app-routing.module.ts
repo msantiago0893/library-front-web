@@ -14,11 +14,10 @@ import { AnimalesComponent } from '@modules/animales/animales.component';
 import { CreateanimalesComponent } from '@modules/createanimales/createanimales.component';
 import { RegistryComponent } from './auth/registry/registry.component';
 import { CalculadoraComponent } from './auth/calculadora/calculadora.component';
-
-import { AuthGuard } from '@guards/auth.guard'
+import { AuthGuard } from '@guards/auth.guard';
 import { ForgoutPasswordComponent } from './auth/forgout-password/forgout-password.component';
-import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
-
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component'
+import { PrvEmptyComponent } from './app/components/prv-empty/prv-empty.component';
 const routes: Routes = [
 
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
@@ -40,7 +39,7 @@ const routes: Routes = [
       { path: 'catalog', component: CatalogsComponent},
       { path: 'animales', component: AnimalesComponent},
       { path: 'edit-animales/:id', component: CreateanimalesComponent},
-      { path: 'createanimales', component:CreateanimalesComponent},
+      { path: 'createanimales', component:PrvEmptyComponent},
     ]
   },
   {

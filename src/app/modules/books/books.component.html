@@ -1,5 +1,6 @@
-<p>{{id ? 'MODIFICAR LIBRO' : 'AGREGAR LIBRO'}}</p>
-
+<div class ="containTitle">
+<p class ="title">{{id ? 'MODIFICAR LIBRO' : 'AGREGAR LIBRO'}}</p>
+</div>
 
 <div class="productCards">
   <form #regForm="ngForm" class="form" [formGroup]="bookForm" novalidate>
@@ -50,14 +51,9 @@
           </mat-error>
         </mat-form-field>
       </div>
-
-      <button mat-raised-button color="primary"
+      <div class ="container-button" >
+      <button class="container-button__button" mat-raised-button color="primary"
               type="button" (click)="save()" >{{id  ?  'MODIFICAR' : 'AGREGAR'}}</button>
-      <button mat-raised-button color="primary" (click)="clear()">Limpiar</button>
+      </div>
   </form>
-  <button mat-button color="primary" (click)='testRouter()' >Navegar a ver libros</button>
-
-  <button mat-raised-buttoncolor="primary" (click)='alerta()'>Probar Alerta</button>
 </div>
-
-<pre>{{ bookForm.value | json }}</pre>

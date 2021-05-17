@@ -1,6 +1,12 @@
+<app-prv-empty *ngIf="!dataSource.data.length"> </app-prv-empty>
 
-<h1>CONSULTA DE LIBROS!</h1>
-<div class="mat-elevation-z8">
+<p>  {{dataSource.data.length}}</p>
+
+
+
+<div class="mat-elevation-z8" *ngIf="dataSource.data.length" >
+  <h1>CONSULTA DE LIBROS!</h1>
+
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -41,7 +47,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
 
