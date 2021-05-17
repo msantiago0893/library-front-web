@@ -39,12 +39,14 @@ import { CreateanimalesComponent } from './modules/createanimales/createanimales
 import { RegistryComponent } from './auth/registry/registry.component';
 import { CalculadoraComponent } from './auth/calculadora/calculadora.component';
 import { ForgoutPasswordComponent } from './auth/forgout-password/forgout-password.component';
-import { ResetPasswordComponent } from './auth/reset-password/reset-password.component'
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { PrvEmptyComponent } from './app/components/prv-empty/prv-empty.component'
+
 
 
 export function httpTranslateLoader(http: HttpClient) {
    //return new TranslateHttpLoader(http, 'local/i18n/', '.json');
-  return new TranslateHttpLoader(http); 
+  return new TranslateHttpLoader(http);
 }
 
 @NgModule({
@@ -71,6 +73,7 @@ export function httpTranslateLoader(http: HttpClient) {
     CalculadoraComponent,
     ForgoutPasswordComponent,
     ResetPasswordComponent,
+    PrvEmptyComponent,
   ],
   imports: [
     BrowserModule,
