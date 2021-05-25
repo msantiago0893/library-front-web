@@ -11,30 +11,46 @@ import { Persona } from './domain/Persona';
 })
 export class StudentsConsultComponent implements OnInit {
 
-  displayedColumns: string[] = ['clave', 'name', 'sex', 'cel','typeUser', 'postalCode', 'delete'];
-  dataSource = new MatTableDataSource();
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  arreglo : any;
 
   private alert: Alert = new Alert();
 
   constructor( private _service: UserAccount) { }
 
   ngOnInit() {
-    
+
     this.allStudents();
-    this.dataSource.paginator = this.paginator;
   }
-  
+ 
+  animales = [
+    {
+      'tipoAnimal': 'Raul Gonzales Garza',
+      'sexo' : 'M'
+    },
+    {
+      'tipoAnimal': 'Mariana Echeverria Torres',
+      'sexo' : 'M'
+    },
+    {
+      'tipoAnimal': 'Roberto Ordoñez Castillo',
+      'sexo' : 'M'
+    }
+  ];
+
+
+
+
+
   allStudents() {
   
     this._service.consultStudents()
                   .subscribe(item => {
-                    this.dataSource.data = item.map(item => new Persona(item));
+                    this.arreglo = item.map(item => new Persona(item));
                   });
   }
 
-  questionDelete(student:any) { 
-    
+  questionDelete(student:any) {
+
     Alert.questions("¿Está seguro de eliminar?")
               .then( option => {
                 /* condicion ternario */
