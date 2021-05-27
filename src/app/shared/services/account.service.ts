@@ -4,6 +4,7 @@ import { from, Observable } from 'rxjs';
 import { StudentsResponse } from '../Interfaces/students';
 import { Student } from '../Interfaces/student';
 import { environment } from '../../../environments/environment'
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,9 @@ export class UserAccount {
     private http: HttpClient
   ) { }
 
-    private uri:string = environment.baseUrl;
+    // private uri:string = environment.baseUrl;
+
+    private uri: string = 'http://localhost:8080/api/';
 
     private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
@@ -32,8 +35,16 @@ export class UserAccount {
   //   return this.http.get<Persona[]>(this.uri);
   // }
 
+  // consultAdmin():any{
+  //   return this.http.get(`${this.uri}usuarios`)
+  //                     .pipe(
+  //                       map((admin:UserAccount[]) =>
+  //                         admin.map(elemento => new UserAccount(elemento))
+  //                        ));
+  // }
+
   consultStudents():Observable<StudentsResponse[]> {
-    return this.http.get<StudentsResponse[]>(this.uri);
+    return this.http.get<StudentsResponse[]>(`${this.uri}usuarios`);
   }
 
   // createStudents(student: Student): Observable<Student> {
@@ -45,7 +56,7 @@ export class UserAccount {
   }
 
   delete(id:number): Observable<Student> {
-    return this.http.delete<Student>(`${this.uri}/${id}`,{headers: this.httpHeaders});
+    return this.http.delete<Student>(`${this.uri}usuarios/${id}`,{headers: this.httpHeaders});
   }
 
 }

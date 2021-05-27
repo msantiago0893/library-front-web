@@ -40,7 +40,6 @@ import { RegistryComponent } from './auth/registry/registry.component';
 import { CalculadoraComponent } from './auth/calculadora/calculadora.component';
 import { ForgoutPasswordComponent } from './auth/forgout-password/forgout-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
-import { PrvEmptyComponent } from './app/components/prv-empty/prv-empty.component'
 
 
 
@@ -72,8 +71,7 @@ export function httpTranslateLoader(http: HttpClient) {
     RegistryComponent,
     CalculadoraComponent,
     ForgoutPasswordComponent,
-    ResetPasswordComponent,
-    PrvEmptyComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

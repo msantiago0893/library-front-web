@@ -1,0 +1,44 @@
+
+
+
+<div class="container-list" *ngIf="block === 1 ">
+
+    <app-prv-empty *ngIf="!arreglo.length"></app-prv-empty>
+
+    <p>ADMINIs {{arreglo.length}}</p>
+
+    <div class="container">
+    <h1 class="title">Administradores </h1>
+    <div  class="container-primary">
+    <div class="list" *ngFor="let item of arreglo">
+        <p class="list__name" title="{{item.name}}">{{item.name}}</p>
+        <div class="buttons">
+            <button class="buttons__action" mat-raised-button >
+            <mat-icon class="icon">edit</mat-icon>
+            <span> Editar</span>
+            </button>
+            <button class="buttons__action" mat-raised-button (click)="delete(item)">
+            <mat-icon class="icon" >delete</mat-icon>
+            <span> Eliminar</span>
+            </button>
+        </div>
+    </div>
+
+    </div>
+    <div class="button">
+    <button mat-raised-button class="button__register" [disabled]="arreglo.length >= numeric.FIVE">
+        <mat-icon class="icon2" >person_add</mat-icon>
+        <span >Registrar</span>
+    </button>
+    </div>
+    <p> numero{{numeric.CINCO}}</p>
+    </div>
+
+</div>
+
+<div class="container-form">
+
+</div>
+
+<!-- <div ng-include="'Table.html'"></div>
+<div class="slide-animate" ng-include="template.url"></div> -->

@@ -1,8 +1,5 @@
-<app-prv-empty *ngIf="!dataSource.data.length"> </app-prv-empty>
-
-<p>  {{dataSource.data.length}}</p>
-
-
+<app-prv-empty *ngIf="!dataSource.data.length"
+  msg1="LO SENTIMOS" msg2="No encontramos libros" > </app-prv-empty>
 
 <div class="mat-elevation-z8" *ngIf="dataSource.data.length" >
   <h1>CONSULTA DE LIBROS!</h1>

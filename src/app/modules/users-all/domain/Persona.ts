@@ -1,41 +1,38 @@
 
 export class Persona {
-
-  id: number;
-  clave: string;
+  id: Number;
+  dni: string;
   name: string;
-  surname: string;
-  mothersuname: string;
+  firstname: string;
+  secondname: string;
   sex: string;
   cel: string;
   email: string;
-  degree: string;
-  typeUser: any;
+  password: String;
+  enabled: Boolean;
+  role: String;
   address: any;
 
   constructor(data:any) {
-
-    console.log('Resdponse ', data);
-
     this.id = data.id;
-    this.clave= data.clave;
+    this.dni= data.dni;
     this.name = data.name;
-    this.surname= data.surname;
-    this.mothersuname = data.mothersuname;
+    this.firstname= data.surname;
+    this.secondname = data.mothersuname;
     this.sex= data.sex;
     this.cel = data.cel;
     this.email= data.email;
-    this.degree = data.degree;
-    this.typeUser = {
-      idType: data.typeUser && data.typeUser.code,
-      type: data.typeUser && data.typeUser.description
-    };
+    this.password = data.password;
+    this.enabled = data.enabled;
+    this.role = data.role;
     this.address = {
-      id: data.address && data.address.id || undefined,
-      postalCode: data.address && data.address.postalCode || '',
-      delegation: data.address && data.address.delegation || '',
-      colony: data.address && data.address.colony || '',
-      street: data.address && data.address.street || ''
+      postalCode: data.postalCode,
+      city: data.postalCode,
+      delegation: data.delegation,
+      colony: data.colony,
+      street: data.street,
+      numInt: data.numInt,
+      numExt: data.numExt
     };
   }
 }
