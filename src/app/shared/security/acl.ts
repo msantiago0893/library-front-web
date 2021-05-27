@@ -1,10 +1,11 @@
-import { Router } from '@angular/router';
 import { Storage } from '../memento/Storage'
-
+import { Router } from '@angular/router';
 export class ACL {
 
+  //Redireccionamiento de home
   static getDefaultRedirectPath(): any {
 
+    console.log('Accediendo a menu principal');
     const user = Storage.getItem('user');
 
     if(user) {
@@ -12,15 +13,19 @@ export class ACL {
       const role = user.role;
 
       if ( ACL.isClient(role) ) {
-        return '/customer';
+        return '/home/customer';
       }
 
       if ( ACL.isManager(role) ) {
-        return '/home';
+        return '/home/manager';
       }
     }
 
-    return '/';
+    return '/home';
+  }
+
+  static getRoles(rol): Boolean {
+    return ['MANAGER', 'CLIENT'].includes(rol);
   }
 
   static isClient(role: string): Boolean {

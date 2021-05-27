@@ -41,8 +41,6 @@ import { CalculadoraComponent } from './auth/calculadora/calculadora.component';
 import { ForgoutPasswordComponent } from './auth/forgout-password/forgout-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 
-
-
 export function httpTranslateLoader(http: HttpClient) {
    //return new TranslateHttpLoader(http, 'local/i18n/', '.json');
   return new TranslateHttpLoader(http);

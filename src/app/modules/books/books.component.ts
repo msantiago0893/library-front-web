@@ -4,8 +4,8 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BooksService } from 'src/app/shared/services/books.service';
 import * as Regex from '@utils/regex';
 import { Alert } from "@utils/alerts";
-import { MESSAGE } from '@utils/catalog-alert';
-import { TYPE_ALERT } from '@utils/catalog-alert';
+import { MESSAGE } from 'src/app/shared/constant/catalog-alert';
+import { TYPE_ALERT } from 'src/app/shared/constant/catalog-alert';
 
 @Component({
   selector: 'app-books',

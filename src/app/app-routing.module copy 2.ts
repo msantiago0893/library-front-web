@@ -20,32 +20,25 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { PrvEmptyComponent } from './components/prv-empty/prv-empty.component';
 import { ManagerComponent } from './views/manager/manager.component';
 import { ACL } from './shared/security/acl';
+import { MainGuard } from '@guards/main.guard';
 const routes: Routes = [
 
-  { path: '', redirectTo: '/signin', pathMatch: 'full' },
-  { path: 'signin', component: LoginComponent, pathMatch: 'full'},
-  { path: 'signup', component: RegistryComponent, pathMatch: 'full'},
-  { path: 'forgot-password', component: ForgoutPasswordComponent, pathMatch: 'full'},
-  { path: 'reset-password', component: ResetPasswordComponent, pathMatch: 'full'},
-  { path: 'calculadora', component: CalculadoraComponent, pathMatch: 'full'},
+  { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  { path: 'signin', component: LoginComponent},
+  { path: 'signup', component: RegistryComponent},
+  { path: 'forgot-password', component: ForgoutPasswordComponent},
+  { path: 'reset-password', component: ResetPasswordComponent},
+  { path: 'calculadora', component: CalculadoraComponent},
 
   {
-    // path: '', component: HomeComponent,
-    path: 'home',
-    canActivate: [RoleGuard],
-    // canActivateChild: [RoleGuard],
-    data: {
-      authorize: [
-        'MANAGER',
-        'CLIENT'
-      ],
-      redirectTo: '/forbidden'
-    },
+    path: 'home', component: HomeComponent,
+    data: [
+      'MANAGER',
+      'CLIENT'
+    ],
+    // redirectTo: ACL.getDefaultRedirectPath(),
+    // canActivate: [MainGuard],
     children: [
-      {
-        path: '',
-        redirectTo: ACL.getDefaultRedirectPath(), pathMatch: 'full'
-      },
       {
         path: 'manager', component: ManagerComponent,
         // data: [
@@ -67,7 +60,7 @@ const routes: Routes = [
       {
         path: 'customer', component: CustomerComponent,
         data: {
-          authorize: ['CLIENT']
+          role: 'CLIENT'
         },
         children: [
           { path: 'gallery', component: GalleryComponent},
