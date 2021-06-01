@@ -1,8 +1,9 @@
+import { ViewChild } from '@angular/core';
+import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@services/auth.service';
-import * as Regex from '@utils/regex';
 import { ACL } from '../../shared/security/acl'
 
 @Component({
@@ -32,7 +33,6 @@ export class LoginComponent implements OnInit {
 
                         if(response) {
                           this.route.navigateByUrl(ACL.getDefaultRedirectPath());
-                          ;
                         } else {
 
                           this.areWrongCredentials = !response;

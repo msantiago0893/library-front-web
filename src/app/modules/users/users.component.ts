@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserAccount } from '@services/account.service';
-import { Alert } from '@utils/alerts';
-import * as Regex from '@utils/regex';
-import { PersonaAdapter } from './domain/persona-adapter';
+import { Alert } from 'src/app/shared/utils/alerts';
+import * as Regex from 'src/app/shared/utils/regex';
 import { MESSAGE } from '@utils/catalog-alert';
 import { TYPE_ALERT } from '@utils/catalog-alert';
 import { UserAdapter } from '../../shared/domain/user-adapter';
@@ -26,7 +25,6 @@ export class StudentsComponent implements OnInit {
   ngOnInit() {
     this.validations();
   }
-  
 
   save () {
 

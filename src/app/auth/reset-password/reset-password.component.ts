@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as Regex from '@utils/regex';
+import * as Regex from 'src/app/shared/utils/regex';
 
 @Component({
   selector: 'app-reset-password',

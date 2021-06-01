@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserAdapter } from '../../shared/domain/user-adapter';
 import { UserAccount } from '@services/account.service';
-import * as Regex from '@utils/regex';
+import * as Regex from 'src/app/shared/utils/regex';
 
 @Component({
   selector: 'app-registry',

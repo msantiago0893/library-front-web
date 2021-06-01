@@ -1,4 +1,4 @@
-import { Component, OnInit,  } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserAccount } from '@services/account.service';
 import { Alert } from '@utils/alerts';
 import { Persona } from './domain/Persona';
@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { NUMERIC } from '@enums/numeric.enum';
 import { MESSAGE } from '@utils/catalog-alert';
 import {TYPEALERT} from '@enums/type-alert.enum';
-import { CATALOGUSER  } from './domain/CatalogUser'
+import { CATALOGUSER } from './domain/CatalogUser';
 
 @Component({
   selector: 'app-users-all',
@@ -14,6 +14,8 @@ import { CATALOGUSER  } from './domain/CatalogUser'
   styleUrls: ['./users-all.component.sass']
 })
 export class StudentsConsultComponent implements OnInit {
+
+  @Input() message:String;
 
   arreglo : any =  [];
   data : [];
