@@ -17,8 +17,8 @@ export class Persona {
     this.id = data.id;
     this.dni= data.dni;
     this.name = data.name;
-    this.firstname= data.surname;
-    this.secondname = data.mothersuname;
+    this.firstname= data.firstname;
+    this.secondname = data.secondname;
     this.sex= data.sex;
     this.cel = data.cel;
     this.email= data.email;
