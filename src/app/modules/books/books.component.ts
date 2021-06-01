@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BooksService } from 'src/app/shared/services/books.service';
-import * as Regex from '@utils/regex';
-import { Alert } from "@utils/alerts";
+import * as Regex from 'src/app/shared/utils/regex';
+import { Alert } from "src/app/shared/utils/alerts";
 import { MESSAGE } from 'src/app/shared/constant/catalog-alert';
 import { TYPE_ALERT } from 'src/app/shared/constant/catalog-alert';
 

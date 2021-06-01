@@ -12,7 +12,7 @@ import { ACL } from '../../shared/security/acl'
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
-  
+
   private authForm : FormGroup;
   areWrongCredentials = false;
 

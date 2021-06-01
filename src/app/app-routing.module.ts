@@ -17,7 +17,7 @@ import { CalculadoraComponent } from './auth/calculadora/calculadora.component';
 import { RoleGuard } from '@guards/role.guard';
 import { ForgoutPasswordComponent } from './auth/forgout-password/forgout-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component'
-import { PrvEmptyComponent } from './components/prv-empty/prv-empty.component';
+// import { PrvEmptyComponent } from './components/prv-empty/prv-empty.component';
 import { ManagerComponent } from './views/manager/manager.component';
 import { ACL } from './shared/security/acl';
 const routes: Routes = [
@@ -61,7 +61,7 @@ const routes: Routes = [
           { path: 'catalog', component: CatalogsComponent},
           { path: 'animales', component: AnimalesComponent},
           { path: 'edit-animales/:id', component: CreateanimalesComponent},
-          { path: 'createanimales', component:PrvEmptyComponent},
+          // { path: 'createanimales', component:PrvEmptyComponent},
         ]
       },
       {

@@ -14,13 +14,13 @@ import { AnimalesComponent } from '@modules/animales/animales.component';
 import { CreateanimalesComponent } from '@modules/createanimales/createanimales.component';
 import { RegistryComponent } from './auth/registry/registry.component';
 import { CalculadoraComponent } from './auth/calculadora/calculadora.component';
-import { RoleGuard } from '@guards/role.guard';
+// import { RoleGuard } from '@guards/role.guard';
 import { ForgoutPasswordComponent } from './auth/forgout-password/forgout-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component'
-import { PrvEmptyComponent } from './components/prv-empty/prv-empty.component';
+// import { PrvEmptyComponent } from './components/prv-empty/prv-empty.component';
 import { ManagerComponent } from './views/manager/manager.component';
-import { ACL } from './shared/security/acl';
-import { MainGuard } from '@guards/main.guard';
+// import { ACL } from './shared/security/acl';
+// import { MainGuard } from '@guards/main.guard';
 const routes: Routes = [
 
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -54,7 +54,7 @@ const routes: Routes = [
           { path: 'catalog', component: CatalogsComponent},
           { path: 'animales', component: AnimalesComponent},
           { path: 'edit-animales/:id', component: CreateanimalesComponent},
-          { path: 'createanimales', component:PrvEmptyComponent},
+          // { path: 'createanimales', component:PrvEmptyComponent},
         ]
       },
       {

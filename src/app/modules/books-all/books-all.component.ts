@@ -3,7 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { BooksService } from 'src/app/shared/services/books.service';
 import { Router } from '@angular/router';
-import { Alert } from '@utils/alerts';
+import { Alert } from 'src/app/shared/utils/alerts';
 import { MESSAGE } from 'src/app/shared/constant/catalog-alert';
 import { TYPEALERT } from '@enums/type-alert.enum'
 

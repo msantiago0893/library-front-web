@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Animal } from '@modules/animales/domain/Animal';
 import { AnimalService } from '@services/animal.service';
-import * as Regex from '@utils/regex';
+import * as Regex from 'src/app/shared/utils/regex';
 
 @Component({
   selector: 'app-createanimales',
