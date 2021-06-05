@@ -1,0 +1,30 @@
+<mat-nav-list *ngFor="let item of navItems">
+
+    <ng-container *ngIf="item.childrens ; let subMenus; else noChildren">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon>{{ item.icon }}</mat-icon> {{ item.name }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <!-- Hijos del elemento -->
+                <ng-container *ngFor="let children of subMenus">
+                    <a mat-list-item routerLink="{{children.route}}">
+                        <div class="onSelect" [routerLinkActive]="['isActive']"></div>
+                        <mat-icon>{{ children.icon }}</mat-icon> {{ children.name }}
+                    </a>
+                </ng-container>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+    </ng-container>
+
+    <ng-template #noChildren>
+        <a mat-list-item routerLink="{{item.route}}"  >
+            <div class="onSelect" [routerLinkActive]="['isActive']"></div>
+            <mat-icon>{{ item.icon }}</mat-icon> {{ item.name }}
+        </a>
+    </ng-template>
+
+</mat-nav-list>

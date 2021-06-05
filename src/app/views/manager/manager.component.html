@@ -1,0 +1,38 @@
+
+<div class="content">
+
+  <mat-toolbar color="primary" class="header">
+    <div>Material Theme</div>
+    <span class="nav-tool-items">
+      <!-- <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon> -->
+    </span>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true" [fixedTopGap]>
+      <app-prv-sidebar></app-prv-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <!-- <section class="mat-typography title-group">
+        <h1>Heading Goes Here</h1>
+        <mat-divider></mat-divider>
+      </section> -->
+
+      <div class="content">
+
+        <div [hidden]='isError'>
+          <router-outlet></router-outlet>
+        </div>
+
+        <ng-container *ngIf='isError'>
+          <app-prv-system-error></app-prv-system-error>
+        </ng-container>
+      </div>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+

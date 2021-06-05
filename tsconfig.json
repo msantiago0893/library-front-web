@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@services/*": ["src/app/core/services/*"],
+      "@guards/*": ["src/app/shared/guards/*"],
+      "@components/*": ["src/app/shared/components/*"],
+      "@constant/*": ["src/app/shared/constant/*"],
+      "@model/*": ["src/app/shared/models/*"],
+      "@utils/*": ["src/app/shared/utils/*"],
+      "@enums/*": ["src/app/shared/enum/*"]
+    },
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}
