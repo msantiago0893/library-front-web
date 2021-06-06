@@ -11,13 +11,15 @@ import { ManagerComponent } from './manager.component';
 import { BooksAllComponent } from './books-all/books-all.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from 'src/app/core/interceptors/error.service';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     // UsersComponent,
     ManagerComponent,
-    BooksAllComponent
+    BooksAllComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,21 @@
+<p>user works!</p>
+<!-- 
+<h1>esto es el arreglo {{ arreglo | json }} </h1> -->
+
+<h1 class="title">ADMINISTRADORES</h1>
+
+<div class="container-primary">
+    <div *ngFor="let item of users" >
+        <p title="{{item.name}}">{{item.name}}</p>
+        <div class="button">
+            <button mat-raised-button>
+                <mat-icon class="icon">edit</mat-icon>
+                <span>Editar</span>
+            </button>
+            <button mat-raised-button>
+                <mat-icon class="icon">delete</mat-icon>
+                <span>Eliminar</span>
+            </button>
+        </div>
+     </div>
+</div>
