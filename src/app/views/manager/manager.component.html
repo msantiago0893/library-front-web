@@ -2,11 +2,41 @@
 <div class="content">
 
   <mat-toolbar color="primary" class="header">
-    <div>Material Theme</div>
+    <div>LibraryUI</div>
     <span class="nav-tool-items">
+      <img class="icon" src="assets/images/notificacion.svg" mat-icon-button alt="notification">
+      <img class="icon" src="assets/images/flag.svg" mat-icon-button [matMenuTriggerFor]="flag" alt="flag">
+      <img class="icon" src="assets/images/user.svg" mat-icon-button [matMenuTriggerFor]="profile" alt="user">
+      <img class="icon" src="assets/images/menu.svg" mat-icon-button alt="menu">
       <!-- <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon> -->
     </span>
   </mat-toolbar>
+
+  <mat-menu #profile>
+    <button mat-menu-item disabled>
+      <mat-icon>dialpad</mat-icon>
+      <span>Marco Antonio Santiago Feria</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Configuracion</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>notifications_off</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+  </mat-menu>
+
+  <mat-menu #flag>
+    <button mat-menu-item (click)="switchLang('es')">
+      <mat-icon>assistant_photo</mat-icon>
+      <span>MX</span>
+    </button>
+    <button mat-menu-item (click)="switchLang('en')">
+      <mat-icon>assistant_photo</mat-icon>
+      <span>USA</span>
+    </button>
+  </mat-menu>
 
   <mat-sidenav-container>
     <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true" [fixedTopGap]>

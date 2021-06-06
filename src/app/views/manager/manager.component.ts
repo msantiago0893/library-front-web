@@ -27,11 +27,14 @@ export class ManagerComponent implements OnInit {
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
+      console.log('Hola mundo');
       this._errorService.isError(false);
     });
 
-    this.loaderService.isLoading.subscribe(response => {
-      this.loading = response;
+    setTimeout(() => {
+      this.loaderService.isLoading.subscribe(response => {
+        this.loading = response;
+      });
     });
   }
 
