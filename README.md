@@ -1,6 +1,8 @@
 # ANGULAR
   # Levantar aplicacion
     http://localhost:4200
+  # Levantar la app con la ip del equipo
+    ng serve --host 0.0.0.0
 
   # Generar un componente
     ng g c shared/components/book --skipTests
@@ -16,6 +18,8 @@
     git branch
   # Cambiarse de rama
     git checkout nombreRama
+  # Elminar una rama
+    git branch -D nombreRama
   # Merge de una rama al master
     git merge nombreRama
 
