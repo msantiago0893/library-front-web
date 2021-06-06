@@ -12,6 +12,12 @@
     ng g m templates --routing
   # Crear componentes dentro de una ruta y que se cargue en su module
     ng g c templates/basico --skipTests -is
+  # Crear una rama
+    git branch
+  # Cambiarse de rama
+    git checkout nombreRama
+  # Merge de una rama al master
+    git merge nombreRama
 
 # GITLAB
   # Descargar cambios

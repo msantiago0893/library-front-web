@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { NavigationEnd, Router } from '@angular/router';
 import { ErrorService } from '@services/error.service';
+import { SpinnerSectionService } from '@services/spinner-section.service';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -15,9 +16,12 @@ export class ManagerComponent implements OnInit {
 
   isError: Boolean = false;
 
+  loading: boolean = false;
+
   constructor(
     private router: Router,
-    private _errorService: ErrorService
+    private _errorService: ErrorService,
+    private loaderService: SpinnerSectionService,
   ){
     //Detectar cambio de rutas
     router.events.pipe(
@@ -25,12 +29,15 @@ export class ManagerComponent implements OnInit {
     ).subscribe((event: NavigationEnd) => {
       this._errorService.isError(false);
     });
+
+    this.loaderService.isLoading.subscribe(response => {
+      this.loading = response;
+    });
   }
 
   opened = true;
+
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
-
-
 
   ngOnInit() {
 
@@ -75,5 +82,4 @@ export class ManagerComponent implements OnInit {
     console.log(e);
     this.datoHijo = e;
   }
-
 }

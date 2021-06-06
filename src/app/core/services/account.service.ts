@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Dao } from 'src/app/shared/Interfaces/dao';
 import { environment } from 'src/environments/environment';
 
@@ -24,7 +23,7 @@ export class UserAccount implements Dao {
   }
 
   add(user: Object) {
-    return this.http.post(`${this.uri}usuarioss`, user, {headers: this.httpHeaders});
+    return this.http.post(`${this.uri}usuarios`, user, {headers: this.httpHeaders});
   }
 
   delete(id: number) {

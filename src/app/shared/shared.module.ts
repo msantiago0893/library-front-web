@@ -9,6 +9,7 @@ import { PrvUsersComponent } from '@components/prv-users/prv-users.component';
 import { PrvEmptyComponent } from '@components/prv-empty/prv-empty.component';
 import { PrvSystemErrorComponent } from './components/prv-system-error/prv-system-error.component';
 import { PrvPageLoaderComponent } from './components/prv-page-loader/prv-page-loader.component';
+import { PrvSectionLoaderComponent } from './components/prv-section-loader/prv-section-loader.component';
 
 
 
@@ -19,7 +20,8 @@ import { PrvPageLoaderComponent } from './components/prv-page-loader/prv-page-lo
     PrvEmptyComponent,
     PrvBookComponent,
     PrvSystemErrorComponent,
-    PrvPageLoaderComponent
+    PrvPageLoaderComponent,
+    PrvSectionLoaderComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { PrvPageLoaderComponent } from './components/prv-page-loader/prv-page-lo
     PrvEmptyComponent,
     PrvSystemErrorComponent,
     PrvPageLoaderComponent,
+    PrvSectionLoaderComponent,
     AngularMaterialModule
   ],
 })
