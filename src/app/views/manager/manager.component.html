@@ -13,6 +13,7 @@
       <app-prv-sidebar></app-prv-sidebar>
     </mat-sidenav>
 
+    <app-prv-section-loader></app-prv-section-loader>
     <mat-sidenav-content>
 
       <!-- <section class="mat-typography title-group">
@@ -22,7 +23,11 @@
 
       <div class="content">
 
-        <div [hidden]='isError'>
+        <ng-container *ngIf='loading'>
+          <app-prv-section-loader></app-prv-section-loader>
+        </ng-container>
+
+        <div  [ngClass]="{ 'sections': loading }" [hidden]='isError'>
           <router-outlet></router-outlet>
         </div>
 
