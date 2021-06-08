@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserAccount } from 'src/app/core/services/account.service';
 import { UserAdapter } from 'src/app/shared/models/user-adapter';
@@ -6,6 +6,7 @@ import { UserAdapter } from 'src/app/shared/models/user-adapter';
 import * as Regex from '@constant/regex';
 import { MESSAGE, TYPE_ALERT } from '@constant/catalog-alert';
 import { Alert } from '@utils/alerts';
+import { NUMERIC } from '@enums/numeric';
 
 @Component({
   selector: 'app-prv-users',
@@ -16,21 +17,33 @@ import { Alert } from '@utils/alerts';
 export class PrvUsersComponent implements OnInit {
 
   private userForm : FormGroup;
+  @Output() back = new EventEmitter<Number>();
+  catalogNumber = NUMERIC
+  @Input() user : any;
 
   constructor(
     private userGorup: FormBuilder,
     private _service: UserAccount
-  ) { }
+  ) { 
+  }
 
   ngOnInit() {
     this.validations();
+
+    if (this.user) {
+      this.userForm.patchValue(this.user);
+    }
+
+  }
+
+  goBack() {
+    this.back.emit(this.catalogNumber.ONE);
   }
 
   save () {
 
     this._service.add(new UserAdapter(this.userForm.value)).subscribe(
       response =>{
-        Alert.msgTimer(TYPE_ALERT.SUCCESS, MESSAGE.ADD)
         this.reset();
       }
     )
@@ -53,13 +66,13 @@ export class PrvUsersComponent implements OnInit {
         Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
-      surname: ['', [
+      firstname: ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
-      mothersuname: ['', [
+      secondname: ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(25),
