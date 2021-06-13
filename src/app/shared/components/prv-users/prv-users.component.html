@@ -1,8 +1,9 @@
-<img class="imgBack" src="assets/images/flecha.svg" (click)="goBack()">
-<p class="title">REGISTRO DE ADMINISTRADORES</p>
-<p>{{user ? "EDittar":"agergar nuevo admin"}}</p>
+<div class="containerBack">
+  <img class="imgBack" src="assets/images/flecha.svg" (click)="goBack()">
+</div>
+
+<p class="title"> {{user ? "EDITAR" :"REGISTRO"}}</p>
 <form class="form" [formGroup]="userForm" novalidate (ngSubmit)="save()">
-  <h4>Datos personales</h4>
   <div class="form__control">
     <mat-form-field>
       <input matInput type="text" placeholder="*Nombre" formControlName="name">
@@ -66,14 +67,15 @@
       <mat-error *ngIf="userForm.controls.password.touched && userForm.controls.password.invalid">
         <span *ngIf="userForm.controls.password.errors.required">Campo requerido</span>
         <span *ngIf="userForm.get('password').errors.pattern">
-          Email inválido
+          Contraseña inválido
         </span>
       </mat-error>
     </mat-form-field>
   </div>
 
+
   <div class="form__actions">
     <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Registrar</button>
-    <button mat-raised-button (click)="reset()">Cancelar</button>
   </div>
 </form>
+
