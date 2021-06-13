@@ -1,8 +1,9 @@
-<img class="imgBack" src="assets/images/flecha.svg" (click)="goBack()">
-<p class="title">REGISTRO DE ADMINISTRADORES</p>
-<p>{{user ? "EDittar":"agergar nuevo admin"}}</p>
+<div class="containerBack">
+  <img class="imgBack" src="assets/images/flecha.svg" (click)="goBack()">
+</div>
+
+<p class="title"> {{user ? "EDITAR" :"REGISTRO"}}</p>
 <form class="form" [formGroup]="userForm" novalidate (ngSubmit)="save()">
-  <h4>Datos personales</h4>
   <div class="form__control">
     <mat-form-field>
       <input matInput type="text" placeholder="*Nombre" formControlName="name">
@@ -72,10 +73,15 @@
     </mat-form-field>
   </div>
 
+
   <div class="form__actions">
-    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Registrar</button>
-    <button mat-raised-button (click)="reset()">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid"> {{user ?"Guardar":"Agregar"}} </button>
   </div>
+<<<<<<< HEAD
 
   <pre> {{ userForm.value | json }}</pre>
 </form>
+=======
+</form>
+
+>>>>>>> 129cb6afe08787d15eec3cb485a82890767064d6
