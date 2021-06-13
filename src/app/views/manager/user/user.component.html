@@ -1,12 +1,12 @@
 
-<app-prv-empty *ngIf="!users.length; else containerList" [msg2]="'No se encontraron Administradores'"></app-prv-empty>
+<app-prv-empty *ngIf="!users.length  && block !== catalog.ADD_USER; else containerList"  [msg2]="'No se encontraron Administradores'"></app-prv-empty>
 <ng-template #containerList>
     <ng-container *ngIf="block === catalog.LIST_USER">
         <div class="container">
             <h1 class="title">ADMINISTRADORES</h1>
             <div class="container-primary">
                 <div class="list" *ngFor="let item of users" >
-                    <p class="list__name" title="{{item.name}}">{{item.name}}</p>
+                    <p class="list__name" title="{{item.name}}">{{item.name}} {{item.firstname}} {{item.secondname}}</p>
                     <div class="buttons">
                         <button class="buttons__action" mat-raised-button (click)="edit(item)">
                             <mat-icon class="icon">edit</mat-icon>
@@ -21,14 +21,15 @@
             </div>
         </div>
     </ng-container>
-    <ng-container *ngIf="block === catalog.ADD_USER || block === catalog.UPDATE_USER">
-        <app-prv-users [user]="block === 3 ? itemToModify : null"
-            (back)="back($event)"
-             (update)="update($event)">
-        </app-prv-users>
-    </ng-container>
 </ng-template>
-    <div class="button">
+<ng-container *ngIf="block === catalog.ADD_USER || block === catalog.UPDATE_USER">
+    <app-prv-users [user]="block === catalog.UPDATE_USER ? itemToModify : null"
+        (back)="back($event)"
+         (update)="update($event)">
+    </app-prv-users>
+</ng-container>
+
+    <div *ngIf="block === catalog.LIST_USER" class="button">
         <button mat-raised-button class="button__register" (click)="addUser()" [disabled]="users.length >= catalogNumeric.FIVE" >
         <mat-icon class="icon2">person_add</mat-icon>
         <span>Registrar</span>
