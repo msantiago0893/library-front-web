@@ -34,8 +34,8 @@
     <div class="group-radio">
       <label class="group-radio__title">*Sexo:</label>
       <mat-radio-group class="group-radio__options" formControlName="sex">
-        <mat-radio-button value="M">Hombre</mat-radio-button>
-        <mat-radio-button value="F">Mujer</mat-radio-button>
+        <mat-radio-button value="H">Hombre</mat-radio-button>
+        <mat-radio-button value="M">Mujer</mat-radio-button>
       </mat-radio-group>
       <mat-error *ngIf="userForm.controls.sex.touched && userForm.controls.sex.invalid">
         <span *ngIf="userForm.controls.sex.errors.required">
@@ -64,9 +64,9 @@
     <mat-form-field *ngIf="!user">
       <input matInput  type="text" placeholder="*Contraseña" formControlName="password">
       <mat-error *ngIf="userForm.controls.password.touched && userForm.controls.password.invalid">
-        <span *ngIf="userForm.controls.password.errors.required">Campo requerido</span>
+        <span *ngIf="userForm.controls.password.errors.requiredIf">Campo requerido</span>
         <span *ngIf="userForm.get('password').errors.pattern">
-          Email inválido
+          Contraseña inválido
         </span>
       </mat-error>
     </mat-form-field>
@@ -76,4 +76,6 @@
     <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Registrar</button>
     <button mat-raised-button (click)="reset()">Cancelar</button>
   </div>
+
+  <pre> {{ userForm.value | json }}</pre>
 </form>

@@ -18,8 +18,7 @@ import { SpinnerSectionService } from '@services/spinner-section.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    // ManagerModule
-    SharedModule
+    SharedModule,
   ],
   exports: [
     HttpClientModule,
