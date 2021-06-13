@@ -1,18 +1,14 @@
-<button class="but-back" (click)="goBack()">
-  <mat-icon class="icon">arrow_back</mat-icon>
-</button>
-<p>{{user ? 'editar': 'AGREGRAR' }}</p>
-
-
-
-<p>REGISTRO DE ADMINISTRADORES</p>
+<img class="imgBack" src="assets/images/flecha.svg" (click)="goBack()">
+<p class="title">REGISTRO DE ADMINISTRADORES</p>
+<p>{{user ? "EDittar":"agergar nuevo admin"}}</p>
 <form class="form" [formGroup]="userForm" novalidate (ngSubmit)="save()">
   <h4>Datos personales</h4>
   <div class="form__control">
     <mat-form-field>
       <input matInput type="text" placeholder="*Nombre" formControlName="name">
       <mat-error *ngIf="userForm.controls.name.touched && userForm.controls.name.invalid">
-        <span *ngIf="userForm.controls.name.errors.required || userForm.get('name').errors.minlength || userForm.get('name').errors.maxlength || userForm.get('name').errors.pattern">
+        <span *ngIf="userForm.controls.name.errors.required || userForm.get('name').errors.minlength
+        || userForm.get('name').errors.maxlength || userForm.get('name').errors.pattern">
           Campo text min. 4, max. 25
         </span>
       </mat-error>
@@ -20,7 +16,8 @@
     <mat-form-field>
       <input matInput  type="text" placeholder="*Apellido Paterno" formControlName="firstname">
       <mat-error *ngIf="userForm.controls.firstname.touched && userForm.controls.firstname.invalid">
-        <span *ngIf="userForm.controls.firstname.errors.required || userForm.get('firstname').errors.minlength || userForm.get('firstname').errors.maxlength || userForm.get('firstname').errors.pattern">
+        <span *ngIf="userForm.controls.firstname.errors.required || userForm.get('firstname').errors.minlength
+        || userForm.get('firstname').errors.maxlength || userForm.get('firstname').errors.pattern">
           Campo text min. 4, max. 25
         </span>
       </mat-error>
@@ -28,7 +25,8 @@
     <mat-form-field>
       <input matInput  type="text" placeholder=" *Apellido Materno" formControlName="secondname">
       <mat-error *ngIf="userForm.controls.secondname.touched && userForm.controls.secondname.invalid">
-        <span *ngIf="userForm.controls.secondname.errors.required || userForm.get('secondname').errors.minlength || userForm.get('secondname').errors.maxlength || userForm.get('secondname').errors.pattern">
+        <span *ngIf="userForm.controls.secondname.errors.required || userForm.get('secondname').errors.minlength
+        || userForm.get('secondname').errors.maxlength || userForm.get('secondname').errors.pattern">
           Campo text min. 4, max. 25
         </span>
       </mat-error>
@@ -48,7 +46,8 @@
     <mat-form-field>
       <input matInput  type="text" placeholder="*Celular" formControlName="cel">
       <mat-error *ngIf="userForm.controls.cel.touched && userForm.controls.cel.invalid">
-        <span *ngIf="userForm.controls.cel.errors.required || userForm.get('cel').errors.minlength || userForm.get('cel').errors.maxlength || userForm.get('cel').errors.pattern">
+        <span *ngIf="userForm.controls.cel.errors.required || userForm.get('cel').errors.minlength
+         || userForm.get('cel').errors.maxlength || userForm.get('cel').errors.pattern">
           Campo nuḿerico max. 10
         </span>
       </mat-error>
@@ -62,7 +61,7 @@
         </span>
       </mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field *ngIf="!user">
       <input matInput  type="text" placeholder="*Contraseña" formControlName="password">
       <mat-error *ngIf="userForm.controls.password.touched && userForm.controls.password.invalid">
         <span *ngIf="userForm.controls.password.errors.required">Campo requerido</span>

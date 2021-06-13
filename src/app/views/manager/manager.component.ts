@@ -30,9 +30,11 @@ export class ManagerComponent implements OnInit {
       this._errorService.isError(false);
     });
 
-    this.loaderService.isLoading.subscribe(response => {
-      this.loading = response;
-    });
+    // setTimeout(() => {
+    //   this.loaderService.isLoading.subscribe(response => {
+    //     this.loading = response;
+    //   });
+    // });
   }
 
   opened = true;

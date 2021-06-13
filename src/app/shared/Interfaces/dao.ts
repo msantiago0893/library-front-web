@@ -6,5 +6,5 @@ export interface Dao {
 
     delete (id: number): any;
 
-    update (item: any): any;
+    update (id?:number, item?: any): any;
 }

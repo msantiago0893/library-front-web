@@ -16,15 +16,17 @@ import { NUMERIC } from '@enums/numeric';
 
 export class PrvUsersComponent implements OnInit {
 
-  private userForm : FormGroup;
+  private userForm: FormGroup;
+  catalogNumber = NUMERIC;
+  @Input() user: any;
   @Output() back = new EventEmitter<Number>();
-  catalogNumber = NUMERIC
-  @Input() user : any;
+  @Output() update = new EventEmitter<Boolean>();
+  id: Number;
 
   constructor(
     private userGorup: FormBuilder,
     private _service: UserAccount
-  ) { 
+  ) {
   }
 
   ngOnInit() {
@@ -40,13 +42,24 @@ export class PrvUsersComponent implements OnInit {
     this.back.emit(this.catalogNumber.ONE);
   }
 
-  save () {
+  save() {
+    if (this.user) {
+      this._service.update(this.user.id, this.userForm.value)
+        .subscribe( () => {
+          this.reset();
+          this.update.emit(true);
+        },
+        );
+    } else {
+      this._service.add(new UserAdapter(this.userForm.value)).subscribe(
+        () => {
 
-    this._service.add(new UserAdapter(this.userForm.value)).subscribe(
-      response =>{
-        this.reset();
-      }
-    )
+          this.update.emit(true);
+          this.reset();
+
+        },
+      );
+    }
   }
 
   reset() {
@@ -54,7 +67,7 @@ export class PrvUsersComponent implements OnInit {
     Object.keys(this.userForm.controls).forEach(key => {
       this.userForm.controls[key].setErrors(null);
     });
-    this.userForm.setErrors({"required":true})
+    this.userForm.setErrors({ "required": true })
   }
 
   validations() {
@@ -92,12 +105,10 @@ export class PrvUsersComponent implements OnInit {
         Validators.pattern(Regex.email)
       ]],
       password: ['', [
-        Validators.required,
-        // Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)
+        // this.user ? undefined: Validators.required,
       ]],
       role: ['MANAGER', [
         Validators.required,
-        // Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)
       ]]
     });
   }

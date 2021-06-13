@@ -30,7 +30,8 @@ export class UserAccount implements Dao {
     return this.http.delete<any>(`${this.uri}usuarios/${id}`,{headers: this.httpHeaders});
   }
 
-  update(user: any) {
-    return this.http.put<any>(`${this.uri}/${user.id}`,user, {headers: this.httpHeaders});
+  update(id:number, user: any) {
+    console.log("pramatro",user)
+    return this.http.put<any>(`${this.uri}usuarios/${id}`,user, {headers: this.httpHeaders});
   }
 }
