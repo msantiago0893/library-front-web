@@ -35,6 +35,7 @@ import { PrvSectionLoaderComponent } from './components/prv-section-loader/prv-s
     PrvEmptyComponent,
     PrvSystemErrorComponent,
     PrvPageLoaderComponent,
+    PrvUsersComponent,
     PrvSectionLoaderComponent,
     AngularMaterialModule
   ],

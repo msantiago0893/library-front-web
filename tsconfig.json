@@ -9,7 +9,7 @@
       "@constant/*": ["src/app/shared/constant/*"],
       "@model/*": ["src/app/shared/models/*"],
       "@utils/*": ["src/app/shared/utils/*"],
-      "@enums/*": ["src/app/shared/enum/*"]
+      "@enums/*": ["src/app/shared/enums/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
