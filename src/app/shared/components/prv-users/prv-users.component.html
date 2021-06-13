@@ -75,7 +75,7 @@
 
 
   <div class="form__actions">
-    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Registrar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">{{user ?"Guardar":"Agregar"}}</button>
   </div>
 </form>
 
