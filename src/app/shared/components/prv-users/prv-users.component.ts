@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserAccount } from 'src/app/core/services/account.service';
 import { UserAdapter } from 'src/app/shared/models/user-adapter';
@@ -6,6 +6,7 @@ import { UserAdapter } from 'src/app/shared/models/user-adapter';
 import * as Regex from '@constant/regex';
 import { MESSAGE, TYPE_ALERT } from '@constant/catalog-alert';
 import { Alert } from '@utils/alerts';
+import { NUMERIC } from '@enums/numeric';
 
 @Component({
   selector: 'app-prv-users',
@@ -15,25 +16,50 @@ import { Alert } from '@utils/alerts';
 
 export class PrvUsersComponent implements OnInit {
 
-  private userForm : FormGroup;
+  private userForm: FormGroup;
+  catalogNumber = NUMERIC;
+  @Input() user: any;
+  @Output() back = new EventEmitter<Number>();
+  @Output() update = new EventEmitter<Boolean>();
+  id: Number;
 
   constructor(
     private userGorup: FormBuilder,
     private _service: UserAccount
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.validations();
+
+    if (this.user) {
+      this.userForm.patchValue(this.user);
+    }
+
   }
 
-  save () {
+  goBack() {
+    this.back.emit(this.catalogNumber.ONE);
+  }
 
-    this._service.add(new UserAdapter(this.userForm.value)).subscribe(
-      response =>{
-        Alert.msgTimer(TYPE_ALERT.SUCCESS, MESSAGE.ADD)
-        this.reset();
-      }
-    )
+  save() {
+    if (this.user) {
+      this._service.update(this.user.id, this.userForm.value)
+        .subscribe( () => {
+          this.reset();
+          this.update.emit(true);
+        },
+        );
+    } else {
+      this._service.add(new UserAdapter(this.userForm.value)).subscribe(
+        () => {
+
+          this.update.emit(true);
+          this.reset();
+
+        },
+      );
+    }
   }
 
   reset() {
@@ -41,7 +67,7 @@ export class PrvUsersComponent implements OnInit {
     Object.keys(this.userForm.controls).forEach(key => {
       this.userForm.controls[key].setErrors(null);
     });
-    this.userForm.setErrors({"required":true})
+    this.userForm.setErrors({ "required": true })
   }
 
   validations() {
@@ -53,13 +79,13 @@ export class PrvUsersComponent implements OnInit {
         Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
-      surname: ['', [
+      firstname: ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
-      mothersuname: ['', [
+      secondname: ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(25),
@@ -79,12 +105,10 @@ export class PrvUsersComponent implements OnInit {
         Validators.pattern(Regex.email)
       ]],
       password: ['', [
-        Validators.required,
-        // Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)
+        // this.user ? undefined: Validators.required,
       ]],
       role: ['MANAGER', [
         Validators.required,
-        // Validators.pattern(/^[A-Za-zñÑáÁéÉíÍóÓúÚüÜ ]*$/)
       ]]
     });
   }

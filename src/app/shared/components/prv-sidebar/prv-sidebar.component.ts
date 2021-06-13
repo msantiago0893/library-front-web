@@ -21,6 +21,11 @@ export class PrvSidebarComponent implements OnInit {
       route: 'users'
     },
     {
+      name: 'Lista-Usuarios',
+      icon: 'person',
+      route: 'user'
+    },
+    {
       name: 'Libros',
       icon: 'book',
       route: '',

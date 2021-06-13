@@ -6,6 +6,7 @@ import { ACL } from 'src/app/security/acl';
 import { BooksAllComponent } from './books-all/books-all.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagerComponent } from './manager.component';
+import { UserComponent } from './user/user.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'users', component: PrvUsersComponent },
       { path: 'add-book', component: PrvBookComponent },
       { path: 'all-books', component: BooksAllComponent },
+      { path: 'user', component: UserComponent },
       { path: '**', redirectTo:'dashboard' }
     ]
   }
