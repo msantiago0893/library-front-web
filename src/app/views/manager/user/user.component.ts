@@ -21,8 +21,7 @@ export class UserComponent implements OnInit  {
   block =  CATALOGUSER.LIST_USER;
 
   constructor(
-    private _service: UserAccount,
-    private userGorup: FormBuilder
+    private _service: UserAccount
   ) {}
 
   ngOnInit() {
@@ -30,15 +29,12 @@ export class UserComponent implements OnInit  {
   }
 
   allAdmin() {
-
+    console.log('VOY A ACTUALIZAR TODOS LOS USUARIOS');
     this._service.consultAll()
       .subscribe(item => {
         this.users = item.filter((item:any) => item.role === "MANAGER")
                          .map(user => new User(user))
       });
-  }
-  backList(num) {
-    this.block = num
   }
 
   addUser() {
@@ -48,7 +44,8 @@ export class UserComponent implements OnInit  {
   edit(element: any) {
 
     this.block = this.catalog.UPDATE_USER;
-    this.itemToModify = element
+
+    this.itemToModify = element;
   }
 
   delete(item: any) {
@@ -63,14 +60,7 @@ export class UserComponent implements OnInit  {
       });
   }
 
-  update(retry: Boolean) {
-
-    if(retry) {
-      this.allAdmin();
-    }
-  }
-
-  back(num: number) {
-    this.block = num;
+  back(block: number) {
+    this.block = block;
   }
 }
