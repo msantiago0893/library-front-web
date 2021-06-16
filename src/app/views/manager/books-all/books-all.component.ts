@@ -26,35 +26,37 @@ export class BooksAllComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.allBooks();
+    this.allBooks();
+
     this.dataSource.paginator = this.paginator;
   }
 
   allBooks() {
     this._service.consultAll()
-                 .subscribe(item => {
+                 .subscribe((item: any) => {
+                   console.log(item);
                     this.dataSource.data = item
                   });
   }
 
-  delete(elemento:any) {
+  delete(item:any) {
 
     Alert.questions(MESSAGE.QUESTION)
-    .then((resdponse) => {
+      .then((response:any) => {
 
-      if (resdponse.value) {
-        this._service.delete(elemento.id)
-                        .subscribe(()=>{
+        if(response.value) {
+
+          this._service.delete(item.id)
+                       .subscribe(() => {
                           this.allBooks();
                           Alert.msgTimer(TYPE_ALERT.SUCCESS, MESSAGE.DONE)
-                      });
-      }
-
+                       });
+        }
     });
   }
 
-  update(elemento: any) {
-    this.router.navigate(['home/edit-book/',elemento.id]);
+  update(item: any) {
+    this.router.navigate(['home/edit-book/',item.id]);
   }
 
 }

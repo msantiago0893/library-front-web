@@ -1,7 +1,9 @@
 <app-prv-empty *ngIf="!dataSource.data.length"
-  msg1="LO SENTIMOS" msg2="No encontramos libros" > </app-prv-empty>
+                msg1="LO SENTIMOS"
+                msg2="No encontramos libros">
+</app-prv-empty>
 
-<div class="mat-elevation-z8" *ngIf="dataSource.data.length" >
+<div [hidden]="!dataSource.data.length" >
   <h1>CONSULTA DE LIBROS!</h1>
 
   <table mat-table [dataSource]="dataSource">
@@ -45,7 +47,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <div class="footer">
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 </div>
 

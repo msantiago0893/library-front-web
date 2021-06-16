@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { UserAccount} from '@services/account.service';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { User } from './domain/user';
-import { NUMERIC } from '@enums/numeric';
+import { UserAccount} from '@services/account.service';
 import { CATALOGUSER } from './domain/catalog-user';
-import { Alert } from '@utils/alerts';
 import { MESSAGE } from '@constant/catalog-alert';
+import { NUMERIC } from '@enums/numeric';
+import { Alert } from '@utils/alerts';
 
 @Component({
   selector: 'app-user',
@@ -14,28 +14,28 @@ import { MESSAGE } from '@constant/catalog-alert';
 })
 export class UserComponent implements OnInit  {
 
+  users : any = [];
+  itemToModify: any;
   catalogNumeric = NUMERIC;
   catalog = CATALOGUSER;
   block =  CATALOGUSER.LIST_USER;
-  users : any = [];
-  itemToModify: any;
 
   constructor(
     private _service: UserAccount,
     private userGorup: FormBuilder
-
-    ) {
-  }
+  ) {}
 
   ngOnInit() {
-
     this.allAdmin();
-
   }
 
-  back(num:number) {
-    this.block = num
+  allAdmin() {
 
+    this._service.consultAll()
+      .subscribe(item => {
+        this.users = item.filter((item:any) => item.role === "MANAGER")
+                         .map(user => new User(user))
+      });
   }
   backList(num) {
     this.block = num
@@ -43,40 +43,34 @@ export class UserComponent implements OnInit  {
 
   addUser() {
     this.block = this.catalog.ADD_USER;
-
   }
 
-  edit(element:any) {
+  edit(element: any) {
+
     this.block = this.catalog.UPDATE_USER;
     this.itemToModify = element
   }
 
-  update(retry:Boolean) {
-      if (retry){
-        this.allAdmin();
-      }
-  }
+  delete(item: any) {
 
-
-  allAdmin() {
-    this._service.consultAll().subscribe(item => {
-      this.users = item.filter((elemento:any) => elemento.role === "MANAGER")
-                          .map(user => new User(user))
-    });
-  }
-
-delete(elemento:any) {
-      Alert.questions(MESSAGE.QUESTION).then((response) => {
-
+    Alert.questions(MESSAGE.QUESTION)
+      .then((response: any) => {
         if(response.value) {
-         this._service.delete(elemento.id)
-         .subscribe(()=> {
-          this.allAdmin();
-       });
-    }});
+          this._service.delete(item.id).subscribe(()=> {
+            this.allAdmin();
+          });
+        }
+      });
+  }
+
+  update(retry: Boolean) {
+
+    if(retry) {
+      this.allAdmin();
+    }
+  }
+
+  back(num: number) {
+    this.block = num;
+  }
 }
-
-
-
-}
-

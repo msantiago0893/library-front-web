@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { NavigationEnd, Router } from '@angular/router';
 import { ErrorService } from '@services/error.service';
@@ -10,52 +10,60 @@ import { filter } from 'rxjs/operators';
   templateUrl: './manager.component.html',
   styleUrls: ['./manager.component.sass']
 })
-export class ManagerComponent implements OnInit {
+export class ManagerComponent implements OnInit, AfterViewInit {
 
   panelOpenState = false;
-
   isError: Boolean = false;
-
-  loading: boolean = false;
+  loading: boolean = null;
+  opened = true;
+  @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
 
   constructor(
     private router: Router,
     private _errorService: ErrorService,
     private loaderService: SpinnerSectionService,
-  ){
-    //Detectar cambio de rutas
-    router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this._errorService.isError(false);
-    });
-
-    // setTimeout(() => {
-    //   this.loaderService.isLoading.subscribe(response => {
-    //     this.loading = response;
-    //   });
-    // });
-
-  }
-
-  opened = true;
-
-  @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
+    private changeDetectorRef: ChangeDetectorRef
+  ){ }
 
   ngOnInit() {
 
-    console.log(window.innerWidth)
     if (window.innerWidth < 768) {
+
       this.sidenav.fixedTopGap = 55;
       this.opened = false;
     } else {
+
       this.sidenav.fixedTopGap = 55;
       this.opened = true;
     }
 
-    this._errorService.getError().subscribe((item: any) => {
-      this.isError = item;
+    this._errorService.getError()
+                      .subscribe((item: any) => {
+                        this.isError = item;
+                      });
+  }
+
+  ngAfterViewInit(): void {
+
+    this.changeOfRoute();
+
+    this.loaderService.isLoading.subscribe(response => {
+
+      this.loading = response;
+
+      this.changeDetectorRef.detectChanges();
     });
+  }
+
+  changeOfRoute() {
+    //TODO: Detectar cambio de rutas
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe(() => {
+        this._errorService.isError(false);
+      });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -68,7 +76,6 @@ export class ManagerComponent implements OnInit {
       this.opened = true;
     }
   }
-
 
   /* METODO de mrnu */
   isBiggerScreen() {

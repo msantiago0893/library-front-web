@@ -10,9 +10,8 @@ import { PrvEmptyComponent } from '@components/prv-empty/prv-empty.component';
 import { PrvSystemErrorComponent } from './components/prv-system-error/prv-system-error.component';
 import { PrvPageLoaderComponent } from './components/prv-page-loader/prv-page-loader.component';
 import { PrvSectionLoaderComponent } from './components/prv-section-loader/prv-section-loader.component';
-
-
-
+import { PrvCarouselComponent } from './components/prv-carousel/prv-carousel.component';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 @NgModule({
   declarations: [
     PrvSidebarComponent,
@@ -21,7 +20,8 @@ import { PrvSectionLoaderComponent } from './components/prv-section-loader/prv-s
     PrvBookComponent,
     PrvSystemErrorComponent,
     PrvPageLoaderComponent,
-    PrvSectionLoaderComponent
+    PrvSectionLoaderComponent,
+    PrvCarouselComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +29,8 @@ import { PrvSectionLoaderComponent } from './components/prv-section-loader/prv-s
     AngularMaterialModule,
     FormsModule, // Formulario
     ReactiveFormsModule, // formulario
+    MatCarouselModule.forRoot() //Carousel
+
   ],
   exports: [
     PrvSidebarComponent,
@@ -37,6 +39,7 @@ import { PrvSectionLoaderComponent } from './components/prv-section-loader/prv-s
     PrvPageLoaderComponent,
     PrvUsersComponent,
     PrvSectionLoaderComponent,
+    PrvCarouselComponent,
     AngularMaterialModule
   ],
 })

@@ -24,12 +24,12 @@ export class ErrorService {
   }
 
   getError(): any {
-    console.log('Error');
+    // console.log('Error');
     return this.error$.asObservable();
   }
 
   getLoader(): any {
-    console.log('getLoader');
+    // console.log('getLoader');
     // setTimeout(() => {
     // },2000);
     return this.loaderPage$.asObservable();
