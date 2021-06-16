@@ -25,7 +25,7 @@
 <ng-container *ngIf="block === catalog.ADD_USER || block === catalog.UPDATE_USER">
     <app-prv-users [user]="block === catalog.UPDATE_USER ? itemToModify : null"
         (back)="back($event)"
-         (update)="update($event)">
+         (update)="update($event)" (backList)="backList($event)">
     </app-prv-users>
 </ng-container>
 
