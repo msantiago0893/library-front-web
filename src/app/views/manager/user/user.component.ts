@@ -29,7 +29,7 @@ export class UserComponent implements OnInit  {
   }
 
   allAdmin() {
-    console.log('VOY A ACTUALIZAR TODOS LOS USUARIOS');
+
     this._service.consultAll()
       .subscribe(item => {
         this.users = item.filter((item:any) => item.role === "MANAGER")
