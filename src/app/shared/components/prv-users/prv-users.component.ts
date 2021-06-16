@@ -4,8 +4,6 @@ import { UserAccount } from 'src/app/core/services/account.service';
 import { UserAdapter } from 'src/app/shared/models/user-adapter';
 
 import * as Regex from '@constant/regex';
-import { MESSAGE, TYPE_ALERT } from '@constant/catalog-alert';
-import { Alert } from '@utils/alerts';
 import { NUMERIC } from '@enums/numeric';
 
 @Component({
@@ -22,6 +20,7 @@ export class PrvUsersComponent implements OnInit {
   @Output() back = new EventEmitter<Number>();
   @Output() update = new EventEmitter<Boolean>();
   id: Number;
+
 
   constructor(
     private userGorup: FormBuilder,
@@ -46,28 +45,19 @@ export class PrvUsersComponent implements OnInit {
     if (this.user) {
       this._service.update(this.user.id, this.userForm.value)
         .subscribe( () => {
-          this.reset();
           this.update.emit(true);
+          this.goBack();
         },
         );
     } else {
       this._service.add(new UserAdapter(this.userForm.value)).subscribe(
         () => {
-
           this.update.emit(true);
-          this.reset();
+          this.goBack();
 
         },
       );
     }
-  }
-
-  reset() {
-    this.userForm.reset('');
-    Object.keys(this.userForm.controls).forEach(key => {
-      this.userForm.controls[key].setErrors(null);
-    });
-    this.userForm.setErrors({ "required": true })
   }
 
   validations() {
