@@ -31,7 +31,6 @@ export class UserAccount implements Dao {
   }
 
   update(id:number, user: any) {
-    console.log("pramatro",user)
     return this.http.put<any>(`${this.uri}usuarios/${id}`,user, {headers: this.httpHeaders});
   }
 }

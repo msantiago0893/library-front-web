@@ -4,7 +4,12 @@ import { UserAccount } from 'src/app/core/services/account.service';
 import { UserAdapter } from 'src/app/shared/models/user-adapter';
 
 import * as Regex from '@constant/regex';
+<<<<<<< Updated upstream
+=======
+import { Alert } from '@utils/alerts';
+>>>>>>> Stashed changes
 import { NUMERIC } from '@enums/numeric';
+import { CustomValidations } from '@utils/custom-alidations';
 
 @Component({
   selector: 'app-prv-users',
@@ -34,7 +39,6 @@ export class PrvUsersComponent implements OnInit {
     if (this.user) {
       this.userForm.patchValue(this.user);
     }
-
   }
 
   goBack() {
@@ -42,21 +46,21 @@ export class PrvUsersComponent implements OnInit {
   }
 
   save() {
-    if (this.user) {
-      this._service.update(this.user.id, this.userForm.value)
-        .subscribe( () => {
-          this.update.emit(true);
-          this.goBack();
-        },
-        );
-    } else {
-      this._service.add(new UserAdapter(this.userForm.value)).subscribe(
-        () => {
-          this.update.emit(true);
-          this.goBack();
 
-        },
-      );
+    if (this.user) {
+
+      this._service.update(this.user.id, this.userForm.value)
+        .subscribe(() => {
+          this.update.emit(true);
+          this.goBack();
+        });
+    } else {
+
+      this._service.add(new UserAdapter(this.userForm.value))
+        .subscribe(() => {
+          this.update.emit(true);
+          this.goBack();
+        });
     }
   }
 
@@ -95,7 +99,8 @@ export class PrvUsersComponent implements OnInit {
         Validators.pattern(Regex.email)
       ]],
       password: ['', [
-        // this.user ? undefined: Validators.required,
+        CustomValidations.requiredIf(!this.user),
+        Validators.pattern(Regex.name)
       ]],
       role: ['MANAGER', [
         Validators.required,

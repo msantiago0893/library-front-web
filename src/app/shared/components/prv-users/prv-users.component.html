@@ -3,7 +3,7 @@
 </div>
 
 <p class="title"> {{user ? "EDITAR" :"REGISTRO"}}</p>
-<form class="form" [formGroup]="userForm" novalidate (ngSubmit)="save()" >
+<form class="form" [formGroup]="userForm" novalidate (ngSubmit)="save()">
   <div class="form__control">
     <mat-form-field>
       <input matInput type="text" placeholder="*Nombre" formControlName="name">
@@ -73,15 +73,8 @@
     </mat-form-field>
   </div>
 
-
   <div class="form__actions">
-    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid" (click)="save()"> {{user ?"Guardar":"Agregar"}} </button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid"> {{user ?"Guardar":"Agregar"}} </button>
   </div>
-<<<<<<< HEAD
-
   <pre> {{ userForm.value | json }}</pre>
 </form>
-=======
-</form>
-
->>>>>>> 129cb6afe08787d15eec3cb485a82890767064d6
