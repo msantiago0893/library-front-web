@@ -4,10 +4,7 @@ import { UserAccount } from 'src/app/core/services/account.service';
 import { UserAdapter } from 'src/app/shared/models/user-adapter';
 
 import * as Regex from '@constant/regex';
-<<<<<<< Updated upstream
-=======
 import { Alert } from '@utils/alerts';
->>>>>>> Stashed changes
 import { NUMERIC } from '@enums/numeric';
 import { CustomValidations } from '@utils/custom-alidations';
 
@@ -22,10 +19,8 @@ export class PrvUsersComponent implements OnInit {
   private userForm: FormGroup;
   catalogNumber = NUMERIC;
   @Input() user: any;
+  @Input() updateList: Function;
   @Output() back = new EventEmitter<Number>();
-  @Output() update = new EventEmitter<Boolean>();
-  id: Number;
-
 
   constructor(
     private userGorup: FormBuilder,
@@ -51,14 +46,14 @@ export class PrvUsersComponent implements OnInit {
 
       this._service.update(this.user.id, this.userForm.value)
         .subscribe(() => {
-          this.update.emit(true);
+          this.updateList();
           this.goBack();
         });
     } else {
 
       this._service.add(new UserAdapter(this.userForm.value))
         .subscribe(() => {
-          this.update.emit(true);
+          this.updateList();
           this.goBack();
         });
     }
