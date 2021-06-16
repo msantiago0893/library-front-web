@@ -1,0 +1,24 @@
+<div class="main">
+
+  <mat-toolbar color="primary" class="header">
+    <div>LibraryUI</div>
+  </mat-toolbar>
+
+  <div class="menu">
+    <button mat-button routerLink="main">Inicio</button>
+    <button mat-button routerLink="gallery">Galería</button>
+    <button mat-button [matMenuTriggerFor]="beforeMenu">Mi cuenta</button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item>Préstamos en línea</button>
+      <button mat-menu-item>Reservar</button>
+      <button mat-menu-item>Historial de préstamos</button>
+      <button mat-menu-item>Mis listas</button>
+      <button mat-menu-item>Sugerencias</button>
+      <button mat-menu-item>Mis favoritos</button>
+    </mat-menu>
+  </div>
+
+  <section class="container">
+    <router-outlet></router-outlet>
+  </section>
+</div>
