@@ -37,6 +37,9 @@ export class UserComponent implements OnInit  {
     this.block = num
 
   }
+  backList(num) {
+    this.block = num
+  }
 
   addUser() {
     this.block = this.catalog.ADD_USER;
