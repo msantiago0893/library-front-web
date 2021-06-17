@@ -8,7 +8,6 @@ export class Book {
   yearEdicion: String;
 
   constructor(data:any) {
-    // console.log("verificar", data);
     this.id = data.id;
 
     this.name = data.name || '';

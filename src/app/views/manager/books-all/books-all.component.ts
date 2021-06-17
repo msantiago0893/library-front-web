@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { MESSAGE, TYPE_ALERT } from '@constant/catalog-alert';
 import { BookService } from '@services/book.service';
 import { Alert } from '@utils/alerts';
+import { DetailBookComponent } from '../detail-book/detail-book.component';
 
 @Component({
   selector: 'app-books-all',
@@ -16,11 +17,12 @@ export class BooksAllComponent implements OnInit {
 
   constructor(
     private _service: BookService,
-    public router: Router
+    public router: Router,
+    public dialog: MatDialog
     ) {}
 
   info: any[] = [];
-  displayedColumns: string[] = ['id', 'name', 'editorial', 'author', 'gender', 'nPage','edit','delete'];
+  displayedColumns: string[] = ['id', 'name', 'editorial', 'author', 'gender', 'nPage', 'actions'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -34,7 +36,6 @@ export class BooksAllComponent implements OnInit {
   allBooks() {
     this._service.consultAll()
                  .subscribe((item: any) => {
-                   console.log(item);
                     this.dataSource.data = item
                   });
   }
@@ -56,7 +57,19 @@ export class BooksAllComponent implements OnInit {
   }
 
   update(item: any) {
-    this.router.navigate(['home/edit-book/',item.id]);
+
+  }
+
+  detail(detail: Object) {
+
+    this.dialog.open(DetailBookComponent, {
+      width: "400px",
+      data: {...detail}
+    });
+
+    // dialoRef.afterClosed().subscribe(result => {
+    //   console.log(result);
+    // });
   }
 
 }

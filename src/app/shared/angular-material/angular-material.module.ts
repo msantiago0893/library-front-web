@@ -20,6 +20,7 @@ import {
    MatTableModule,
    MatPaginatorModule,
    MatCardModule,
+   MatDialogModule,
 } from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -46,7 +47,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
       MatPaginatorModule,
       MatCardModule,
       MatMenuModule,
-      MatExpansionModule
+      MatExpansionModule,
+      MatDialogModule
    ],
    exports: [
       MatButtonModule,
@@ -67,7 +69,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
       MatPaginatorModule,
       MatCardModule,
       MatMenuModule,
-      MatExpansionModule
+      MatExpansionModule,
+      MatDialogModule
    ],
    providers: [
       MatDatepickerModule,
