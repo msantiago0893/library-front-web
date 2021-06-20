@@ -3,15 +3,17 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PrvBookComponent } from './components/prv-book/prv-book.component';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+
+import { PrvBookComponent } from '@components/prv-book/prv-book.component';
 import { PrvSidebarComponent } from '@components/prv-sidebar/prv-sidebar.component';
 import { PrvUsersComponent } from '@components/prv-users/prv-users.component';
 import { PrvEmptyComponent } from '@components/prv-empty/prv-empty.component';
-import { PrvSystemErrorComponent } from './components/prv-system-error/prv-system-error.component';
-import { PrvPageLoaderComponent } from './components/prv-page-loader/prv-page-loader.component';
-import { PrvSectionLoaderComponent } from './components/prv-section-loader/prv-section-loader.component';
-import { PrvCarouselComponent } from './components/prv-carousel/prv-carousel.component';
-import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { PrvFileUploadComponent } from '@components/prv-file-upload/prv-file-upload.component';
+import { PrvSystemErrorComponent } from '@components/prv-system-error/prv-system-error.component';
+import { PrvPageLoaderComponent } from '@components/prv-page-loader/prv-page-loader.component';
+import { PrvSectionLoaderComponent } from '@components/prv-section-loader/prv-section-loader.component';
+import { PrvCarouselComponent } from '@components/prv-carousel/prv-carousel.component';
 @NgModule({
   declarations: [
     PrvSidebarComponent,
@@ -21,7 +23,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     PrvSystemErrorComponent,
     PrvPageLoaderComponent,
     PrvSectionLoaderComponent,
-    PrvCarouselComponent
+    PrvCarouselComponent,
+    PrvFileUploadComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +43,7 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     PrvUsersComponent,
     PrvSectionLoaderComponent,
     PrvCarouselComponent,
+    PrvFileUploadComponent,
     AngularMaterialModule
   ],
 })
