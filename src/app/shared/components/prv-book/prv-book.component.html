@@ -1,5 +1,5 @@
 <div class ="containTitle">
-  <p class ="title">{{id ? 'MODIFICAR LIBRO' : 'AGREGAR LIBRO'}}</p>
+  <p class ="title">{{id ? 'MODIFICAR LIBRO' : 'Agregar LIBRO'}}</p>
 </div>
 
 <div class="productCards">
@@ -48,7 +48,18 @@
           <span *ngIf="bookForm.get('yearEdicion').errors.pattern">Campo de tipo numerico.</span>
         </mat-error>
       </mat-form-field>
+
+      <div class="file">
+        <p>*Eliga fotografía</p>
+        <app-prv-file-upload
+          accepts="application/pdf"
+          >
+        </app-prv-file-upload>
+        <!-- <app-prv-file-upload requiredFileType="image/png"></app-prv-file-upload> -->
+      </div>
     </div>
+
+
 
     <div class ="container-button" >
       <button class="container-button__button" mat-raised-button color="primary"

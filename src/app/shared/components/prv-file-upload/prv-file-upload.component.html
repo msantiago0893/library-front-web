@@ -1,0 +1,12 @@
+<div class="file">
+  <label class="content-img" for="archivo">
+    <img class="file__img" src="assets/images/{{ uploadedFile ? uploadedFile.extension: 'add-file'}}.svg">
+    <div class="file__description">
+      <p class="file__name" title="{{ uploadedFile ? uploadedFile.name : '' }}">
+        {{ uploadedFile ? uploadedFile.name : 'Eliga un archivo' }}
+      </p>
+      <p class="file__size">{{ uploadedFile ? bytesToSize(uploadedFile.size) : '' }}</p>
+    </div>
+  </label>
+  <input type="file" id="archivo" [accept]="accepts" (change)="onFileSelected($event)">
+</div>
