@@ -29,7 +29,9 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.sass"
+              "src/styles.sass",
+
+              "src/styles-app-loading.sass"
             ],
             "scripts": [
               "./node_modules/chart.js/dist/Chart.min.js"

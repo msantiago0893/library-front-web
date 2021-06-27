@@ -32,11 +32,14 @@ export class LoginComponent implements OnInit {
                       .subscribe(response => {
 
                         if(response) {
+
                           this.route.navigateByUrl(ACL.getDefaultRedirectPath());
+
                           this._service.isLoader(true);
                         } else {
 
                           this.areWrongCredentials = !response;
+
                           setTimeout(() => {
                             this.areWrongCredentials = response;
                           }, 1500);

@@ -4,10 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MAT_DATE_LOCALE } from '@angular/material';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from './core/interceptors/error.service';
-import { SharedModule } from './shared/shared.module';
 import { LoaderInterceptor } from './core/interceptors/interceptor-loader';
+
+import { SharedModule } from './shared/shared.module';
 import { SpinnerSectionService } from '@services/spinner-section.service';
 @NgModule({
   declarations: [
@@ -23,8 +26,8 @@ import { SpinnerSectionService } from '@services/spinner-section.service';
   exports: [
     HttpClientModule,
   ],
-  // providers: [],
   providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, // format date input datepicker
     SpinnerSectionService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
