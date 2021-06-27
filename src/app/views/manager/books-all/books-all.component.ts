@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { MESSAGE, TYPE_ALERT } from '@constant/catalog-alert';
 import { BookService } from '@services/book.service';
 import { Alert } from '@utils/alerts';
 import { DetailBookComponent } from '../detail-book/detail-book.component';
+import { CATALOGBOOK } from './domain/catalog-book';
 
 @Component({
   selector: 'app-books-all',
@@ -14,6 +15,10 @@ import { DetailBookComponent } from '../detail-book/detail-book.component';
 export class BooksAllComponent implements OnInit {
 
   public data = [];
+  catalog = CATALOGBOOK;
+  block = CATALOGBOOK.TABLE_BOOK;
+  bookToEdit :any;
+
 
   constructor(
     private _service: BookService,
@@ -22,7 +27,7 @@ export class BooksAllComponent implements OnInit {
     ) {}
 
   info: any[] = [];
-  displayedColumns: string[] = ['id', 'name', 'editorial', 'author', 'gender', 'nPage', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'editorial', 'author', 'gender', 'page', 'actions'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -56,8 +61,15 @@ export class BooksAllComponent implements OnInit {
     });
   }
 
+  return(back:number) {
+
+    this.block = back;
+  }
+
   update(item: any) {
 
+    this.block = this.catalog.UPDATE_BOOK;
+    this.bookToEdit = item;
   }
 
   detail(detail: Object) {

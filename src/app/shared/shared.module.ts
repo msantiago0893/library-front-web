@@ -44,6 +44,7 @@ import { PrvCarouselComponent } from '@components/prv-carousel/prv-carousel.comp
     PrvSectionLoaderComponent,
     PrvCarouselComponent,
     PrvFileUploadComponent,
+    PrvBookComponent,
     AngularMaterialModule
   ],
 })
