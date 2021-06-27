@@ -1,5 +1,7 @@
 
-<app-prv-empty *ngIf="!users.length  && block !== catalog.ADD_USER; else containerList"  [msg2]="'No se encontraron Administradores'"></app-prv-empty>
+<app-prv-empty *ngIf="!users.length  && block !== catalog.ADD_USER; else containerList"
+ [msg2]="'No se encontraron Administradores'"></app-prv-empty>
+
 <ng-template #containerList>
     <ng-container *ngIf="block === catalog.LIST_USER">
         <div class="container">

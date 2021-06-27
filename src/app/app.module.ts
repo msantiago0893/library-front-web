@@ -12,6 +12,9 @@ import { LoaderInterceptor } from './core/interceptors/interceptor-loader';
 
 import { SharedModule } from './shared/shared.module';
 import { SpinnerSectionService } from '@services/spinner-section.service';
+import { MatDatepickerModule, MAT_DATE_LOCALE} from '@angular/material';
+import { MatMomentDateModule} from '@angular/material-moment-adapter';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +24,7 @@ import { SpinnerSectionService } from '@services/spinner-section.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SharedModule,
+    SharedModule, MatDatepickerModule, MatMomentDateModule
   ],
   exports: [
     HttpClientModule,
@@ -30,7 +33,8 @@ import { SpinnerSectionService } from '@services/spinner-section.service';
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, // format date input datepicker
     SpinnerSectionService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
   ],
   bootstrap: [AppComponent],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA]

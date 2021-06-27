@@ -80,7 +80,7 @@ export class PrvUsersComponent implements OnInit {
         Validators.maxLength(25),
         Validators.pattern(Regex.name)
       ]],
-      sex: ['H', [
+      sex: ['', [
         Validators.required
       ]],
       cel: ['', [

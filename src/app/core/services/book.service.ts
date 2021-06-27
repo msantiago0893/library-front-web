@@ -35,7 +35,7 @@ export class BookService implements Dao {
     return this.http.delete(`${this.uri}books/${id}`,{headers: this.httpHeaders});
   }
 
-  update(item: any) {
-    return this.http.put(`${this.uri}books/${item.id}`,item.book, {headers: this.httpHeaders});
+  update(id:number, item: any) {
+    return this.http.put(`${this.uri}books/${id}`,item, {headers: this.httpHeaders});
   }
 }

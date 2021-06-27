@@ -1,7 +1,9 @@
 <div class ="containTitle">
-  <p class ="title">{{id ? 'MODIFICAR LIBRO' : 'Agregar LIBRO'}}</p>
+  <h1 class ="title">{{book ? 'MODIFICAR LIBRO' : 'Agregar LIBRO'}}</h1>
 </div>
-
+<div class="containerBack">
+  <img *ngIf="book" class="Back" (click)="toBack()" src="assets/images/flecha.svg">
+</div>
 <div class="productCards">
   <form #regForm="ngForm" class="form" [formGroup]="bookForm" novalidate>
 
@@ -35,20 +37,28 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput  type="text"  placeholder="Número de páginas" formControlName="nPage">
-        <mat-error *ngIf="bookForm.controls.nPage.touched && bookForm.controls.nPage.invalid">
-          <span *ngIf="bookForm.get('nPage').errors.required">Campo obligatorio.</span>
-          <span *ngIf="bookForm.get('nPage').errors.pattern">Campo de tipo numerico.</span>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field fxFlex>
-        <input matInput  type="text"  placeholder="Año de edición" formControlName="yearEdicion">
-        <mat-error *ngIf="bookForm.controls.yearEdicion.touched && bookForm.controls.yearEdicion.invalid">
-          <span *ngIf="bookForm.get('yearEdicion').errors.required">Campo obligatorio.</span>
-          <span *ngIf="bookForm.get('yearEdicion').errors.pattern">Campo de tipo numerico.</span>
+        <input matInput  type="text"  placeholder="Número de páginas" formControlName="page">
+        <mat-error *ngIf="bookForm.controls.page.touched && bookForm.controls.page.invalid">
+          <span *ngIf="bookForm.get('page').errors.required">Campo obligatorio.</span>
+          <span *ngIf="bookForm.get('page').errors.pattern">Campo de tipo numerico.</span>
         </mat-error>
       </mat-form-field>
 
+        <mat-form-field appearance="fill">
+          <mat-label>Seleccione la fecha</mat-label>
+          <input matInput [matDatepicker]="dp1" formControlName="yearEdicion">
+          <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+          <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <!-- DE esta forma tambien funciona -->
+
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Completely disabled</mat-label>
+          <input matInput [matDatepicker]="dp1" readonly>
+          <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+          <mat-datepicker #dp1></mat-datepicker>
+        </mat-form-field> -->
       <div class="file">
         <p>*Eliga fotografía</p>
         <app-prv-file-upload
@@ -58,12 +68,11 @@
         <!-- <app-prv-file-upload requiredFileType="image/png"></app-prv-file-upload> -->
       </div>
     </div>
-
-
-
     <div class ="container-button" >
       <button class="container-button__button" mat-raised-button color="primary"
-              type="button" (click)="save()" >{{id  ?  'MODIFICAR' : 'AGREGAR'}}</button>
+              type="button" (click)="save()" >{{book  ?  'MODIFICAR' : 'AGREGAR'}}</button>
     </div>
   </form>
+
+  <pre> {{ bookForm.value | json }}</pre>
 </div>
