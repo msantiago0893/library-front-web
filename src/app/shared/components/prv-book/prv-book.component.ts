@@ -1,24 +1,25 @@
 import { Component, OnInit, Input, Output,EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { BookService } from '@services/book.service';
 
-import { MESSAGE, TYPE_ALERT } from '@constant/catalog-alert';
-import { Alert } from '@utils/alerts';
 import * as Regex from '@constant/regex';
 import { Bookadapter } from './domin/bookadapter';
+import * as Date from '@constant/date';
+import { Alert } from '@utils/alerts';
+import { MESSAGE, TYPE_ALERT } from '@constant/catalog-alert';
 
 @Component({
   selector: 'app-prv-book',
   templateUrl: './prv-book.component.html',
-  styleUrls: ['./prv-book.component.sass']
+  styleUrls: ['./prv-book.component.sass'],
 })
 export class PrvBookComponent implements OnInit {
 
   bookForm : FormGroup;
-  private alert: Alert = new Alert();
-  id: number
+  maxDate = Date.previousDate();
+
   @Input()  book : any;
   @Input() updateTable : Function;
   @Output() back = new EventEmitter<Number>();
@@ -26,8 +27,7 @@ export class PrvBookComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public router: Router,
-    private _service: BookService,
-    private route: ActivatedRoute
+    private _service: BookService
     ){ }
 
   ngOnInit() {
@@ -38,7 +38,9 @@ export class PrvBookComponent implements OnInit {
     }
   }
 
-  save() {
+  save(prvFile: any) {
+
+    console.log('status del file ', prvFile.save());
 
     if (this.book) {
 
@@ -58,7 +60,7 @@ export class PrvBookComponent implements OnInit {
           Alert.msgTimer(TYPE_ALERT.SUCCESS, MESSAGE.ADD);
           this.updateTable();
           this.toBack();
-          },
+          }
         );
     }
   }
@@ -73,6 +75,10 @@ export class PrvBookComponent implements OnInit {
       this.bookForm.controls[key].setErrors(null);
     });
     this.bookForm.setErrors({"required":true})
+  }
+
+  handlerFile(file: any) {
+    this.bookForm.patchValue({photo: file});
   }
 
   validators() {
@@ -110,7 +116,8 @@ export class PrvBookComponent implements OnInit {
       yearEdicion:[{ value:'', disabled:true }, [
         Validators.required,
         Validators.pattern(Regex.date)
-      ]]
+      ]],
+      photo: ['']
     });
   }
 }
