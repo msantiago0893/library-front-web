@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { RolGuard } from './core/guards/rol.guard';
 import { ACL } from './security/acl';
-
 
 const routes: Routes = [
   {
@@ -16,7 +16,13 @@ const routes: Routes = [
   },
   {
     path:'',
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'MANAGER',
+        'CUSTOMER'
+      ]
+    },
     children: [
       {
         path: '',
@@ -24,11 +30,19 @@ const routes: Routes = [
       },
       {
         path:'manager',
-        loadChildren: () => import('./views/manager/manager.module').then(m => m.ManagerModule)
+        canActivate: [RolGuard],
+        loadChildren: () => import('./views/manager/manager.module').then(m => m.ManagerModule),
+        data: {
+          roles: ['MANAGER']
+        }
       },
       {
         path:'customer',
-        loadChildren: () => import('./views/customer/customer.module').then(m => m.CustomerModule)
+        canActivate: [RolGuard],
+        loadChildren: () => import('./views/customer/customer.module').then(m => m.CustomerModule),
+        data: {
+          roles: ['CUSTOMER']
+        }
       }
     ]
   },

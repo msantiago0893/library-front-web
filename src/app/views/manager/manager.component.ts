@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { NavigationEnd, Router } from '@angular/router';
 import { ErrorService } from '@services/error.service';
@@ -10,13 +10,14 @@ import { filter } from 'rxjs/operators';
   templateUrl: './manager.component.html',
   styleUrls: ['./manager.component.sass']
 })
-export class ManagerComponent implements OnInit, AfterViewInit {
+export class ManagerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   panelOpenState = false;
   isError: Boolean = false;
   loading: boolean = null;
   opened = true;
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
+  private subscription: any;
 
   constructor(
     private router: Router,
@@ -47,17 +48,21 @@ export class ManagerComponent implements OnInit, AfterViewInit {
 
     this.changeOfRoute();
 
-    this.loaderService.isLoading.subscribe(response => {
+    this.subscription =  this.loaderService.isLoading.subscribe(response => {
 
-      this.loading = response;
+                            this.loading = response;
 
-      this.changeDetectorRef.detectChanges();
-    });
+                            this.changeDetectorRef.detectChanges();
+                          });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   changeOfRoute() {
     //TODO: Detectar cambio de rutas
-    this.router.events
+    this.subscription =  this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd)
       )

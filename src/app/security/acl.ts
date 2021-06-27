@@ -5,6 +5,8 @@ export class ACL {
 
     const user = Storage.getItem('user');
 
+    console.log('getDefaultRedirectPath');
+
     if(user) {
 
       const role = user && user.role;
@@ -18,7 +20,7 @@ export class ACL {
       }
     }
 
-    return '/auth/login';
+    return '';
   }
 
   static getRoles(rol: any): Boolean {
@@ -26,7 +28,7 @@ export class ACL {
   }
 
   static isClient(role: string): Boolean {
-    return role === 'CLIENT'
+    return role === 'CUSTOMER'
   }
 
   static isManager(role: string): Boolean {
