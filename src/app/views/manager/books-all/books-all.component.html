@@ -2,8 +2,6 @@
                 msg1="LO SENTIMOS"
                 msg2="No encontramos libros">
 </app-prv-empty>
-<p> BLock : {{block}} </p>
-
 <div [hidden]="!(dataSource.data.length && block === catalog.TABLE_BOOK)" >
 
   <h1 class="title">CONSULTA</h1>
@@ -56,5 +54,5 @@
   (back)="return($event)"
   [book]="block === catalog.UPDATE_BOOK ? bookToEdit : null"
   [updateTable]="allBooks.bind(this)"
-  >COMponente hijo </app-prv-book>
+  ></app-prv-book>
 </ng-container>
