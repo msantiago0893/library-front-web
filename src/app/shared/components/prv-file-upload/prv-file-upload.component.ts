@@ -12,12 +12,14 @@ import { Document } from './domain/Document';
 export class PrvFileUploadComponent {
 
   @Input() accepts:string = '' ||  'image/png, image/jpeg, image/jpg, application/pdf';
-  @Output() emitfile = new EventEmitter<string>();
+  @Output() file = new EventEmitter<any>();
 
     fileName = '';
     uploadProgress:number;
     uploadSub: Subscription;
     uploadedFile: Object = null;
+
+    fileSlected = null;
 
 
 
@@ -31,30 +33,75 @@ export class PrvFileUploadComponent {
 
       if(file) {
 
+        this.fileSlected = file;
+
         this.uploadedFile = new Document(file);
-        this.emitfile.emit(file.name);
 
-        this.fileName = file.name;
+        this.file.emit(file.name);
 
-        const formData: FormData = new FormData();
-
-        formData.append("file", file);
-
-        const upload$ = this.http.post("http://localhost:8080/api/file/upload", formData, {
-          reportProgress: true,
-          observe: 'events'
-        })
-        .pipe(
-          finalize(() => this.reset())
-        );
-
-        this.uploadSub = upload$.subscribe(event => {
-
-          if (event.type == HttpEventType.UploadProgress) {
-            this.uploadProgress = Math.round(100 * (event.loaded / event.total));
-          }
-        })
+        // this.save();
       }
+    }
+
+    save() {
+
+      // let status = false;
+
+      const formData: FormData = new FormData();
+
+      formData.append("file", this.fileSlected);
+
+      const upload$ = this.http.post("http://localhost:8080/api/file/upload", formData, {
+        reportProgress: true,
+        observe: 'events'
+      })
+      .pipe(
+        finalize(() => this.reset())
+      )
+      .toPromise();
+
+      // const prom = new Promise( (resolve, reject) => {
+      //   upload$.toPromise().then(
+      //     (response:any) => {
+      //       console.log('Respuesta', response);
+      //       resolve(response);
+      //       return response.ok;
+      //     },
+      //     (err: any) => {
+      //       console.log('Error ', err);
+      //       reject(err);
+      //       return err.ok;
+      //     }
+      //     );
+      // });
+
+              // const prom = new Promise( (resolve, reject) => {
+              //   resolve(true);
+              //   reject(new Error("Algo malo a pasado"));
+              // });
+
+              // prom.then((response:any) => {
+              //   console.log('respuesta promesa ', response);
+              //   status = response.status;
+              // });
+
+      // this.uploadSub = upload$.subscribe((event: any) => {
+
+      //   console.log('Response file ', event);
+      //   status = event.ok;
+      // });
+      const status = new Promise<Boolean>((resolve, reject) => {
+        upload$.then(() => {
+          return true;
+        })
+        .catch(() => {
+          return false;
+        });
+      })
+  
+
+      console.log('Exit save() ', status);
+      return  status;
     }
 
     bytesToSize(bytes: any) {
@@ -74,4 +121,5 @@ export class PrvFileUploadComponent {
     this.uploadProgress = null;
     this.uploadSub = null;
   }
+
 }
