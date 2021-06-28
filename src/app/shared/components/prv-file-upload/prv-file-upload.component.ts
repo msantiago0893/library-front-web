@@ -90,6 +90,8 @@ export class PrvFileUploadComponent {
       //   console.log('Response file ', event);
       //   status = event.ok;
       // });
+      console.log('Method save file()');
+
       const status = new Promise<Boolean>((resolve, reject) => {
         upload$.then(() => {
           return true;
