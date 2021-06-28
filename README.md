@@ -37,7 +37,7 @@
   # Resolver conflictos
     git stash list => Consultar copias locales
     git stash      => Realizar una copia local
-    git pop stash  => Extraer o autofusionar copia con los archivos locales
+    git stash pop => Extraer o autofusionar copia con los archivos locales
 
   # Plugin install
     npm i @ngmodule/material-carousel
