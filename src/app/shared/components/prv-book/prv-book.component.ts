@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { BookService } from '@services/book.service';
 
 import * as Regex from '@constant/regex';
-import { Bookadapter } from './domin/bookadapter';
 import * as Date from '@constant/date';
 import { Alert } from '@utils/alerts';
 import { MESSAGE, TYPE_ALERT } from '@constant/catalog-alert';
@@ -18,7 +17,6 @@ import { MESSAGE, TYPE_ALERT } from '@constant/catalog-alert';
 export class PrvBookComponent implements OnInit {
 
   bookForm : FormGroup;
-  maxDate = Date.previousDate();
 
   @Input()  book : any;
   @Input() updateTable : Function;
@@ -44,24 +42,11 @@ export class PrvBookComponent implements OnInit {
 
     if (this.book) {
 
-      this._service.update(this.book.id, new Bookadapter(this.bookForm.value))
-        .subscribe(() => {
-          Alert.msgTimer(TYPE_ALERT.SUCCESS,MESSAGE.MODIFY);
-          this.updateTable();
-          this.toBack();
-        },
-      );
+     
 
     } else {
 
-      this._service.add(new Bookadapter(this.bookForm.value))
-        .subscribe(
-          () => {
-          Alert.msgTimer(TYPE_ALERT.SUCCESS, MESSAGE.ADD);
-          this.updateTable();
-          this.toBack();
-          }
-        );
+
     }
   }
 
@@ -113,10 +98,7 @@ export class PrvBookComponent implements OnInit {
         Validators.maxLength(10),
         Validators.pattern(Regex.numeric)
       ]],
-      yearEdicion:[{ value:'', disabled:true }, [
-        Validators.required,
-        Validators.pattern(Regex.date)
-      ]],
+
       photo: ['']
     });
   }

@@ -68,15 +68,16 @@
       </div>
     </div>
 
+
+
+    <button (click)="prvFile.hola()">Fijar en 1</button><br>
+
+
     <div class ="container-button" >
-      <button class="container-button__button" mat-raised-button color="primary" type="button" (click)="save()" >
-        {{book  ?  'MODIFICAR' : 'AGREGAR'}}
-      </button>
-
-      <button (click)="prvFile.hola()">Fijar en 1</button><br>
+      
     </div>
-  </form>
 
-  <pre> {{ bookForm.value | json }}</pre>
+    <pre> {{ bookForm.value | json }}</pre>
+  </form>
 
 </div>
