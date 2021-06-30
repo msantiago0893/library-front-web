@@ -73,7 +73,6 @@ export class BooksAllComponent implements OnInit {
   }
 
   detail(detail: Object) {
-
     this.dialog.open(DetailBookComponent, {
       width: "400px",
       data: {...detail}

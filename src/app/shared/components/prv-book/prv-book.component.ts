@@ -19,7 +19,6 @@ export class PrvBookComponent implements OnInit {
 
   bookForm : FormGroup;
   maxDate = Date.previousDate();
-
   @Input()  book : any;
   @Input() updateTable : Function;
   @Output() back = new EventEmitter<Number>();
@@ -34,13 +33,17 @@ export class PrvBookComponent implements OnInit {
     this.validators();
 
     if (this.book) {
-      this.bookForm.patchValue(this.book)
+      this.bookForm.patchValue(this.book);
     }
   }
 
-  save(prvFile: any) {
+  // async / await => espera a que se termine de ejecutar la promise
+  async save(prvFile: any) {
 
-    console.log('status del file ', prvFile.save());
+    let promfile = await prvFile.save();
+    console.log('Foto recibida ', promfile);
+
+    this.bookForm.patchValue({photo: promfile});
 
     if (this.book) {
 
@@ -48,7 +51,7 @@ export class PrvBookComponent implements OnInit {
         .subscribe(() => {
           Alert.msgTimer(TYPE_ALERT.SUCCESS,MESSAGE.MODIFY);
           this.updateTable();
-          this.toBack();
+          this.goBack();
         },
       );
 
@@ -58,14 +61,13 @@ export class PrvBookComponent implements OnInit {
         .subscribe(
           () => {
           Alert.msgTimer(TYPE_ALERT.SUCCESS, MESSAGE.ADD);
-          this.updateTable();
-          this.toBack();
+          this.reset();
           }
         );
     }
   }
 
-  toBack() {
+  goBack() {
     this.back.emit(1);
   }
 
@@ -75,10 +77,6 @@ export class PrvBookComponent implements OnInit {
       this.bookForm.controls[key].setErrors(null);
     });
     this.bookForm.setErrors({"required":true})
-  }
-
-  handlerFile(file: any) {
-    this.bookForm.patchValue({photo: file});
   }
 
   validators() {
@@ -113,9 +111,8 @@ export class PrvBookComponent implements OnInit {
         Validators.maxLength(10),
         Validators.pattern(Regex.numeric)
       ]],
-      yearEdicion:[{ value:'', disabled:true }, [
-        Validators.required,
-        Validators.pattern(Regex.date)
+      yearEdicion:['', [
+        Validators.required
       ]],
       photo: ['']
     });

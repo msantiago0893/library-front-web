@@ -65,6 +65,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
       MatSelectModule,
       MatRadioModule,
       MatDatepickerModule,
+      MatNativeDateModule,
       MatChipsModule,
       MatTooltipModule,
       MatTableModule,

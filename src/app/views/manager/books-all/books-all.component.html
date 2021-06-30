@@ -34,9 +34,9 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon color="primary" class="icon" (click)="detail(element)">details</mat-icon>
-        <mat-icon color="primary" class="icon" (click)="update(element )">edit</mat-icon>
-        <mat-icon color="warn" class="icon"(click)="delete(element)" >delete</mat-icon>
+        <mat-icon color="primary" class="icon" (click)="detail(element)" title="Detalle">details</mat-icon>
+        <mat-icon color="primary" class="icon" (click)="update(element )" title="Editar">edit</mat-icon>
+        <mat-icon color="warn" class="icon"(click)="delete(element)" title="Remover">delete</mat-icon>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -47,12 +47,10 @@
   </div>
 </div>
 
-
-
 <ng-container *ngIf="block === catalog.UPDATE_BOOK || block === catalog.ADD_BOOK">
   <app-prv-book
-  (back)="return($event)"
-  [book]="block === catalog.UPDATE_BOOK ? bookToEdit : null"
-  [updateTable]="allBooks.bind(this)"
-  ></app-prv-book>
+    (back)="return($event)"
+    [book]="block === catalog.UPDATE_BOOK ? bookToEdit : null"
+    [updateTable]="allBooks.bind(this)">
+  </app-prv-book>
 </ng-container>

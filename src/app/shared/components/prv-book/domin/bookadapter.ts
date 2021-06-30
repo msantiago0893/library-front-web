@@ -1,3 +1,5 @@
+import { formatDate } from "@angular/common";
+
 export class Bookadapter {
 
     name: String;
@@ -6,6 +8,7 @@ export class Bookadapter {
     gender: String;
     page: String;
     yearEdicion: String;
+    photo: String;
 
     constructor(data: any) {
 
@@ -14,11 +17,12 @@ export class Bookadapter {
         this.author = data.author ? data.author : '';
         this.gender = data.gender ? data.gender : '';
         this.page = data.page ? data.page : '';
-        this.yearEdicion = data.yearEdicion ? this.dateformat(data.yearEdicion) : '';
+        this.yearEdicion = data.yearEdicion ? this.dateFormat(data.yearEdicion) : '';
+        this.photo = data.photo ? data.photo : '';
     }
 
-    dateformat (date : string) {
-        return new Date(date).toLocaleDateString();
+    dateFormat (date : string) {
+      return formatDate(date,'yyyy/MM/dd','en-MX');
     }
 
 }
