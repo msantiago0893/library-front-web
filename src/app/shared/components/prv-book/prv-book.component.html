@@ -60,25 +60,12 @@
           accepts="image/*">
         </app-prv-file-upload>
       </div>
-      <!-- <div class="file">
-        <p>Eliga fotografía</p>
-        <app-prv-file-upload  #prvFile
-          accepts="image/*"
-          (file)=handlerFile($event)>
-        </app-prv-file-upload>
-      </div> -->
     </div>
 
     <div class ="container-button" >
       <button type="submit" class="container-button__button" mat-raised-button color="primary" [disabled]="bookForm.invalid">
         {{ book  ?  'MODIFICAR' : 'AGREGAR' }}
       </button>
-
-      <!-- <button (click)="prvFile.hola()">Fijar en 1</button><br> -->
     </div>
   </form>
-
-  <pre> {{ bookForm.value | json }}</pre>
-  <pre> {{ bookForm.valid | json }}</pre>
-
 </div>

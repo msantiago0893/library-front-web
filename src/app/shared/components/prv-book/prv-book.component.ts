@@ -72,10 +72,13 @@ export class PrvBookComponent implements OnInit {
   }
 
   reset() {
+
     this.bookForm.reset('');
+
     Object.keys(this.bookForm.controls).forEach(key => {
       this.bookForm.controls[key].setErrors(null);
     });
+
     this.bookForm.setErrors({"required":true})
   }
 
