@@ -5,7 +5,8 @@ export class Book {
   author: String;
   gender: String;
   page: String;
-  yearEdicion: String;
+  yearEdicion: any;
+  photo: String
 
   constructor(data:any) {
     this.id = data.id;
@@ -15,6 +16,7 @@ export class Book {
     this.author = data.author  ? data.author : '';
     this.gender = data.gender || '';
     this.page = data.page || '';
-    this.yearEdicion = data.yearEdicion ? data.yearEdicion : "Sin fecha";
+    this.yearEdicion = data.yearEdicion ? new Date(data.yearEdicion) : "";
+    this.photo = data.photo || '';
   }
 }

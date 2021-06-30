@@ -2,10 +2,10 @@
   <h1 class ="title">{{book ? 'MODIFICAR LIBRO' : 'Agregar LIBRO'}}</h1>
 </div>
 <div class="containerBack">
-  <img *ngIf="book" class="Back" (click)="toBack()" src="assets/images/flecha.svg">
+  <img *ngIf="book" class="Back" (click)="goBack()" src="assets/images/flecha.svg">
 </div>
 <div class="productCards">
-  <form #regForm="ngForm" class="form" [formGroup]="bookForm" novalidate>
+  <form #regForm="ngForm" class="form" [formGroup]="bookForm" (ngSubmit)="save(prvFile)" novalidate>
 
     <div class="form__control">
       <mat-form-field fxFlex>
@@ -16,28 +16,28 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput  type="text"  placeholder="Editorial" formControlName="editorial">
+        <input matInput  type="text" placeholder="Editorial" formControlName="editorial">
         <mat-error *ngIf="bookForm.controls.editorial.touched && bookForm.controls.editorial.invalid">
           <span *ngIf="bookForm.get('editorial').errors.required">Campo obligatorio.</span>
           <span *ngIf="bookForm.get('editorial').errors.pattern">Campo de tipo texto.</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput  type="text"  placeholder="author" formControlName="author">
+        <input matInput  type="text" placeholder="Autor" formControlName="author">
         <mat-error *ngIf="bookForm.controls.author.touched && bookForm.controls.author.invalid">
           <span *ngIf="bookForm.get('author').errors.required">Campo obligatorio.</span>
           <span *ngIf="bookForm.get('author').errors.pattern">Campo de tipo texto.</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput  type="text"  placeholder="Género" formControlName="gender">
+        <input matInput  type="text" placeholder="Género" formControlName="gender">
         <mat-error *ngIf="bookForm.controls.gender.touched && bookForm.controls.gender.invalid">
           <span *ngIf="bookForm.get('gender').errors.required">Campo obligatorio.</span>
           <span *ngIf="bookForm.get('gender').errors.pattern">Campo de tipo texto.</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput  type="text"  placeholder="Número de páginas" formControlName="page">
+        <input matInput  type="text" placeholder="Número de páginas" formControlName="page">
         <mat-error *ngIf="bookForm.controls.page.touched && bookForm.controls.page.invalid">
           <span *ngIf="bookForm.get('page').errors.required">Campo obligatorio.</span>
           <span *ngIf="bookForm.get('page').errors.pattern">Campo de tipo numerico.</span>
@@ -45,38 +45,40 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Selecciona fecha</mat-label>
-        <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="yearEdicion">
+        <mat-label>Año de edición</mat-label>
+        <input matInput [matDatepicker]="picker" datePickerFormat="YYYY/MM/DD" [max]="maxDate" formControlName="yearEdicion" readonly>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker disabled="false"></mat-datepicker>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="bookForm.controls.yearEdicion.touched && bookForm.controls.yearEdicion.invalid">
+          <span *ngIf="bookForm.get('yearEdicion').errors">Campo año de edición obligatorio.</span>
+        </mat-error>
       </mat-form-field>
 
-      <!-- DE esta forma tambien funciona -->
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Completely disabled</mat-label>
-        <input matInput [matDatepicker]="dp1" readonly>
-        <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
-        <mat-datepicker #dp1></mat-datepicker>
-      </mat-form-field> -->
-
       <div class="file">
-        <p>*Eliga fotografía</p>
+        <p>Eliga fotografía</p>
+        <app-prv-file-upload  #prvFile
+          accepts="image/*">
+        </app-prv-file-upload>
+      </div>
+      <!-- <div class="file">
+        <p>Eliga fotografía</p>
         <app-prv-file-upload  #prvFile
           accepts="image/*"
           (file)=handlerFile($event)>
         </app-prv-file-upload>
-      </div>
+      </div> -->
     </div>
 
     <div class ="container-button" >
-      <button class="container-button__button" mat-raised-button color="primary" type="button" (click)="save(prvFile)" >
-        {{book  ?  'MODIFICAR' : 'AGREGAR'}}
+      <button type="submit" class="container-button__button" mat-raised-button color="primary" [disabled]="bookForm.invalid">
+        {{ book  ?  'MODIFICAR' : 'AGREGAR' }}
       </button>
 
-      <button (click)="prvFile.hola()">Fijar en 1</button><br>
+      <!-- <button (click)="prvFile.hola()">Fijar en 1</button><br> -->
     </div>
   </form>
 
   <pre> {{ bookForm.value | json }}</pre>
+  <pre> {{ bookForm.valid | json }}</pre>
 
 </div>
