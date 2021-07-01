@@ -1,0 +1,67 @@
+<mat-toolbar color="primary" class="header">
+  <div>LibraryUI</div>
+  <span class="nav-tool-items">
+    <img class="icon" src="assets/images/notificacion.svg" mat-icon-button alt="notification">
+    <img class="icon" src="assets/images/flag.svg" mat-icon-button [matMenuTriggerFor]="flag" alt="flag">
+    <img class="icon" src="assets/images/user.svg" mat-icon-button [matMenuTriggerFor]="profile" alt="user">
+    <img class="icon" src="assets/images/menu.svg" mat-icon-button (click)="sidenav.toggle()" alt="menu">
+    <!-- <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon> -->
+  </span>
+</mat-toolbar>
+
+<mat-menu #profile>
+  <button mat-menu-item disabled>
+    <mat-icon>dialpad</mat-icon>
+    <span>Marco Antonio Santiago Feria</span>
+  </button>
+  <button mat-menu-item routerLink="/profile">
+    <mat-icon>dialpad</mat-icon>
+    <span>Perfil</span>
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>notifications_off</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+</mat-menu>
+
+<mat-menu #flag>
+  <button mat-menu-item (click)="switchLang('es')">
+    <mat-icon>assistant_photo</mat-icon>
+    <span>MX</span>
+  </button>
+  <button mat-menu-item (click)="switchLang('en')">
+    <mat-icon>assistant_photo</mat-icon>
+    <span>USA</span>
+  </button>
+</mat-menu>
+
+<div class="container">
+  <section class="sidebar">
+
+    <div class="data-user">
+      <img class="data-user__icon" src="assets/images/user.svg">
+      <p class="data-user__description">User Santiago</p>
+      <p class="data-user__description">Manager</p>
+    </div>
+
+    <div class="group-buttons">
+      <button  mat-raised-button routerLink="/profile/contact">
+        <mat-icon class="icon">person</mat-icon>
+        <span>Contacto</span>
+      </button>
+      <button  mat-raised-button routerLink="/profile/reset-password">
+        <mat-icon class="icon">password</mat-icon>
+        <span>Cambiar contraseña</span>
+      </button>
+      <button  mat-raised-button routerLink="/">
+        <mat-icon class="icon">house</mat-icon>
+        <span>Salir del menú</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="content-form">
+    <router-outlet></router-outlet>
+  </section>
+</div>
+

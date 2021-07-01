@@ -7,8 +7,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { RegistryComponent } from './registry/registry.component';
 import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -21,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularMaterialModule,
     FormsModule, // Formulario
     ReactiveFormsModule, // formulario
+    RouterModule
   ]
 })
 export class AuthModule { }

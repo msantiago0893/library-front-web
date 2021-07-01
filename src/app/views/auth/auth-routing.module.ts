@@ -9,10 +9,10 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'registry', component: RegistryComponent },
+      { path: 'signin', component: LoginComponent },
+      { path: 'signup', component: RegistryComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
-      { path: '**', redirectTo:'login' }
+      { path: '**', redirectTo:'signin' }
     ]
   }
 ];

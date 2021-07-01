@@ -1,60 +1,29 @@
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserAccount } from 'src/app/core/services/account.service';
-import { UserAdapter } from 'src/app/shared/models/user-adapter';
 import * as Regex from '@constant/regex';
-import { NUMERIC } from '@enums/numeric';
+import { UserAccount } from '@services/account.service';
 import { CustomValidations } from '@utils/custom-alidations';
 
 @Component({
-  selector: 'app-prv-users',
-  templateUrl: './prv-users.component.html',
-  styleUrls: ['./prv-users.component.sass']
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.sass']
 })
-
-export class PrvUsersComponent implements OnInit {
+export class ContactComponent implements OnInit {
 
   private userForm: FormGroup;
-  catalogNumber = NUMERIC;
-  @Input() user: any;
-  @Input() updateList: Function;
-  @Output() back = new EventEmitter<Number>();
 
   constructor(
     private userGorup: FormBuilder,
     private _service: UserAccount
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
     this.validations();
-
-    if (this.user) {
-      this.userForm.patchValue(this.user);
-    }
-  }
-
-  goBack() {
-    this.back.emit(this.catalogNumber.ONE);
   }
 
   save() {
 
-    if (this.user) {
-
-      this._service.update(this.user.id, this.userForm.value)
-        .subscribe(() => {
-          this.updateList();
-          this.goBack();
-        });
-    } else {
-
-      this._service.add(new UserAdapter(this.userForm.value))
-        .subscribe(() => {
-          this.updateList();
-          this.goBack();
-        });
-    }
   }
 
   validations() {
@@ -92,7 +61,7 @@ export class PrvUsersComponent implements OnInit {
         Validators.pattern(Regex.email)
       ]],
       password: ['', [
-        CustomValidations.requiredIf(!this.user),
+        // CustomValidations.requiredIf(!this.user),
         Validators.pattern(Regex.name)
       ]],
       role: ['MANAGER', [
@@ -100,4 +69,5 @@ export class PrvUsersComponent implements OnInit {
       ]]
     });
   }
+
 }
