@@ -37,11 +37,10 @@ export class PrvBookComponent implements OnInit {
     }
   }
 
-  // async / await => espera a que se termine de ejecutar la promise
+  // async / await => espera a que se termine de ejecutar el promise
   async save(prvFile: any) {
 
     let promfile = await prvFile.save();
-    console.log('Foto recibida ', promfile);
 
     this.bookForm.patchValue({photo: promfile});
 

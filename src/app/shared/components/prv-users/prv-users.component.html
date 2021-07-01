@@ -1,8 +1,11 @@
-<div class="containerBack">
-  <img class="imgBack" src="assets/images/flecha.svg" (click)="goBack()">
+<div class ="header" [ngClass]="{'header--center': user}">
+  <div class="header__container-back" *ngIf="user" (click)="goBack()">
+    <img class="header__back" src="assets/images/flecha.svg">
+    <span>Volver</span>
+  </div>
+  <p class="header__title"> {{user ? "Editar usuario" :"Registrar usuario"}}</p>
 </div>
 
-<p class="title"> {{user ? "EDITAR" :"REGISTRO"}}</p>
 <form class="form" [formGroup]="userForm" novalidate (ngSubmit)="save()">
   <div class="form__control">
     <mat-form-field>
@@ -74,7 +77,8 @@
   </div>
 
   <div class="form__actions">
-    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid"> {{user ?"Guardar":"Agregar"}} </button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">
+      {{user ?"Guardar":"Agregar"}}
+    </button>
   </div>
-  <pre> {{ userForm.value | json }}</pre>
 </form>
