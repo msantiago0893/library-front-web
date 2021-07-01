@@ -1,18 +1,31 @@
 @import '_globals'
 
-.Back
-    width: 1.2rem
+.header
+  display: flex
+  margin-bottom: 1rem
+
+  &--center
+    justify-content: center
+
+  &__title
+    @include title-section()
+
+  &__container-back
+    position: absolute
+    left: 0
+    display: flex
     cursor: pointer
 
-.title
-    font-size: 1.20rem
-    text-transform: uppercase
-    text-shadow: 0px 0px 0px blue
-    margin-top: 2rem
+  &__back
+    width: 1rem
 
 .container-button
   display: flex
   justify-content: center
+  position: absolute
+  bottom: 3rem
+  left: 0
+  width: 100%
 
   &__button
     background-color:$color-blue

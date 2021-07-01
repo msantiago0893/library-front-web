@@ -5,7 +5,7 @@
 <ng-template #containerList>
     <ng-container *ngIf="block === catalog.LIST_USER">
         <div class="container">
-            <h1 class="title">ADMINISTRADORES</h1>
+            <h1 class="title">Administradores</h1>
             <div class="container-primary">
                 <div class="list" *ngFor="let item of users" >
                     <p class="list__name" title="{{item.name}}">{{item.name}} {{item.firstname}} {{item.secondname}}</p>

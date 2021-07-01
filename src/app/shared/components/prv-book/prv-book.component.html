@@ -1,9 +1,11 @@
-<div class ="containTitle">
-  <h1 class ="title">{{book ? 'MODIFICAR LIBRO' : 'Agregar LIBRO'}}</h1>
+<div class ="header" [ngClass]="{'header--center': book}">
+  <div class="header__container-back" *ngIf="book" (click)="goBack()">
+    <img class="header__back" src="assets/images/flecha.svg">
+    <span>Volver</span>
+  </div>
+  <h1 class ="header__title">{{book ? 'Editar libro' : 'Agregar libro'}}</h1>
 </div>
-<div class="containerBack">
-  <img *ngIf="book" class="Back" (click)="goBack()" src="assets/images/flecha.svg">
-</div>
+
 <div class="productCards">
   <form #regForm="ngForm" class="form" [formGroup]="bookForm" (ngSubmit)="save(prvFile)" novalidate>
 
@@ -60,25 +62,12 @@
           accepts="image/*">
         </app-prv-file-upload>
       </div>
-      <!-- <div class="file">
-        <p>Eliga fotografía</p>
-        <app-prv-file-upload  #prvFile
-          accepts="image/*"
-          (file)=handlerFile($event)>
-        </app-prv-file-upload>
-      </div> -->
     </div>
 
     <div class ="container-button" >
       <button type="submit" class="container-button__button" mat-raised-button color="primary" [disabled]="bookForm.invalid">
         {{ book  ?  'MODIFICAR' : 'AGREGAR' }}
       </button>
-
-      <!-- <button (click)="prvFile.hola()">Fijar en 1</button><br> -->
     </div>
   </form>
-
-  <pre> {{ bookForm.value | json }}</pre>
-  <pre> {{ bookForm.valid | json }}</pre>
-
 </div>
