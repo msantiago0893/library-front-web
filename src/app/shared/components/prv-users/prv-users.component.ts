@@ -2,9 +2,7 @@ import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserAccount } from 'src/app/core/services/account.service';
 import { UserAdapter } from 'src/app/shared/models/user-adapter';
-
 import * as Regex from '@constant/regex';
-import { Alert } from '@utils/alerts';
 import { NUMERIC } from '@enums/numeric';
 import { CustomValidations } from '@utils/custom-alidations';
 

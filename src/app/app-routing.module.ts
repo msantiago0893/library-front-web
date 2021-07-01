@@ -29,6 +29,17 @@ const routes: Routes = [
         redirectTo: ACL.getDefaultRedirectPath(), pathMatch: 'full'
       },
       {
+        path:'profile',
+        canActivate: [RolGuard],
+        loadChildren: () => import('./views/profile/profile.module').then(m => m.ProfileModule),
+        data: {
+          roles: [
+            'MANAGER',
+            'CUSTOMER'
+          ]
+        }
+      },
+      {
         path:'manager',
         canActivate: [RolGuard],
         loadChildren: () => import('./views/manager/manager.module').then(m => m.ManagerModule),
