@@ -46,14 +46,16 @@
 
     <div class="group-buttons">
       <button  mat-raised-button routerLink="/profile/contact">
+        <div class="onSelect" [routerLinkActive]="['isActive']"></div>
         <mat-icon class="icon">person</mat-icon>
         <span>Contacto</span>
       </button>
       <button  mat-raised-button routerLink="/profile/reset-password">
+        <div class="onSelect" [routerLinkActive]="['isActive']"></div>
         <mat-icon class="icon">password</mat-icon>
         <span>Cambiar contraseña</span>
       </button>
-      <button  mat-raised-button routerLink="/">
+      <button  mat-raised-button [routerLink]="'/'">
         <mat-icon class="icon">house</mat-icon>
         <span>Salir del menú</span>
       </button>
