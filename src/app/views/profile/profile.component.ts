@@ -6,12 +6,6 @@ import { Router } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.sass']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
-  constructor(
-    private router: Router,
-  ) { }
-
-  ngOnInit() {
-  }
 }
