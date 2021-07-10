@@ -6,11 +6,11 @@ import { ErrorService } from '@services/error.service';
 import { ACL } from 'src/app/security/acl';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.sass']
 })
-export class LoginComponent implements OnInit {
+export class SigninComponent implements OnInit {
 
   private authForm : FormGroup;
   areWrongCredentials = false;

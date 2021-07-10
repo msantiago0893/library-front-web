@@ -5,11 +5,11 @@ import { UserAdapter } from '@model/user-adapter';
 import { UserAccount } from '@services/account.service';
 
 @Component({
-  selector: 'app-registry',
-  templateUrl: './registry.component.html',
-  styleUrls: ['./registry.component.sass']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.sass']
 })
-export class RegistryComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
   private registryForm : FormGroup;
 
