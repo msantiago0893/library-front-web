@@ -1,28 +1,37 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, Router, CanLoad, Route, UrlSegment } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Storage } from 'src/app/memento/Storage';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanLoad {
 
   constructor(
     private route: Router
   ) {}
+  canLoad(
+    route: Route,
+    segments: UrlSegment[]
+  ): boolean | Observable<boolean> | Promise<boolean> {
+
+    if(!this.isExistSession()) {
+      return true;
+    }
+
+    this.route.navigateByUrl('/');
+    return false;
+  }
 
   canActivate(
     next: ActivatedRouteSnapshot
   ): Observable<boolean> |Promise<boolean> | boolean  {
 
-      console.log('RUTA PRINCIPAL HOME');
-
       const user = Storage.getItem('user');
-
       const roles = next.data.roles;
 
-      if(user) {
+      if(this.isExistSession()) {
 
         if(roles.includes(user.role)) { // Aqui estare validando el token si es correcto
 
@@ -37,9 +46,9 @@ export class AuthGuard implements CanActivate {
       return false;
   }
 
+  isExistSession() {
 
-  isManager(rol: String) {
-    return  rol === "MANAGER";
+    return Storage.getItem('user')
   }
 
 }

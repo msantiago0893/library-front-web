@@ -12,6 +12,7 @@ const routes: Routes = [
   },
   {
     path:'auth',
+    canLoad: [AuthGuard],
     loadChildren: () => import('./views/auth/auth.module').then(m => m.AuthModule)
   },
   {
@@ -63,7 +64,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  // imports: [RouterModule.forRoot(routes)],
   imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})], //el preload acelera la carga diferida(lazy loading)
 
   exports: [RouterModule]

@@ -18,8 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authGroup: FormBuilder,
     private _authService : AuthService,
-    private route: Router,
-    private _service: ErrorService
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,9 +32,10 @@ export class LoginComponent implements OnInit {
 
                         if(response) {
 
-                          this.route.navigateByUrl(ACL.getDefaultRedirectPath());
-
-                          this._service.isLoader(true);
+                          location.reload();
+                          setTimeout(() => {
+                            this.router.navigate([ACL.getDefaultRedirectPath()])
+                          },20);
                         } else {
 
                           this.areWrongCredentials = !response;
