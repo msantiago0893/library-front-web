@@ -1,8 +1,9 @@
-import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit, ViewChild, ViewRef } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { NavigationEnd, Router } from '@angular/router';
 import { ErrorService } from '@services/error.service';
 import { SpinnerSectionService } from '@services/spinner-section.service';
+import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -17,14 +18,16 @@ export class ManagerComponent implements OnInit, AfterViewInit, OnDestroy {
   loading: boolean = null;
   opened = true;
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
-  private subscription: any;
+  // private subscription: any;
+  subscription: Subscription = null;
+  subscriptionLoader: Subscription = null;
 
   constructor(
     private router: Router,
     private _errorService: ErrorService,
     private loaderService: SpinnerSectionService,
     private changeDetectorRef: ChangeDetectorRef
-  ){ }
+  ){}
 
   ngOnInit() {
 
@@ -48,27 +51,26 @@ export class ManagerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.changeOfRoute();
 
-    this.subscription =  this.loaderService.isLoading.subscribe(response => {
-
-                            this.loading = response;
-
-                            this.changeDetectorRef.detectChanges();
-                          });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscriptionLoader = this.loaderService.isLoading.subscribe(response => {
+                                this.loading = response;
+                                this.changeDetectorRef.detectChanges();
+                              });
   }
 
   changeOfRoute() {
-    //TODO: Detectar cambio de rutas
+
     this.subscription =  this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd)
       )
-      .subscribe(() => {
+      .subscribe((event) => {
         this._errorService.isError(false);
       });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.subscriptionLoader.unsubscribe();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -94,7 +96,6 @@ export class ManagerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   datoHijo:String = "Sin dato";
   funCambiar(e: any) {
-    console.log(e);
     this.datoHijo = e;
   }
 

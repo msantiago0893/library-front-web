@@ -6,11 +6,11 @@ import { ErrorService } from '@services/error.service';
 import { ACL } from 'src/app/security/acl';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.sass']
 })
-export class LoginComponent implements OnInit {
+export class SigninComponent implements OnInit {
 
   private authForm : FormGroup;
   areWrongCredentials = false;
@@ -18,8 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authGroup: FormBuilder,
     private _authService : AuthService,
-    private route: Router,
-    private _service: ErrorService
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,9 +32,10 @@ export class LoginComponent implements OnInit {
 
                         if(response) {
 
-                          this.route.navigateByUrl(ACL.getDefaultRedirectPath());
-
-                          this._service.isLoader(true);
+                          location.reload();
+                          setTimeout(() => {
+                            this.router.navigate([ACL.getDefaultRedirectPath()])
+                          },20);
                         } else {
 
                           this.areWrongCredentials = !response;
