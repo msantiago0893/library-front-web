@@ -101,6 +101,6 @@ export class ManagerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   logout() {
     localStorage.clear();
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('auth');
   }
 }
