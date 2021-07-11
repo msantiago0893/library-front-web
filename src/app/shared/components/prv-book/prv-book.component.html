@@ -65,9 +65,20 @@
     </div>
 
     <div class ="container-button" >
-      <button type="submit" class="container-button__button" mat-raised-button color="primary" [disabled]="bookForm.invalid">
+      <button type="submit" class="container-button__button" mat-raised-button color="primary"
+      [disabled]="bookForm.invalid">
         {{ book  ?  'MODIFICAR' : 'AGREGAR' }}
       </button>
     </div>
   </form>
 </div>
+
+
+
+<br><br>
+<app-prv-button
+label="{{ book  ?  'MODIFICAR' : 'AGREGAR' }}"
+onClick='save(prvFile).bind(this)'
+isDisabled="bookForm.invalid"
+ >
+</app-prv-button>
