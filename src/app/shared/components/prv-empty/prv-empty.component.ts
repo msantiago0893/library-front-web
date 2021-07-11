@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PrvEmptyComponent implements OnInit {
 
   @Input() msg2: String = "";
+  
   constructor() { }
 
   ngOnInit() {

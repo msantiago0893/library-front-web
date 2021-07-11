@@ -14,6 +14,7 @@ import { PrvSystemErrorComponent } from '@components/prv-system-error/prv-system
 import { PrvPageLoaderComponent } from '@components/prv-page-loader/prv-page-loader.component';
 import { PrvSectionLoaderComponent } from '@components/prv-section-loader/prv-section-loader.component';
 import { PrvCarouselComponent } from '@components/prv-carousel/prv-carousel.component';
+import { PrvButtonComponent } from './components/prv-button/prv-button.component';
 @NgModule({
   declarations: [
     PrvSidebarComponent,
@@ -24,7 +25,8 @@ import { PrvCarouselComponent } from '@components/prv-carousel/prv-carousel.comp
     PrvPageLoaderComponent,
     PrvSectionLoaderComponent,
     PrvCarouselComponent,
-    PrvFileUploadComponent
+    PrvFileUploadComponent,
+    PrvButtonComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,7 @@ import { PrvCarouselComponent } from '@components/prv-carousel/prv-carousel.comp
     PrvCarouselComponent,
     PrvFileUploadComponent,
     PrvBookComponent,
+    PrvButtonComponent,
     AngularMaterialModule
   ],
 })
