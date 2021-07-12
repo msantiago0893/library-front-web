@@ -1,4 +1,20 @@
 <div class="file">
+  <nav class="menuCSS3">
+		<ul>
+			<li>
+        <a >Contacto</a>
+				<ul>
+					<li><a href="#">Email</a></li>
+					<li><a href="#">Mapa</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
+  <div class="menu">
+    <p class="menu__item" (click)="previous()">Visualizar</p>
+    <p class="menu__item" (click)="download()">Descargar</p>
+  </div>
   <label class="content-img" for="archivo">
     <img class="file__img" src="assets/images/{{ uploadedFile ? uploadedFile.extension: 'add-file'}}.svg">
     <div class="file__description">

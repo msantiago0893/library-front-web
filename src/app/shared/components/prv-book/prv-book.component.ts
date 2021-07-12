@@ -40,6 +40,8 @@ export class PrvBookComponent implements OnInit {
   // async / await => espera a que se termine de ejecutar el promise
   async save(prvFile: any) {
 
+    console.log('Guardar');
+
     let promfile = await prvFile.save();
 
     this.bookForm.patchValue({photo: promfile});
