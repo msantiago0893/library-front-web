@@ -20,14 +20,10 @@
   </div>
   <div class="detail">
     <p class="detail__title"> Nª página: </p>
-    <p class="description"> {{ data.nPagina }}</p>
+    <p class="description"> {{ data.page }}</p>
   </div>
   <div class="detail">
     <p class="detail__title"> Año de edición: </p>
-    <p class="description"> {{ data.yearEdicion }}</p>
-  </div>
-  <div class="detail">
-    <p class="detail__title"> Nª página: </p>
-    <p class="description"> {{ data.nPagina }}</p>
+    <p class="description"> {{ data.yearEdicion | date: 'mediumDate' }}</p>
   </div>
 </div>
