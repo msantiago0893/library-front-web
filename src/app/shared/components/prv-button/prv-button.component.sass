@@ -9,7 +9,7 @@
         margin-top: 1rem
     @include tablet
         margin-top: 0rem
-    &__register
+    &__button
         background: #007ac5
         margin-right: 1rem
         margin-top: 1em
@@ -21,9 +21,15 @@
         border: none
         cursor: pointer
         font-size: 1rem
-        &:hover
+
+        &:disabled
+            background: #a5a9a7
+
+        &:not(:disabled):hover
             background-color:#156dabab
             color: #d4d0d0
+            border: none
 
 .icon
-    margin-right: 1rem
+    margin-right: 0.5rem
+    vertical-align: middle
