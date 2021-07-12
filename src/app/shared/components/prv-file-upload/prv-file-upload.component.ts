@@ -1,5 +1,5 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Document } from './domain/Document';
@@ -9,9 +9,10 @@ import { Document } from './domain/Document';
   templateUrl: './prv-file-upload.component.html',
   styleUrls: ['./prv-file-upload.component.sass']
 })
-export class PrvFileUploadComponent {
+export class PrvFileUploadComponent implements OnInit {
 
   @Input() accepts:string = '' ||  'image/png, image/jpeg, image/jpg, application/pdf';
+  @Input() filename:string = '';
 
   uploadedFile: Object = null;
   fileSlected = null;
@@ -22,6 +23,70 @@ export class PrvFileUploadComponent {
     private http: HttpClient
   ) {}
 
+  ngOnInit() {
+
+    if(this.filename) {
+      this.retrieveFile();
+    }
+  }
+
+  async retrieveFile() {
+
+    const file = `http://localhost:8080/api/file/download/${this.filename}`;
+
+    let response = await fetch(file);
+    let data = await response.blob();
+
+    this.fileSlected = new File(
+      [data],
+      this.filename,
+      {
+        lastModified: new Date().getTime(),
+        type: data.type
+      }
+    );
+
+    this.uploadedFile = new Document(this.fileSlected);
+  }
+
+  download() {
+    console.log('asdsad');
+    console.log('blob ', this.fileSlected);
+
+    let a = document.createElement("a");
+    document.body.appendChild(a);
+    let blob = new Blob([this.fileSlected], { type: "octet/stream" }),
+        url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = this.fileSlected.name;
+    a.click();
+    // const url = URL.createObjectURL(this.uploadedFile);
+    // const anchorElement = document.createElement('a');
+
+    // anchorElement.href = url;
+
+    // document.body.appendChild(anchorElement);
+
+    // anchorElement.click();
+    // anchorElement.remove();
+  }
+
+  previous() {
+
+    const url = URL.createObjectURL(this.fileSlected);
+
+    const anchorElement = document.createElement('a');
+
+    anchorElement.href = url;
+    anchorElement.target = '_blank';
+
+    document.body.appendChild(anchorElement);
+
+    anchorElement.click();
+    anchorElement.remove();
+
+  }
+
     onFileSelected(event: any) {
 
       const file = event.target.files[0];
@@ -31,8 +96,6 @@ export class PrvFileUploadComponent {
         this.fileSlected = file;
 
         this.uploadedFile = new Document(file);
-
-        // this.save();
       }
     }
 

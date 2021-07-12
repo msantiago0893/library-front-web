@@ -59,7 +59,8 @@
       <div class="file">
         <p>Eliga fotografía</p>
         <app-prv-file-upload  #prvFile
-          accepts="image/*">
+          accepts="image/*"
+          filename='{{book ? book.photo : ""}}'>
         </app-prv-file-upload>
       </div>
     </div>
