@@ -77,8 +77,10 @@
   </div>
 
   <div class="form__actions">
-    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">
-      {{user ?"Guardar":"Agregar"}}
-    </button>
+    <app-prv-button
+    label="{{user ?  'Guardar' : 'Agregar'}}"
+    [isDisabled]="userForm.invalid">
+    </app-prv-button>
   </div>
+
 </form>

@@ -66,6 +66,10 @@ export class PrvBookComponent implements OnInit {
     }
   }
 
+  mensaje() {
+    console.log("hola mundo");
+  }
+
   goBack() {
     this.back.emit(1);
   }
@@ -74,9 +78,11 @@ export class PrvBookComponent implements OnInit {
 
     this.bookForm.reset('');
 
-    Object.keys(this.bookForm.controls).forEach(key => {
-      this.bookForm.controls[key].setErrors(null);
-    });
+    Object.keys(this.bookForm.controls).forEach(
+      key => {
+        this.bookForm.controls[key].setErrors(null);
+      }
+    );
 
     this.bookForm.setErrors({"required":true})
   }
