@@ -30,48 +30,31 @@
     overflow: hidden
     white-space: nowrap
 
-.menu
+.dropdown
   position: absolute
   right: 0
-  background: #808080e6
-  font-size: 1rem
-  font-family: monospace
-  line-height: 1.6
+  z-index: 1
   cursor: pointer
-  color: white
-  display: none
-  &:hover
-    display: block
 
-  &__item
-    padding: 0.1rem .5rem
-    left: 0
-    &:hover
-      background: #607d8b7a
+  &__menu
+    padding: .5rem
 
-
-.menuCSS3
-  position: absolute
+.dropdown-content
+  top: 0
   right: 0
-
-.menuCSS3 ul
-  display: flex
-  padding: 0
-  margin: 0
-  list-style: none
-
-.menuCSS3 a
-  display: block
-  padding: .3em
-  background-color: #F9B53C
-  text-decoration: none
-  color: #191C26
-
-.menuCSS3 a:hover
-  background-color: #CC673B
-
-.menuCSS3 ul li ul
   display: none
+  position: absolute
+  background-color: #f9f9f9
+  min-width: 3rem
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
 
-.menuCSS3 ul li a:hover + ul, .menuCSS3 ul li ul:hover
+  & p
+    color: black
+    padding: 6px 10px
+    text-decoration: none
+    display: block
+    &:hover
+      background-color: #f1f1f1
+
+.dropdown:hover .dropdown-content
   display: block

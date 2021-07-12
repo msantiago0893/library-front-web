@@ -1,8 +1,10 @@
-import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Document } from './domain/Document';
+import { environment } from 'src/environments/environment';
+import { FileService } from '@services/file.service';
 
 @Component({
   selector: 'app-prv-file-upload',
@@ -13,14 +15,13 @@ export class PrvFileUploadComponent implements OnInit {
 
   @Input() accepts:string = '' ||  'image/png, image/jpeg, image/jpg, application/pdf';
   @Input() filename:string = '';
-
+  uploadSub: Subscription;
   uploadedFile: Object = null;
   fileSlected = null;
   uploadProgress:number;
-  uploadSub: Subscription;
 
   constructor(
-    private http: HttpClient
+    private _fileService: FileService
   ) {}
 
   ngOnInit() {
@@ -32,9 +33,8 @@ export class PrvFileUploadComponent implements OnInit {
 
   async retrieveFile() {
 
-    const file = `http://localhost:8080/api/file/download/${this.filename}`;
+    let response = await fetch(`${environment.baseUrl}file/download/${this.filename}`);
 
-    let response = await fetch(file);
     let data = await response.blob();
 
     this.fileSlected = new File(
@@ -50,25 +50,19 @@ export class PrvFileUploadComponent implements OnInit {
   }
 
   download() {
-    console.log('asdsad');
-    console.log('blob ', this.fileSlected);
 
     let a = document.createElement("a");
     document.body.appendChild(a);
-    let blob = new Blob([this.fileSlected], { type: "octet/stream" }),
-        url = window.URL.createObjectURL(blob);
+
+    let blob = new Blob(
+      [this.fileSlected],
+      { type: "octet/stream" }
+    ),
+    url = window.URL.createObjectURL(blob);
+
     a.href = url;
     a.download = this.fileSlected.name;
     a.click();
-    // const url = URL.createObjectURL(this.uploadedFile);
-    // const anchorElement = document.createElement('a');
-
-    // anchorElement.href = url;
-
-    // document.body.appendChild(anchorElement);
-
-    // anchorElement.click();
-    // anchorElement.remove();
   }
 
   previous() {
@@ -84,7 +78,6 @@ export class PrvFileUploadComponent implements OnInit {
 
     anchorElement.click();
     anchorElement.remove();
-
   }
 
     onFileSelected(event: any) {
@@ -103,17 +96,10 @@ export class PrvFileUploadComponent implements OnInit {
 
       if(this.uploadedFile) {
 
-        const formData: FormData = new FormData();
-
-        formData.append("file", this.fileSlected);
-
-        const upload$ = this.http.post("http://localhost:8080/api/file/upload", formData, {
-          reportProgress: true,
-          observe: 'events'
-        })
-        .pipe(
-          finalize(() => this.reset())
-        );
+        const upload$ = this._fileService.upload(this.fileSlected)
+                          .pipe(
+                            finalize(() => this.reset())
+                          );
 
         const promFile = new Promise((resolve, reject) => {
           this.uploadSub = upload$.subscribe(
@@ -156,5 +142,4 @@ export class PrvFileUploadComponent implements OnInit {
     this.fileSlected = null;
     this.uploadedFile = null;
   }
-
 }
