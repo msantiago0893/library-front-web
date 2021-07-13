@@ -1,13 +1,10 @@
 @import '_globals'
 
-.button-regresar
-    background: #024959
-    font-size: 20px
-    color: #fff
-    cursor: pointer
-    position: fixed
-    bottom: 549px
-    right: 20px
+.container-main
+    display: flex
+    height: 100%
+    flex-direction: column
+    justify-content: space-between
 
 .title
     @include title-section()
@@ -44,26 +41,8 @@
             background: #ccde99
             color: red
 
-.button
-    display: flex
-    justify-content: center
-    margin-top: 7rem
-    @include tablet
-        margin-top: 7rem
-    @include tablet
-        margin-top: 5rem
-    &__register
-        background: #d0f7a0
-        margin-right: 1rem
-        margin-top: 1em
-        width: 9rem
-        transition: background-color .5s
-        color: chocolate
-        &:hover
-            background-color:$color-green-2
-            color: #d22828
+.content-user
+    height: 100%
 
-.icon2
-    margin-right: 1rem
-
-
+.button-save
+    padding: 3rem 0
