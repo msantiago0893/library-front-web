@@ -1,13 +1,14 @@
-<div class ="header" [ngClass]="{'header--center': book}">
-  <div class="header__container-back" *ngIf="book" (click)="goBack()">
-    <img class="header__back" src="assets/images/flecha.svg">
-    <span>Volver</span>
-  </div>
-  <h1 class ="header__title">{{book ? 'Editar libro' : 'Agregar libro'}}</h1>
-</div>
+<div class="container-main">
 
-<div class="productCards">
-  <form #regForm="ngForm" class="form" [formGroup]="bookForm" (ngSubmit)="save(prvFile)" novalidate>
+  <div class ="header" [ngClass]="{'header--center': book}">
+    <div class="header__container-back" *ngIf="book" (click)="goBack()">
+      <img class="header__back" src="assets/images/flecha.svg">
+      <span>Volver</span>
+    </div>
+    <h1 class ="header__title">{{book ? 'Editar libro' : 'Agregar libro'}}</h1>
+  </div>
+
+  <form #regForm="ngForm" class="form form-book" [formGroup]="bookForm" (ngSubmit)="save(prvFile)" novalidate>
 
     <div class="form__control">
       <mat-form-field fxFlex>
@@ -65,7 +66,7 @@
       </div>
     </div>
 
-    <div class ="container-button" >
+    <div class ="button-save">
       <app-prv-button
         label="{{ book  ?  'Guardar' : 'Agregar' }}"
         icon='save'

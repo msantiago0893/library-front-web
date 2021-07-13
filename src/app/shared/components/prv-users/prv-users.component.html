@@ -6,7 +6,7 @@
   <p class="header__title"> {{user ? "Editar" :"Registrar"}}</p>
 </div>
 
-<form class="form" [formGroup]="userForm" novalidate (ngSubmit)="save()">
+<form class="form form-user" [formGroup]="userForm" novalidate (ngSubmit)="save()">
   <div class="form__control">
     <mat-form-field>
       <input matInput type="text" placeholder="*Nombre" formControlName="name">
@@ -51,7 +51,7 @@
       <input matInput  type="text" placeholder="*Celular" formControlName="cel">
       <mat-error *ngIf="userForm.controls.cel.touched && userForm.controls.cel.invalid">
         <span *ngIf="userForm.controls.cel.errors.required || userForm.get('cel').errors.minlength
-         || userForm.get('cel').errors.maxlength || userForm.get('cel').errors.pattern">
+          || userForm.get('cel').errors.maxlength || userForm.get('cel').errors.pattern">
           Campo nuḿerico max. 10
         </span>
       </mat-error>
@@ -76,12 +76,11 @@
     </mat-form-field>
   </div>
 
-  <div class="form__actions">
+  <div class="button-save">
     <app-prv-button
     label="{{user ?  'Guardar' : 'Agregar'}}"
     icon='save'
     [isDisabled]="userForm.invalid">
     </app-prv-button>
   </div>
-
 </form>

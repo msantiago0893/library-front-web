@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-main">
     <app-prv-empty
       *ngIf="!users.length  && block !== catalog.ADD_USER; else containerList"
       [msg2]="'No se encontraron Administradores'">
@@ -28,14 +28,14 @@
     </ng-template>
 
     <ng-container *ngIf="block === catalog.ADD_USER || block === catalog.UPDATE_USER">
-        <app-prv-users
+        <app-prv-users class="content-user"
             [user]="block === catalog.UPDATE_USER ? itemToModify : null"
             [updateList]="allAdmin.bind(this)"
             (back)="back($event)">
         </app-prv-users>
     </ng-container>
 
-    <div *ngIf="block === catalog.LIST_USER" class="button">
+    <div class="button-save" *ngIf="block === catalog.LIST_USER">
         <app-prv-button
             type="button"
             icon='person_add'
