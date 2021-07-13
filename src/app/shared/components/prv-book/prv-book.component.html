@@ -66,15 +66,11 @@
     </div>
 
     <div class ="container-button" >
-      <!-- <button type="submit" class="container-button__button" mat-raised-button color="primary"
-      [disabled]="bookForm.invalid">
-        {{ book  ?  'MODIFICAR' : 'AGREGAR' }}
-      </button> -->
       <app-prv-button
-        label="{{ book  ?  'MODIFICAR' : 'AGREGAR' }}"
-        [isDisabled]= 'bookForm.invalid'
-        >
-        </app-prv-button>
+        label="{{ book  ?  'Guardar' : 'Agregar' }}"
+        icon='save'
+        [isDisabled]= 'bookForm.invalid'>
+      </app-prv-button>
     </div>
   </form>
 </div>

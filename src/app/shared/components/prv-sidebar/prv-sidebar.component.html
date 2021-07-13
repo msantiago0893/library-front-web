@@ -8,7 +8,6 @@
                         <mat-icon>{{ item.icon }}</mat-icon> {{ item.name }}
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <!-- Hijos del elemento -->
                 <ng-container *ngFor="let children of subMenus">
                     <a mat-list-item routerLink="{{children.route}}">
                         <div class="onSelect" [routerLinkActive]="['isActive']"></div>

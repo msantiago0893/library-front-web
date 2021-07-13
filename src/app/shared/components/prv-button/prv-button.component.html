@@ -1,10 +1,11 @@
 
 <div class="container">
     <button *ngIf= "type === 'submit'" type="{{type}}" class="container__button" [disabled]="isDisabled">
+        <mat-icon *ngIf="icon" class="icon">{{ icon }}</mat-icon>
         {{label}}
     </button>
     <button *ngIf= "type === 'button'" type="{{type}}" class="container__button" [disabled]="isDisabled" (click)="onClick()">
-        <mat-icon class="icon">person_add</mat-icon>
+        <mat-icon *ngIf="icon" class="icon">{{ icon }}</mat-icon>
         {{label}}
     </button>
 </div>

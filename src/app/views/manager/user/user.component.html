@@ -33,12 +33,11 @@
 </ng-container>
 
     <div *ngIf="block === catalog.LIST_USER" class="button">
-        <!-- <button mat-raised-button class="button__register" (click)="addUser()"
-        [disabled]="users.length >= catalogNumeric.FIVE" >
-        <span>Registrar</span>
-        </button> -->
-        <app-prv-button label="Registrar" [isDisabled]="users.length >= catalogNumeric.FIVE"
-            type="button" [onClick]="addUser.bind(this)">
+        <app-prv-button
+          type="button"
+          icon='person_add'
+          label="Agregar"
+          [isDisabled]="users.length >= catalogNumeric.FIVE"
+          [onClick]="addUser.bind(this)">
         </app-prv-button>
-
     </div>

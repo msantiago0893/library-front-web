@@ -57,7 +57,7 @@
           <app-prv-section-loader></app-prv-section-loader>
         </ng-container>
 
-        <div [ngClass]="{ 'sections': loading }" [hidden]='isError'>
+        <div class="content__sections" [ngClass]="{ 'sections': loading }" [hidden]='isError'>
           <router-outlet></router-outlet>
         </div>
 

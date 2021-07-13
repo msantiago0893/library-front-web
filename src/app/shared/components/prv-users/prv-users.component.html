@@ -1,9 +1,9 @@
-<div class ="header" [ngClass]="{'header--center': user}">
-  <div class="header__container-back" *ngIf="user" (click)="goBack()">
+<div class ="header header--center">
+  <div class="header__container-back" (click)="goBack()">
     <img class="header__back" src="assets/images/flecha.svg">
     <span>Volver</span>
   </div>
-  <p class="header__title"> {{user ? "Editar usuario" :"Registrar usuario"}}</p>
+  <p class="header__title"> {{user ? "Editar" :"Registrar"}}</p>
 </div>
 
 <form class="form" [formGroup]="userForm" novalidate (ngSubmit)="save()">
@@ -79,6 +79,7 @@
   <div class="form__actions">
     <app-prv-button
     label="{{user ?  'Guardar' : 'Agregar'}}"
+    icon='save'
     [isDisabled]="userForm.invalid">
     </app-prv-button>
   </div>
