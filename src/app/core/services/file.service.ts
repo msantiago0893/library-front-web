@@ -1,7 +1,5 @@
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -20,11 +18,6 @@ export class FileService {
     const formData: FormData = new FormData();
 
     formData.append('file', file);
-
-    // const req = new HttpRequest('POST', `${environment.baseUrl}/file/upload`, formData, {
-    //   reportProgress: true,
-    //   observe: 'events'
-    // });
 
     return this.http.post("http://localhost:8080/api/file/upload", formData, {
       reportProgress: true,

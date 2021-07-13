@@ -10,8 +10,8 @@ export class PrvButtonComponent implements OnInit {
   @Input() type : String = "" || "submit";
   @Input() label : String = "";
   @Input() onClick : Function;
-  @Input()  isDisabled : boolean;
-  @Input()  icon : String = "";
+  @Input() isDisabled : boolean;
+  @Input() icon : String = "";
 
   constructor() { }
 

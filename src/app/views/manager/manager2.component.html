@@ -8,7 +8,6 @@
       <img class="icon" src="assets/images/flag.svg" mat-icon-button [matMenuTriggerFor]="flag" alt="flag">
       <img class="icon" src="assets/images/user.svg" mat-icon-button [matMenuTriggerFor]="profile" alt="user">
       <img class="icon" src="assets/images/menu.svg" mat-icon-button alt="menu">
-      <!-- <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon> -->
     </span>
   </mat-toolbar>
 
@@ -42,8 +41,6 @@
     <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true" [fixedTopGap]>
       <app-prv-sidebar></app-prv-sidebar>
     </mat-sidenav>
-
-    <!-- <app-prv-section-loader></app-prv-section-loader> -->
     <mat-sidenav-content>
 
       <!-- <section class="mat-typography title-group">
