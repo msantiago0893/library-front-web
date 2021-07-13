@@ -1,43 +1,47 @@
+<div class="container">
+    <app-prv-empty
+      *ngIf="!users.length  && block !== catalog.ADD_USER; else containerList"
+      [msg2]="'No se encontraron Administradores'">
+    </app-prv-empty>
 
-<app-prv-empty *ngIf="!users.length  && block !== catalog.ADD_USER; else containerList"
- [msg2]="'No se encontraron Administradores'"></app-prv-empty>
-
-<ng-template #containerList>
-    <ng-container *ngIf="block === catalog.LIST_USER">
-        <div class="container">
-            <h1 class="title">Administradores</h1>
-            <div class="container-primary">
-                <div class="list" *ngFor="let item of users" >
-                    <p class="list__name" title="{{item.name}}">{{item.name}} {{item.firstname}} {{item.secondname}}</p>
-                    <div class="buttons">
-                        <button class="buttons__action" mat-raised-button (click)="edit(item)">
-                            <mat-icon class="icon">edit</mat-icon>
-                            <span>Editar</span>
-                        </button>
-                        <button class="buttons__action" mat-raised-button (click)="delete(item)">
-                            <mat-icon class="icon">delete</mat-icon>
-                            <span>Eliminar</span>
-                        </button>
+    <ng-template #containerList>
+        <ng-container *ngIf="block === catalog.LIST_USER">
+            <div class="container">
+                <h1 class="title">Administradores</h1>
+                <div class="container-primary">
+                    <div class="list" *ngFor="let item of users" >
+                        <p class="list__name" title="{{item.name}}">{{item.name}} {{item.firstname}} {{item.secondname}}</p>
+                        <div class="buttons">
+                            <button class="buttons__action" mat-raised-button (click)="edit(item)">
+                                <mat-icon class="icon">edit</mat-icon>
+                                <span>Editar</span>
+                            </button>
+                            <button class="buttons__action" mat-raised-button (click)="delete(item)">
+                                <mat-icon class="icon">delete</mat-icon>
+                                <span>Eliminar</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </ng-container>
+    </ng-template>
+
+    <ng-container *ngIf="block === catalog.ADD_USER || block === catalog.UPDATE_USER">
+        <app-prv-users
+            [user]="block === catalog.UPDATE_USER ? itemToModify : null"
+            [updateList]="allAdmin.bind(this)"
+            (back)="back($event)">
+        </app-prv-users>
     </ng-container>
-</ng-template>
-<ng-container *ngIf="block === catalog.ADD_USER || block === catalog.UPDATE_USER">
-    <app-prv-users
-        [user]="block === catalog.UPDATE_USER ? itemToModify : null"
-        [updateList]="allAdmin.bind(this)"
-        (back)="back($event)">
-    </app-prv-users>
-</ng-container>
 
     <div *ngIf="block === catalog.LIST_USER" class="button">
         <app-prv-button
-          type="button"
-          icon='person_add'
-          label="Agregar"
-          [isDisabled]="users.length >= catalogNumeric.FIVE"
-          [onClick]="addUser.bind(this)">
+            type="button"
+            icon='person_add'
+            label="Agregar"
+            [isDisabled]="users.length >= catalogNumeric.FIVE"
+            [onClick]="addUser.bind(this)">
         </app-prv-button>
     </div>
+</div>
