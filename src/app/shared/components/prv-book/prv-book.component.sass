@@ -1,8 +1,13 @@
 @import '_globals'
 
+.container-main
+  height: 100%
+
 .header
   display: flex
   margin-bottom: 1rem
+  position: relative
+  align-items: center
 
   &--center
     justify-content: center
@@ -19,16 +24,11 @@
   &__back
     width: 1rem
 
-.container-button
+.form-book
+  height: calc(100% - 43px)
   display: flex
-  justify-content: center
-  position: absolute
-  bottom: 3rem
-  left: 0
-  width: 100%
+  flex-direction: column
+  justify-content: space-between
 
-  &__button
-    background-color:$color-blue
-    transition: background-color .5s
-    &:hover
-        background-color:$color-green-2
+.button-save
+  padding: 3rem 0
