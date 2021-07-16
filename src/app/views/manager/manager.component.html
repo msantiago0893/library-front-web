@@ -5,7 +5,7 @@
     <div>LibraryUI</div>
 
     <span class="nav-tool-items">
-      <img class="icon" src="assets/images/notificacion.svg" mat-icon-button alt="notification">
+      <app-prv-notifications></app-prv-notifications>
       <img class="icon" src="assets/images/flag.svg" mat-icon-button [matMenuTriggerFor]="flag" alt="flag">
       <img class="icon" src="assets/images/user.svg" mat-icon-button [matMenuTriggerFor]="profile" alt="user">
       <img class="icon" src="assets/images/menu.svg" mat-icon-button (click)="sidenav.toggle()" alt="menu">
@@ -52,7 +52,6 @@
       </section> -->
 
       <div class="content">
-
         <ng-container *ngIf='loading'>
           <app-prv-section-loader></app-prv-section-loader>
         </ng-container>

@@ -15,6 +15,7 @@ import { PrvPageLoaderComponent } from '@components/prv-page-loader/prv-page-loa
 import { PrvSectionLoaderComponent } from '@components/prv-section-loader/prv-section-loader.component';
 import { PrvCarouselComponent } from '@components/prv-carousel/prv-carousel.component';
 import { PrvButtonComponent } from './components/prv-button/prv-button.component';
+import { PrvNotificationsComponent } from './components/prv-notifications/prv-notifications.component';
 @NgModule({
   declarations: [
     PrvSidebarComponent,
@@ -26,7 +27,8 @@ import { PrvButtonComponent } from './components/prv-button/prv-button.component
     PrvSectionLoaderComponent,
     PrvCarouselComponent,
     PrvFileUploadComponent,
-    PrvButtonComponent
+    PrvButtonComponent,
+    PrvNotificationsComponent
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import { PrvButtonComponent } from './components/prv-button/prv-button.component
     PrvFileUploadComponent,
     PrvBookComponent,
     PrvButtonComponent,
+    PrvNotificationsComponent,
     AngularMaterialModule
   ],
 })
