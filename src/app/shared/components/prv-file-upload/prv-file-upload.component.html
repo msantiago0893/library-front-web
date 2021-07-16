@@ -4,8 +4,14 @@
       <mat-icon>menu</mat-icon>
     </span>
     <div class="dropdown-content">
-      <p (click)="previous()">Visualizar</p>
-      <p (click)="download()">Descargar</p>
+      <p (click)="previous()">
+        <mat-icon>remove_red_eye</mat-icon>
+        Visualizar
+      </p>
+      <p (click)="download()">
+        <mat-icon>cloud_download</mat-icon>
+        Descargar
+      </p>
     </div>
   </div>
   <label class="content-img" for="archivo">
