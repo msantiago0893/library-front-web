@@ -21,6 +21,7 @@ export class ManagerComponent implements OnInit, AfterViewInit, OnDestroy {
   // private subscription: any;
   subscription: Subscription = null;
   subscriptionLoader: Subscription = null;
+  notifications = null;
 
   constructor(
     private router: Router,
@@ -30,6 +31,21 @@ export class ManagerComponent implements OnInit, AfterViewInit, OnDestroy {
   ){}
 
   ngOnInit() {
+
+    this.notifications = [
+      {
+        title: 'Item 1',
+        description: 'Estos correos electrónicos se envían a la dirección de correo electrónico asociada con la cuenta de Adobe ID.'
+      },
+      {
+        title: 'Item 2',
+        description: 'También puede optar por recibir notificaciones por mensajes de texto (SMS) en el teléfono móvil sobre estas transacciones.'
+      },
+      {
+        title: 'Item 3',
+        description: 'Adobe envía ocasionalmente correos electrónicos sobre transacciones de la cuenta, como problemas de facturación, y alertas de seguridad. s'
+      }
+    ];
 
     if (window.innerWidth < 768) {
 

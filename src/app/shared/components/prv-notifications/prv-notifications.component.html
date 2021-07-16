@@ -1,0 +1,21 @@
+<div class="dropdown" #asNotification>
+  <span class="dropdown__menu" (click)="toogle()">
+    <img class="icon" src="assets/images/notificacion.svg" mat-icon-button alt="notification">
+  </span>
+  <div class="dropdown-content" #asNotc>
+    <div class="header">
+      <mat-icon>notifications_active</mat-icon>
+      <p class="header__title">Notificaciones ({{ notifications && notifications.length }})</p>
+    </div>
+    <div class="body">
+      <div class="notification" *ngFor="let notification of notifications" (click)="goToSection(notification)">
+        <p class="notification__title">{{ notification.title }}</p>
+        <p class="notification__message">{{ notification.description }}</p>
+        <div class="notification__footer">
+          <p> {{ notification.date }} </p>
+          <p> {{ notification.section }} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
