@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gallery.component.sass']
 })
 export class GalleryComponent implements OnInit {
-  book : any;
+
+  book : any[];
+  filterpost: string = '';
+  filtergallery: string = '';
 
   constructor() { }
 
@@ -14,114 +17,164 @@ export class GalleryComponent implements OnInit {
   }
 
 
+  categories = [
+    {
+      code: 'c-01',
+      description: 'Informatica'
+    },
+    {
+      code: 'c-02',
+      description: 'Historia y geografía'
+    },
+    {
+      code: 'c-03',
+      description: 'Literatura'
+    },
+    {
+      code: 'c-01',
+      description: 'Artes'
+    },
+    {
+      code: 'c-02',
+      description: 'Tecnología y ciencias aplicadas'
+    },
+    {
+      code: 'c-03',
+      description: 'Matemática y ciencias naturales'
+    },
+    {
+      code: 'c-01',
+      description: 'Lengua'
+    },
+    {
+      code: 'c-02',
+      description: 'Ciencias sociales'
+    },
+    {
+      code: 'c-03',
+      description: 'Religión'
+    },
+    {
+      code: 'c-01',
+      description: 'Filosofía y psicología'
+    },
+    {
+      code: 'c-02',
+      description: 'Generalidades'
+    }
+  ];
+
   books = [
     {
       nombre: 'harry',
       autor:"Potter",
       genero: "Ficcion",
-      foto: "https://st.depositphotos.com/1020341/4233/i/600/depositphotos_42333899-stock-photo-portrait-of-huge-beautiful-male.jpg",
+      foto: "https://images-na.ssl-images-amazon.com/images/I/419DHP1fqiL._SX324_BO1,204,203,200_.jpg",
   },
   {
     nombre: 'Guerra Mundial',
     autor:"Camila Montes",
     genero: "Ficcion",
-    foto: "https://economipedia.com/wp-content/uploads/war-469503_1920.jpg"
+    foto: "https://images-na.ssl-images-amazon.com/images/I/518dVCGFuhL._SX323_BO1,204,203,200_.jpg"
   },
   {
 
     nombre: 'Ingenieria Financiera',
     autor:"Salazar Castillo",
     genero: "Matematicas",
-    foto: "https://img.eldefinido.cl/portadas/650/2018-11-28-8329HH5529.jpg"
+    foto: "https://images-na.ssl-images-amazon.com/images/I/51h7NHcKINL._SY344_BO1,204,203,200_QL70_ML2_.jpg"
   },
   {
     nombre: 'EL duende magico',
     autor:"Robert",
     genero: "historia",
-    foto: "https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg"
+    foto: "https://images-na.ssl-images-amazon.com/images/I/410sxOAZU+L._SY344_BO1,204,203,200_.jpg"
   },
   {
     nombre: 'harry',
     autor:"Potter",
     genero: "Ficcion",
-    foto: "https://st.depositphotos.com/1020341/4233/i/600/depositphotos_42333899-stock-photo-portrait-of-huge-beautiful-male.jpg",
+    foto: "https://images-na.ssl-images-amazon.com/images/I/518dVCGFuhL._SX323_BO1,204,203,200_.jpg",
 },
 {
   nombre: 'Guerra Mundial',
   autor:"Camila Montes",
   genero: "Ficcion",
-  foto: "https://economipedia.com/wp-content/uploads/war-469503_1920.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/41G0B5GR4UL._SX317_BO1,204,203,200_.jpg"
 },
 {
 
   nombre: 'Ingenieria Financiera',
   autor:"Salazar Castillo",
   genero: "Matematicas",
-  foto: "https://img.eldefinido.cl/portadas/650/2018-11-28-8329HH5529.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/51kdVV5+9rL._SY344_BO1,204,203,200_.jpg"
 },
 {
   nombre: 'EL duende magico',
   autor:"Robert",
   genero: "historia",
-  foto: "https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/51FZmQSylOS._SX384_BO1,204,203,200_.jpg"
 },
 {
   nombre: 'Guerra Mundial',
   autor:"Camila Montes",
   genero: "Ficcion",
-  foto: "https://economipedia.com/wp-content/uploads/war-469503_1920.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/419DHP1fqiL._SX324_BO1,204,203,200_.jpg"
 },
 {
 
   nombre: 'Ingenieria Financiera',
   autor:"Salazar Castillo",
   genero: "Matematicas",
-  foto: "https://img.eldefinido.cl/portadas/650/2018-11-28-8329HH5529.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/51FZmQSylOS._SX384_BO1,204,203,200_.jpg"
 },
 {
   nombre: 'EL duende magico',
   autor:"Robert",
   genero: "historia",
-  foto: "https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/419DHP1fqiL._SX324_BO1,204,203,200_.jpg"
 },
 {
   nombre: 'Guerra Mundial',
   autor:"Camila Montes",
   genero: "Ficcion",
-  foto: "https://economipedia.com/wp-content/uploads/war-469503_1920.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/410sxOAZU+L._SY344_BO1,204,203,200_.jpg"
 },
 {
 
   nombre: 'Ingenieria Financiera',
   autor:"Salazar Castillo",
   genero: "Matematicas",
-  foto: "https://img.eldefinido.cl/portadas/650/2018-11-28-8329HH5529.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/419DHP1fqiL._SX324_BO1,204,203,200_.jpg"
 },
 {
   nombre: 'EL duende magico',
   autor:"Robert",
   genero: "historia",
-  foto: "https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/410sxOAZU+L._SY344_BO1,204,203,200_.jpg"
 },
 {
   nombre: 'Guerra Mundial',
   autor:"Camila Montes",
   genero: "Ficcion",
-  foto: "https://economipedia.com/wp-content/uploads/war-469503_1920.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/419DHP1fqiL._SX324_BO1,204,203,200_.jpg"
 },
 {
 
   nombre: 'Ingenieria Financiera',
   autor:"Salazar Castillo",
   genero: "Matematicas",
-  foto: "https://img.eldefinido.cl/portadas/650/2018-11-28-8329HH5529.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/410sxOAZU+L._SY344_BO1,204,203,200_.jpg"
 },
 {
   nombre: 'EL duende magico',
   autor:"Robert",
   genero: "historia",
-  foto: "https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg"
+  foto: "https://images-na.ssl-images-amazon.com/images/I/419DHP1fqiL._SX324_BO1,204,203,200_.jpg"
 }
   ];
 
+  selectCategory(item: any) {
+    console.log('Elemento seleccionado ', item);
+  }
 }

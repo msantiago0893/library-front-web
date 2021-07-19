@@ -8,6 +8,7 @@ import { CustomerComponent } from './customer.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { MainComponent } from './main/main.component';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MainComponent } from './main/main.component';
     ConfiguracionComponent,
     GalleryComponent,
     CustomerComponent,
-    MainComponent
+    MainComponent,
+    ReservationsComponent
   ],
   imports: [
     CommonModule,

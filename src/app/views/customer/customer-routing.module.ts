@@ -4,6 +4,7 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
 import { CustomerComponent } from './customer.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { MainComponent } from './main/main.component';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: 'main', component: MainComponent },
       { path: 'configuracion', component: ConfiguracionComponent },
       { path: 'gallery', component: GalleryComponent },
+      { path: 'reservation', component: ReservationsComponent },
       { path: '**', redirectTo:'main' }
     ]
   }

@@ -17,6 +17,8 @@ import { PrvCarouselComponent } from '@components/prv-carousel/prv-carousel.comp
 import { PrvButtonComponent } from './components/prv-button/prv-button.component';
 import { PrvNotificationsComponent } from './components/prv-notifications/prv-notifications.component';
 import { PrvCarouselSimpleComponent } from './components/prv-carousel-simple/prv-carousel-simple.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FilterGaleryPipe } from './pipes/filter-galery.pipe';
 @NgModule({
   declarations: [
     PrvSidebarComponent,
@@ -30,7 +32,9 @@ import { PrvCarouselSimpleComponent } from './components/prv-carousel-simple/prv
     PrvFileUploadComponent,
     PrvButtonComponent,
     PrvNotificationsComponent,
-    PrvCarouselSimpleComponent
+    PrvCarouselSimpleComponent,
+    FilterPipe,
+    FilterGaleryPipe
   ],
   imports: [
     CommonModule,
@@ -54,6 +58,9 @@ import { PrvCarouselSimpleComponent } from './components/prv-carousel-simple/prv
     PrvBookComponent,
     PrvButtonComponent,
     PrvNotificationsComponent,
+    FilterPipe,
+    FilterGaleryPipe,
+    FormsModule,
     AngularMaterialModule
   ],
 })
