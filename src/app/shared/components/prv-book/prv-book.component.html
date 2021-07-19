@@ -32,13 +32,28 @@
           <span *ngIf="bookForm.get('author').errors.pattern">Campo de tipo texto.</span>
         </mat-error>
       </mat-form-field>
-      <mat-form-field fxFlex>
+      <!-- <mat-form-field fxFlex>
         <input matInput  type="text" placeholder="Género" formControlName="gender">
         <mat-error *ngIf="bookForm.controls.gender.touched && bookForm.controls.gender.invalid">
           <span *ngIf="bookForm.get('gender').errors.required">Campo obligatorio.</span>
           <span *ngIf="bookForm.get('gender').errors.pattern">Campo de tipo texto.</span>
         </mat-error>
+      </mat-form-field> -->
+      
+      <mat-form-field appearance="fill" >
+        <mat-label >Genero</mat-label>
+        <mat-select disableRipple formControlName="gender">
+          <mat-option *ngFor="let gender of generoLibro" [value]="gender.code">
+            {{gender.tipo}}
+          </mat-option>
+          <!-- <mat-error *ngIf="bookForm.controls.gender.touched && bookForm.controls.gender.invalid">
+            <span *ngIf="bookForm.get('gender').errors.required">Campo obligatorio.</span>
+            <span *ngIf="bookForm.get('gender').errors.pattern">Campo de tipo texto.</span>
+          </mat-error> -->
+        </mat-select>
       </mat-form-field>
+  
+
       <mat-form-field fxFlex>
         <input matInput  type="text" placeholder="Número de páginas" formControlName="page">
         <mat-error *ngIf="bookForm.controls.page.touched && bookForm.controls.page.invalid">
@@ -74,4 +89,6 @@
       </app-prv-button>
     </div>
   </form>
+
+  <pre> {{bookForm.value | json}}</pre>
 </div>
