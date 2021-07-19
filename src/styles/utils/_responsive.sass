@@ -1,10 +1,14 @@
 
+$screen-sdm-min: 320px
 $screen-sd-min: 485px
 $screen-sm-min: 576px
 $screen-md-min: 768px
 $screen-lg-min: 992px
 $screen-xl-min: 1200px
 
+@mixin minphone
+    @media only screen and (max-width: $screen-sdm-min)
+       @content
 
 @mixin phone
     @media only screen and (max-width: $screen-sd-min)
