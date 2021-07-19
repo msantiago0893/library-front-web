@@ -1,40 +1,55 @@
 <div class="main">
 
-  <app-prv-carousel></app-prv-carousel>
+  <prv-carousel-simple [items]="carouselData"></prv-carousel-simple>
+
+  <!-- <app-prv-carousel></app-prv-carousel> -->
 
   <div class="container">
-    <section class="container__sidebar">
-      <h1>MATERIAS</h1>
 
-      <article>
-        <h5>> Programación</h5>
-        <h5>> Matematicas</h5>
-        <h5>> Quimica</h5>
-        <h5>> Cienca de datos</h5>
-      </article>
-    </section>
+    <div class="notices">
+      <h1 class="title">Noticias</h1>
+      <br>
+      <div class="notice" *ngFor="let notice of notices">
+        <h3> {{ notice.title }} </h3>
+        <p> {{ notice.message }}</p>
+      </div>
+    </div>
 
-    <section class="container__body">
+    <div class="sections">
+      <div class="section">
+        <h1 class="title">Los más solicitados</h1>
+        <mat-divider></mat-divider>
+        <br>
+        <prv-carousel-simple [items]="carouselData"></prv-carousel-simple>
+      </div>
+      <div class="section">
+        <h1 class="title">Los más solicitados</h1>
+        <mat-divider></mat-divider>
+        <br>
+        <prv-carousel-simple [items]="carouselData"></prv-carousel-simple>
+      </div>
+    </div>
+  </div>
 
-      <h1>NOVEDADES</h1>
-      <article>
-        <h5>> Programación</h5>
-        <h5>> Matematicas</h5>
-        <h5>> Quimica</h5>
-        <h5>> Cienca de datos</h5>
-      </article>
-
-      <h1>LOS MÁS SOLICITADOS</h1>
-      <article>
-        <h5>> Programación</h5>
-        <h5>> Matematicas</h5>
-        <h5>> Quimica</h5>
-        <h5>> Cienca de datos</h5>
-      </article>
-
-
-    </section>
-
+  <div class="footer">
+    <div class="footer__information">
+      <div class="section">
+        <p class="footer__title">DIRECCIÓN</p>
+        <p class="footer__text">
+          Carretera al Ajusco N° 24, Col. Héroes de Padierna
+          Alcaldía Tlalpan, C.P. 14200, Ciudad de México
+        </p>
+      </div>
+      <div class="section">
+        <p class="footer__title">CONTACTO</p>
+        <p class="footer__text">biblioteca@upn.mx, biblioteca@g.upn.mx</p>
+        <p class="footer__text">(55) 5630 9700, (55) 5645 3843</p>
+        <p class="footer__text">Extensiones: 1440 y 1458</p>
+      </div>
+    </div>
+      <p class="footer__copyright">
+        Copyrights © 2020 Universidad Pedagógica Nacional. Créditos.
+      </p>
   </div>
 
 </div>
