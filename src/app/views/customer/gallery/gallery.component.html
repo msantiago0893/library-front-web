@@ -1,29 +1,52 @@
-<div class="grid-container" >
+<div class="container-main">
 
-    <div class="card" *ngFor="let book of books" >
-      <div >
-          <img  class="card__img" src="{{book.foto}}">
-      </div>
-        <div class="card__description">
-            <p>Nombre</p><p >{{book.nombre}}</p>
-            <p>Autor: </p><p>{{book.autor}}</p>
-            <p>Genero</p><p>{{book.genero}}</p>
-            <p>Disponible: 4</p>
-        </div> 
-<!-- 
-        <div class="card__description">
-            <p >Nombre: {{book.nombre}}</p>
-            <p>Autor: {{book.autor}}</p>
-            <p>Genero: {{book.genero}}</p>
-            <p>Disponible: 4</p>
-        </div> -->
+	<div class="sidebar">
+		<h1 class="sidebar__title">Categoría</h1>
+    <mat-divider></mat-divider>
 
-        <div class="container-buttons">
-            <button class="container-buttons__button">Ver detalles</button>
-            <button class="container-buttons__button">Reservar</button>
-        </div>
+		<mat-form-field class="sidebar__search" appearance="fill" style="padding-top: 1rem;">
+			<mat-label>Buscar</mat-label>
+			<input type="text" matInput  [(ngModel)]="filterpost" name="filterpost" />
+			<mat-icon matSuffix>search</mat-icon>
+		</mat-form-field>
 
-    </div>
+		<mat-list role="list" class="sidebar__categories">
+			<mat-list-item class='item-category' role="listitem" *ngFor="let category of categories | filter: filterpost" (click)="selectCategory(category)">
+				{{ category.description }}
+			</mat-list-item>
+		</mat-list>
 
+	</div>
+
+	<div class="container-body">
+		<mat-form-field class="container-body__search" appearance="fill" style="padding-top: 1rem;">
+			<mat-label>Buscar</mat-label>
+			<input type="text" matInput [(ngModel)]="filtergallery" name="filtergallery" />
+			<mat-icon matSuffix>search</mat-icon>
+		</mat-form-field>
+
+		<div class="wrapper">
+			<ng-container *ngIf="( books | filtergalery:filtergallery) as result">
+				<div class="card" *ngFor="let book of result">
+					<div>
+						<img class="card__img" src="{{ book.foto }}" />
+					</div>
+					<div class="card__description">
+						<p>{{ book.nombre }}</p>
+					</div>
+					<div class="container-buttons">
+						<button class="container-buttons__button">
+							Detalles
+						</button>
+						<button class="container-buttons__button">
+							Reservar
+						</button>
+					</div>
+				</div>
+				<div class="empty" *ngIf="result.length === 0">
+					<app-prv-empty msg2="No se encontraron resultados"></app-prv-empty>
+				</div>
+			</ng-container>
+		</div>
+	</div>
 </div>
-
