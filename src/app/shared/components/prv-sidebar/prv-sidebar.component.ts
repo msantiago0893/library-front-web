@@ -38,8 +38,40 @@ export class PrvSidebarComponent implements OnInit {
       ]
     },
     {
-      name: 'Catalogos',
-      icon: 'person',
+      name: 'Acciones',
+      icon: 'supervised_user_circle',
+      route: '',
+      childrens: [
+        {
+          name: 'Solicitud préstamos',
+          icon: 'contact_mail',
+          route: 'catalog'
+        },
+        {
+          name: 'Devoluciones',
+          icon: 'today',
+          route: 'catalog'
+        },
+        {
+          name: 'Reservas',
+          icon: 'verified_user',
+          route: 'catalog'
+        }
+      ]
+    },
+    {
+      name: 'Catálogo',
+      icon: 'category',
+      route: 'catalog'
+    },
+    {
+      name: 'Reportes y estadísticas',
+      icon: 'bar_chart',
+      route: 'catalog'
+    },
+    {
+      name: 'Informe o Bitácora',
+      icon: 'assignment',
       route: 'catalog'
     }
   ];
