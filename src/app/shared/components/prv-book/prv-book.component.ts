@@ -22,6 +22,7 @@ export class PrvBookComponent implements OnInit {
   @Input()  book : any;
   @Input() updateTable : Function;
   @Output() back = new EventEmitter<Number>();
+  ValorGenr :any;
 
   constructor(
     private fb: FormBuilder,
@@ -67,6 +68,29 @@ export class PrvBookComponent implements OnInit {
         );
     }
   }
+
+  valor(value){
+   this.ValorGenr = value;
+
+  }
+
+
+  generoLibro = [
+    {
+      code: 'g-01',
+      tipo: 'historia'
+    },
+    {
+      code: 'g-02',
+      tipo: 'Matematicas'
+    },
+    {
+      code: 'g-03',
+      tipo: 'Fisica'
+    }
+  ];
+
+
 
   mensaje() {
     console.log("hola mundo");

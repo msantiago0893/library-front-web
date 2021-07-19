@@ -1,1 +1,29 @@
-<p>gallery works!</p>
+<div class="grid-container" >
+
+    <div class="card" *ngFor="let book of books" >
+      <div >
+          <img  class="card__img" src="{{book.foto}}">
+      </div>
+        <div class="card__description">
+            <p>Nombre</p><p >{{book.nombre}}</p>
+            <p>Autor: </p><p>{{book.autor}}</p>
+            <p>Genero</p><p>{{book.genero}}</p>
+            <p>Disponible: 4</p>
+        </div> 
+<!-- 
+        <div class="card__description">
+            <p >Nombre: {{book.nombre}}</p>
+            <p>Autor: {{book.autor}}</p>
+            <p>Genero: {{book.genero}}</p>
+            <p>Disponible: 4</p>
+        </div> -->
+
+        <div class="container-buttons">
+            <button class="container-buttons__button">Ver detalles</button>
+            <button class="container-buttons__button">Reservar</button>
+        </div>
+
+    </div>
+
+</div>
+

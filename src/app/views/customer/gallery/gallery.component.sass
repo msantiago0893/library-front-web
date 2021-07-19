@@ -1,0 +1,71 @@
+@import '_globals'
+
+.grid-container
+  display: grid
+  background: linear-gradient( 45deg, rgb(281 268 271), rgb(179 292 187))
+  grid-template-columns: 2fr 2fr 2fr 2fr
+  @include tablet
+    grid-template-columns: 2fr 2fr 2fr
+  @include mobile
+    grid-template-columns: 2fr 2fr
+    padding: 0 20px 0 20px
+  @include minphone
+    grid-template-columns: 2fr
+    padding: 0 20px 0 20px
+  // justify-content: space-evenly
+  // align-content: center
+  grid-gap: 2rem 2rem
+  padding: 0 25px 0 25px
+
+.card
+    margin: 1px 6px 1px 3px
+    width: auto
+    padding: 7px 9px
+    min-width: 0
+    border: 2px solid #dadaff80
+    border-radius: 0.5rem
+    background: #f8fcff
+    font-size: 13px
+    text-align: center
+    font-family: ui-sans-serif
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 12px 18px 0px 20px
+    &:hover
+      box-shadow:  rgb(0 0 0 / 35%) 0px 5px 15px
+      cursor: pointer
+
+    &__description
+        display: flex
+        flex-wrap: wrap
+        flex-direction: column
+
+    &__img
+        height: 8rem
+        width: 100%
+        margin-bottom: 0.5rem
+        border-radius: 0.2rem
+        @include minphone
+          height: 6rem
+
+.container-buttons
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-around
+
+  &__button
+        margin: 3px 11px -3px 0px
+        margin-bottom: 3px
+        width: 75px
+        height: 24px
+        //* background: linear-gradient(45deg, #278dbd, #6576ca)*//
+        background: linear-gradient(45deg, #278dbd, #2c5aa0)
+        border-radius: 6px
+        border: antiquewhite
+        color: #FFF
+        font-size: 13px
+        &:hover
+          cursor: pointer
+          background: linear-gradient(45deg, #479ac1bf, #2c76e6e6)
+          box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 0px 5px
