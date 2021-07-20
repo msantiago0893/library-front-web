@@ -17,6 +17,8 @@ import { PrvCarouselComponent } from '@components/prv-carousel/prv-carousel.comp
 import { PrvButtonComponent } from './components/prv-button/prv-button.component';
 import { PrvNotificationsComponent } from './components/prv-notifications/prv-notifications.component';
 import { PrvCarouselSimpleComponent } from './components/prv-carousel-simple/prv-carousel-simple.component';
+import { HeaderComponent } from './components/header/header.component';
+
 import { FilterPipe } from './pipes/filter.pipe';
 import { FilterGaleryPipe } from './pipes/filter-galery.pipe';
 @NgModule({
@@ -33,6 +35,7 @@ import { FilterGaleryPipe } from './pipes/filter-galery.pipe';
     PrvButtonComponent,
     PrvNotificationsComponent,
     PrvCarouselSimpleComponent,
+    HeaderComponent,
     FilterPipe,
     FilterGaleryPipe
   ],
@@ -58,6 +61,7 @@ import { FilterGaleryPipe } from './pipes/filter-galery.pipe';
     PrvBookComponent,
     PrvButtonComponent,
     PrvNotificationsComponent,
+    HeaderComponent,
     FilterPipe,
     FilterGaleryPipe,
     FormsModule,

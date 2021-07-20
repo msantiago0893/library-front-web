@@ -1,53 +1,18 @@
 <div class="main">
-
-  <mat-toolbar color="primary" class="header">
-    <div>LibraryUI</div>
-    <span class="nav-tool-items">
-      <img class="icon" src="assets/images/notificacion.svg" mat-icon-button alt="notification">
-      <img class="icon" src="assets/images/flag.svg" mat-icon-button [matMenuTriggerFor]="flag" alt="flag">
-      <img class="icon" src="assets/images/user.svg" mat-icon-button [matMenuTriggerFor]="profile" alt="user">
-      <img class="icon" src="assets/images/menu.svg" mat-icon-button (click)="sidenav.toggle()" alt="menu">
-    </span>
-  </mat-toolbar>
-
-  <mat-menu #profile>
-    <button mat-menu-item disabled>
-      <mat-icon>dialpad</mat-icon>
-      <span>Marco Antonio Santiago Feria</span>
-    </button>
-    <button mat-menu-item  (click)="main()">
-      <mat-icon>dialpad</mat-icon>
-      <span>Perfil</span>
-    </button>
-    <button mat-menu-item (click)="logout()">
-      <mat-icon>notifications_off</mat-icon>
-      <span>Cerrar sesión</span>
-    </button>
-  </mat-menu>
-
-  <mat-menu #flag>
-    <button mat-menu-item (click)="switchLang('es')">
-      <mat-icon>assistant_photo</mat-icon>
-      <span>MX</span>
-    </button>
-    <button mat-menu-item (click)="switchLang('en')">
-      <mat-icon>assistant_photo</mat-icon>
-      <span>USA</span>
-    </button>
-  </mat-menu>
+  <app-header></app-header>
 
   <div class="menu">
-    <button mat-button routerLink="main">Inicio</button>
-    <button mat-button routerLink="gallery">Galería</button>
+    <button mat-button routerLink="main" [routerLinkActive]="['isActive']">Inicio</button>
+    <button mat-button routerLink="gallery" [routerLinkActive]="['isActive']">Galería</button>
     <button mat-button [matMenuTriggerFor]="beforeMenu">Mi cuenta</button>
     <mat-menu #beforeMenu="matMenu" xPosition="before">
       <button mat-menu-item>Préstamos en línea</button>
-      <button mat-menu-item routerLink="reservation">Reservar</button>
+      <button mat-menu-item routerLink="reservation" [routerLinkActive]="['isActive']">Reservar</button>
       <button mat-menu-item>Historial de préstamos</button>
       <button mat-menu-item>Mis listas</button>
       <button mat-menu-item>Sugerencias</button>
-      <button mat-menu-item>Mis favoritos</button>
     </mat-menu>
+    <button mat-button routerLink="gallery" [routerLinkActive]="['isActive']">Acerca de</button>
   </div>
 
   <section class="container">
