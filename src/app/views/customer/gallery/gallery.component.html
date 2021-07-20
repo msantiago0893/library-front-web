@@ -24,29 +24,27 @@
 			<input type="text" matInput [(ngModel)]="filtergallery" name="filtergallery" />
 			<mat-icon matSuffix>search</mat-icon>
 		</mat-form-field>
-
-		<div class="wrapper">
-			<ng-container *ngIf="( books | filtergalery:filtergallery) as result">
-				<div class="card" *ngFor="let book of result">
-					<div>
-						<img class="card__img" src="{{ book.foto }}" />
-					</div>
-					<div class="card__description">
-						<p>{{ book.nombre }}</p>
-					</div>
-					<div class="container-buttons">
-						<button class="container-buttons__button">
-							Detalles
-						</button>
-						<button class="container-buttons__button">
-							Reservar
-						</button>
-					</div>
+	
+		<div class="wrapper" *ngIf="( books | filtergalery:filtergallery) as result">
+			<div class="card" *ngFor="let book of result">
+				<div>
+					<img class="card__img" src="{{ book.foto }}"/>
 				</div>
-				<div class="empty" *ngIf="result.length === 0">
-					<app-prv-empty msg2="No se encontraron resultados"></app-prv-empty>
+				<div class="card__description">
+					<p>{{ book.nombre }}</p>
 				</div>
-			</ng-container>
+				<div class="container-buttons">
+					<button class="container-buttons__button">
+						Detalles
+					</button>
+					<button class="container-buttons__button">
+						Reservar
+					</button>
+				</div>
+			</div>
+			<div class="empty" *ngIf="result.length === 0">
+				<app-prv-empty msg2="No se encontraron resultados"></app-prv-empty>
+			</div>
 		</div>
 	</div>
 </div>
