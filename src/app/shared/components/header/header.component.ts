@@ -9,6 +9,7 @@ import { SessionService } from '@services/session.service';
 export class HeaderComponent implements OnInit {
 
   @Input() sidenav: any = null;
+  @Input() isProfile: boolean = false;
   opened = true;
 
   constructor(
@@ -40,7 +41,6 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
 
-    console.log('HostListener');
     if (this.sidenav) {
       if (event.target.innerWidth < 768) {
         this.sidenav.fixedTopGap = 55;

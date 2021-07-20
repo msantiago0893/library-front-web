@@ -2,11 +2,11 @@
   <div>LibraryUI</div>
 
   <span class="nav-tool-items">
-    <img class="icon" *ngIf='!_service.isManager()' src="assets/images/reservar.svg" mat-icon-button >
+    <img class="icon" *ngIf='!isProfile && !_service.isManager()' src="assets/images/reservar.svg" mat-icon-button >
     <app-prv-notifications></app-prv-notifications>
     <img class="icon" src="assets/images/flag.svg" mat-icon-button [matMenuTriggerFor]="flag" alt="flag">
     <img class="icon" src="assets/images/user.svg" mat-icon-button [matMenuTriggerFor]="profile" alt="user">
-    <img class="icon" *ngIf='_service.isManager()' src="assets/images/menu.svg" mat-icon-button (click)="sidenav.toggle()" alt="menu">
+    <img class="icon" *ngIf='!isProfile && _service.isManager()' src="assets/images/menu.svg" mat-icon-button (click)="sidenav.toggle()" alt="menu">
   </span>
 </mat-toolbar>
 
