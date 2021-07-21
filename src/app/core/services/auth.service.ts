@@ -4,16 +4,21 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Storage } from 'src/app/memento/Storage';
 import { environment } from 'src/environments/environment';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private readonly TOKEN = 'token';
+  private readonly USER = 'user';
+
   private uri: string = environment.authUrl;
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private _sessionService: SessionService
   ) { }
 
   login(user:any): Observable<any> {
@@ -34,9 +39,10 @@ export class AuthService {
       .pipe(
         tap(response => {
 
-          if(response.access_token){
-            Storage.setItem('accessToken',response.access_token);
-            Storage.setItem('user', response.user);
+          if(response.access_token) {
+
+            Storage.setItem(this.TOKEN, response.access_token);
+            Storage.setItem(this.USER, this._sessionService.infoUser(response.access_token));
           }
         }),
         map(resp => {
@@ -48,9 +54,4 @@ export class AuthService {
         catchError(error => of(error.ok))
       );
   }
-
-  isAuthenticated() {
-    return Storage.getItem('user');
-  }
-
 }
