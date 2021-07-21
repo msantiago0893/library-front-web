@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, Router, CanLoad, Route, UrlSegment } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, Router, CanLoad } from '@angular/router';
+import { SessionService } from '@services/session.service';
 import { Observable } from 'rxjs';
 import { Storage } from 'src/app/memento/Storage';
 
@@ -9,14 +10,12 @@ import { Storage } from 'src/app/memento/Storage';
 export class AuthGuard implements CanActivate, CanLoad {
 
   constructor(
-    private route: Router
+    private route: Router,
+    private _sessionService: SessionService,
   ) {}
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]
-  ): boolean | Observable<boolean> | Promise<boolean> {
+  canLoad(): boolean | Observable<boolean> | Promise<boolean> {
 
-    if(!this.isExistSession()) {
+    if(!this.hasActiveUser()) {
       return true;
     }
 
@@ -28,12 +27,11 @@ export class AuthGuard implements CanActivate, CanLoad {
     next: ActivatedRouteSnapshot
   ): Observable<boolean> |Promise<boolean> | boolean  {
 
-      const user = Storage.getItem('user');
-      const roles = next.data.roles;
+      const authorities = next.data.authorities;
 
-      if(this.isExistSession()) {
+      if(this.hasActiveUser()) {
 
-        if(roles.includes(user.role)) { // Aqui estare validando el token si es correcto
+        if(this.isTokenValid() && authorities.includes(this.hasActiveUser().authority)) {
 
           return true;
         } else  {
@@ -46,9 +44,14 @@ export class AuthGuard implements CanActivate, CanLoad {
       return false;
   }
 
-  isExistSession() {
-
-    return Storage.getItem('user')
+  hasActiveUser() {
+    return Storage.getItem('user');
   }
 
+  isTokenValid() {
+
+    const token = Storage.getItem('token');
+
+    return JSON.stringify(this._sessionService.infoUser(token)) === JSON.stringify(this.hasActiveUser());
+  }
 }
