@@ -19,7 +19,7 @@ const routes: Routes = [
     path:'',
     canActivate: [AuthGuard],
     data: {
-      roles: [
+      authorities: [
         'MANAGER',
         'CUSTOMER'
       ]
@@ -34,7 +34,7 @@ const routes: Routes = [
         canActivate: [RolGuard],
         loadChildren: () => import('./views/profile/profile.module').then(m => m.ProfileModule),
         data: {
-          roles: [
+          authorities: [
             'MANAGER',
             'CUSTOMER'
           ]
@@ -45,7 +45,7 @@ const routes: Routes = [
         canActivate: [RolGuard],
         loadChildren: () => import('./views/manager/manager.module').then(m => m.ManagerModule),
         data: {
-          roles: ['MANAGER']
+          authorities: ['MANAGER']
         }
       },
       {
@@ -53,7 +53,7 @@ const routes: Routes = [
         canActivate: [RolGuard],
         loadChildren: () => import('./views/customer/customer.module').then(m => m.CustomerModule),
         data: {
-          roles: ['CUSTOMER']
+          authorities: ['CUSTOMER']
         }
       }
     ]

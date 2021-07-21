@@ -16,11 +16,11 @@ export class RolGuard implements CanActivate {
     route: ActivatedRouteSnapshot
   ): Observable<boolean> |Promise<boolean> | boolean  {
 
-      const rolePath = route.data.roles;
+      const authorities = route.data.authorities;
 
-      const userRole = Storage.getItem('user') || '';
+      const user = Storage.getItem('user') || '';
 
-      if(rolePath.includes(userRole.role)) {
+      if(authorities.includes(user.authority)) {
         return true;
       }
 
