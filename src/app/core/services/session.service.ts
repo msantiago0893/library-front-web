@@ -13,11 +13,22 @@ export class SessionService {
   ) {}
 
 
+  decodeToken(token) {
+    return JSON.parse(atob(token.split('.')[1]));
+  }
+
+  infoUser(token) {
+    let { authorities, user } = this.decodeToken(token);
+    user.authority = String(authorities);
+
+    return user;
+  }
+
   isManager() {
 
     const user = Storage.getItem('user');
 
-    return user ? ACL.isManager(user.role) : false;
+    return user ? ACL.isManager(user.authority) : false;
   }
 
   logout() {
