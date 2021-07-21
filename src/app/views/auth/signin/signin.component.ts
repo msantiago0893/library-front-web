@@ -33,9 +33,6 @@ export class SigninComponent implements OnInit {
                         if(response) {
 
                           location.reload();
-                          setTimeout(() => {
-                            this.router.navigate([ACL.getDefaultRedirectPath()])
-                          },30);
                         } else {
 
                           this.areWrongCredentials = !response;

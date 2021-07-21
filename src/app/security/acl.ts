@@ -7,7 +7,7 @@ export class ACL {
 
     if(user) {
 
-      const role = user && user.role;
+      const role = user && user.authority;
 
       if ( ACL.isClient(role) ) {
         return 'customer';
