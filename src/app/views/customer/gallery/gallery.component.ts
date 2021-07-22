@@ -16,7 +16,6 @@ export class GalleryComponent implements OnInit {
   ngOnInit() {
   }
 
-
   categories = [
     {
       code: 'c-01',
@@ -175,6 +174,21 @@ export class GalleryComponent implements OnInit {
   ];
 
   selectCategory(item: any) {
-    console.log('Elemento seleccionado ', item);
+
+    this.setCategory(item);
+  }
+
+  setCategory(category: any) {
+
+    let isEnabled = () => {
+
+      category.isEnabled = !category.isEnabled;
+
+      this.categories
+        .filter(item => item.code !== category.code)
+        .forEach((item: any) => item.isEnabled = false);
+    }
+
+    category.isEnabled ? null : isEnabled();
   }
 }

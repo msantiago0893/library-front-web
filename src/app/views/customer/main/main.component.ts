@@ -46,7 +46,37 @@ export class MainComponent implements OnInit {
       subtitle: 'Esto es una gran descripción',
       image: 'assets/images/3.jpg'
     }
-];
+  ];
+
+  public carouselData2: ICarouselItem[] = [
+    {
+      id: 1,
+      title: 'Titulo principal',
+      subtitle: 'Esto es una gran descripción',
+      image: 'assets/images/1.jpg'
+    },
+    {
+      id: 2,
+      title: 'Segundo',
+      subtitle: 'Esto es una gran descripción',
+      image: 'assets/images/2.jpg'
+    }
+  ];
+
+  public carouselData3: ICarouselItem[] = [
+    {
+      id: 1,
+      title: 'Titulo principal',
+      subtitle: 'Esto es una gran descripción',
+      image: 'assets/images/1.jpg'
+    },
+    {
+      id: 2,
+      title: 'Segundo',
+      subtitle: 'Esto es una gran descripción',
+      image: 'assets/images/2.jpg'
+    }
+  ];
 
   constructor() { }
 
