@@ -11,7 +11,9 @@
 		</mat-form-field>
 
 		<mat-list role="list" class="sidebar__categories">
-			<mat-list-item class='item-category' role="listitem" *ngFor="let category of categories | filter: filterpost" (click)="selectCategory(category)">
+			<mat-list-item class='item-category' role="listitem" *ngFor="let category of categories | filter: filterpost"
+				(click)="selectCategory(category)"
+				[ngClass]="{'item-category__border': category.isEnabled}">
 				{{ category.description }}
 			</mat-list-item>
 		</mat-list>
@@ -24,7 +26,7 @@
 			<input type="text" matInput [(ngModel)]="filtergallery" name="filtergallery" />
 			<mat-icon matSuffix>search</mat-icon>
 		</mat-form-field>
-	
+
 		<div class="wrapper" *ngIf="( books | filtergalery:filtergallery) as result">
 			<div class="card" *ngFor="let book of result">
 				<div>
