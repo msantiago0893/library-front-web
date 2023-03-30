@@ -31,5 +31,4 @@ export class ACL {
     return role === 'MANAGER'
   }
 
-
 }
