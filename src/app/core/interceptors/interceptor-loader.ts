@@ -24,10 +24,6 @@ export class LoaderInterceptor implements HttpInterceptor {
 
     this.requests.push(req);
 
-    //TODO: lo agregué para evitar el error de afterView en Manager, corroborar si no afecta en un futuro
-    // if (req.method !== 'GET') {
-    //   this.loaderService.isLoading.next(true);
-    // }
     this.loaderService.isLoading.next(true);
 
     return Observable.create(observer => {
