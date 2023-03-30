@@ -13,6 +13,8 @@ export class AuthService {
 
   private readonly TOKEN = 'token';
   private readonly USER = 'user';
+  private readonly CODE = 'user';
+  private readonly ID = 'user';
 
   private uri: string = environment.authUrl;
 
@@ -23,7 +25,7 @@ export class AuthService {
 
   login(user:any): Observable<any> {
 
-    const credenciales = btoa('angularapp' + ':' + '12345');
+    const credenciales = btoa(`${this.CODE} : ${this.ID} `);
 
     const header = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
