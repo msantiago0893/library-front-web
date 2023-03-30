@@ -1,17 +1,5 @@
 export class Storage {
 
-  // private static instance: Storage;
-
-  // private constructor() {}
-
-  // public static getInstance(): Storage {
-
-  //   if (!this.instance) {
-  //     this.instance = new Storage();
-  //   }
-  //   return this.instance;
-  // }
-
   static getItem(key) {
 
     const result = localStorage.getItem(key);
