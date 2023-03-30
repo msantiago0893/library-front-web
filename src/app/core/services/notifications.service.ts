@@ -20,7 +20,6 @@ export class Notifications {
   ) { }
 
   consultAll(): any {
-    // return this.http.get<any[]>(`${this.uri}notifications`);
     return of([
       {
         title: 'Notificación 1',
